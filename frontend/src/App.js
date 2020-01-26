@@ -1,11 +1,8 @@
 import React from 'react'
+import MainNavigation from './MainNavigation'
 
 const App = () => {
-  return (
-    <div>
-      <p>Hello World!</p>
-    </div>
-  )
+  return <MainNavigation />
 }
 
 export default App
