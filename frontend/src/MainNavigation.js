@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import {
   BrowserRouter as Router,
   Switch,
@@ -16,6 +16,7 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import InboxIcon from '@material-ui/icons/MoveToInbox'
+import Login from './Login'
 
 const drawerWidth = 240
 
@@ -48,7 +49,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default () => {
+export default ({ auth }) => {
   const classes = useStyles()
 
   return (
@@ -83,33 +84,73 @@ export default () => {
               </ListItemIcon>
               <ListItemText primary="Home" className={classes.listItem} />
             </ListItem>
-            <ListItem
-              component={NavLink}
-              to="/leagues"
-              activeClassName={classes.active}
-            >
-              <ListItemIcon>
-                <InboxIcon />
-              </ListItemIcon>
-              <ListItemText primary="Leagues" className={classes.listItem} />
-            </ListItem>
+            {auth && (
+              <Fragment>
+                <ListItem
+                  component={NavLink}
+                  to="/leagues"
+                  activeClassName={classes.active}
+                >
+                  <ListItemIcon>
+                    <InboxIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary="Leagues"
+                    className={classes.listItem}
+                  />
+                </ListItem>
+                <ListItem
+                  component={NavLink}
+                  to="/auction"
+                  activeClassName={classes.active}
+                >
+                  <ListItemIcon>
+                    <InboxIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary="Auction"
+                    className={classes.listItem}
+                  />
+                </ListItem>
+              </Fragment>
+            )}
           </List>
         </Drawer>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <Switch>
-            <Route path="/" exact>
-              <Home />
-            </Route>
-            <Route path="/leagues" exact>
-              <Leagues />
-            </Route>
-          </Switch>
+          {auth ? <LoggedInRoutes /> : <LoggedOutRoutes />}
         </main>
       </div>
     </Router>
   )
 }
 
+const LoggedInRoutes = () => {
+  return (
+    <Switch>
+      <Route path="/" exact>
+        <Home />
+      </Route>
+      <Route path="/leagues" exact>
+        <Leagues />
+      </Route>
+      <Route path="/auction" exact>
+        <Auction />
+      </Route>
+    </Switch>
+  )
+}
+
+const LoggedOutRoutes = () => {
+  return (
+    <Switch>
+      <Route path="/" exact>
+        <Login />
+      </Route>
+    </Switch>
+  )
+}
+
 const Home = () => <h1>Home</h1>
 const Leagues = () => <h1>Leagues</h1>
+const Auction = () => <h1>Auction</h1>

@@ -1,8 +1,19 @@
 import React from 'react'
+import { useAuthState, AuthProvider } from './AuthContext'
 import MainNavigation from './MainNavigation'
 
+const AuthContainer = () => {
+  const { user } = useAuthState()
+  console.log(user)
+  return <MainNavigation auth={user ? true : false} />
+}
+
 const App = () => {
-  return <MainNavigation />
+  return (
+    <AuthProvider>
+      <AuthContainer />
+    </AuthProvider>
+  )
 }
 
 export default App
