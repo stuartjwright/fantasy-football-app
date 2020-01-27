@@ -1,19 +1,5 @@
 import React, { useState, createContext, useEffect, useContext } from 'react'
-import axios from 'axios'
-
-const api = 'http://localhost:5000/api/user/'
-
-const getUser = async () => {
-  const token = localStorage.getItem('token')
-  if (!token) {
-    return null
-  }
-
-  const res = await axios.get(api, {
-    headers: { Authorization: `Bearer ${token}` }
-  })
-  return res.data
-}
+import { getUser } from './AuthRequests'
 
 const AuthContext = createContext()
 
@@ -23,6 +9,7 @@ export const AuthProvider = ({ children }) => {
     error: null,
     user: null
   })
+
   useEffect(() => {
     getUser().then(
       user => setState({ status: 'success', error: null, user }),
@@ -31,7 +18,7 @@ export const AuthProvider = ({ children }) => {
   }, [])
 
   return (
-    <AuthContext.Provider value={state}>
+    <AuthContext.Provider value={{ state, setState }}>
       {state.status === 'pending' ? (
         'Loading...'
       ) : state.status === 'error' ? (

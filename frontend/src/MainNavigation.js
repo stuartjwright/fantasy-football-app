@@ -15,7 +15,7 @@ import Typography from '@material-ui/core/Typography'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-import InboxIcon from '@material-ui/icons/MoveToInbox'
+import HomeIcon from '@material-ui/icons/Home'
 import Login from './Login'
 
 const drawerWidth = 240
@@ -80,7 +80,7 @@ export default ({ auth }) => {
               activeClassName={classes.active}
             >
               <ListItemIcon>
-                <InboxIcon />
+                <HomeIcon />
               </ListItemIcon>
               <ListItemText primary="Home" className={classes.listItem} />
             </ListItem>
@@ -92,7 +92,7 @@ export default ({ auth }) => {
                   activeClassName={classes.active}
                 >
                   <ListItemIcon>
-                    <InboxIcon />
+                    <HomeIcon />
                   </ListItemIcon>
                   <ListItemText
                     primary="Leagues"
@@ -105,7 +105,7 @@ export default ({ auth }) => {
                   activeClassName={classes.active}
                 >
                   <ListItemIcon>
-                    <InboxIcon />
+                    <HomeIcon />
                   </ListItemIcon>
                   <ListItemText
                     primary="Auction"

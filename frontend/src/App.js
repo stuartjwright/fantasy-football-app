@@ -3,8 +3,9 @@ import { useAuthState, AuthProvider } from './AuthContext'
 import MainNavigation from './MainNavigation'
 
 const AuthContainer = () => {
-  const { user } = useAuthState()
-  console.log(user)
+  const {
+    state: { user }
+  } = useAuthState()
   return <MainNavigation auth={user ? true : false} />
 }
 
