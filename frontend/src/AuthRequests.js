@@ -1,7 +1,9 @@
 import axios from 'axios'
 
+const rootUrl = 'http://localhost:5000/'
+
 export const getUser = async () => {
-  const api = 'http://localhost:5000/api/user/'
+  const url = rootUrl + 'api/user/'
   const token = localStorage.getItem('token')
 
   if (!token) {
@@ -9,7 +11,7 @@ export const getUser = async () => {
   }
 
   try {
-    const res = await axios.get(api, {
+    const res = await axios.get(url, {
       headers: { Authorization: `Bearer ${token}` }
     })
     return res.data
@@ -19,9 +21,19 @@ export const getUser = async () => {
 }
 
 export const signIn = async (username, password) => {
-  const api = 'http://localhost:5000/signin/'
+  const url = rootUrl + 'signin/'
   try {
-    const res = await axios.post(api, { username, password })
+    const res = await axios.post(url, { username, password })
+    return res.data
+  } catch (e) {
+    return { token: null }
+  }
+}
+
+export const signUp = async (username, password) => {
+  const url = rootUrl + 'signup/'
+  try {
+    const res = await axios.post(url, { username, password })
     return res.data
   } catch (e) {
     return { token: null }

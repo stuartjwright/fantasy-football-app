@@ -16,13 +16,15 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import HomeIcon from '@material-ui/icons/Home'
-import Login from './Login'
+import LoginSignup from './LoginSignup'
+import Logout from './Logout'
 
 const drawerWidth = 240
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: 'flex'
+    display: 'flex',
+    flexGrow: 1
   },
   appBar: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -46,6 +48,9 @@ const useStyles = makeStyles(theme => ({
   },
   listItem: {
     color: theme.palette.text.primary
+  },
+  heading: {
+    flex: 1
   }
 }))
 
@@ -58,9 +63,10 @@ export default ({ auth }) => {
         <CssBaseline />
         <AppBar position="fixed" className={classes.appBar}>
           <Toolbar>
-            <Typography variant="h6" noWrap>
+            <Typography variant="h6" noWrap className={classes.heading}>
               Fantasy Football League
             </Typography>
+            {auth && <Logout />}
           </Toolbar>
         </AppBar>
         <Drawer
@@ -145,7 +151,7 @@ const LoggedOutRoutes = () => {
   return (
     <Switch>
       <Route path="/" exact>
-        <Login />
+        <LoginSignup />
       </Route>
     </Switch>
   )

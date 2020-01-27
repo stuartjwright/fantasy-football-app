@@ -6,6 +6,7 @@ const AuthContainer = () => {
   const {
     state: { user }
   } = useAuthState()
+  console.log(useAuthState())
   return <MainNavigation auth={user ? true : false} />
 }
 
