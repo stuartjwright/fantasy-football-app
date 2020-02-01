@@ -1,7 +1,6 @@
 import { Player } from './player.model'
 
 export const getOnePlayer = async (req, res) => {
-  console.log(req.params.playerId)
   try {
     const player = await Player.findById(req.params.playerId)
       .lean()
