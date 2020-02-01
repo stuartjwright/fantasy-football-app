@@ -12,7 +12,7 @@ Represents a user of the system. Has a username and password.
 
 Player
 
-Represents a real-life football player. Has names (first, last, full), club (real-life football team), position (e.g. defender). The web app should only have GET access to players.
+Represents a real-life football player. Has names (first, last, full), club (real-life football team), position (e.g. defender). The web app should only have GET access to players. No need for time stamps on these as won't be changing.
 
 Note: this is a slimmed down version of the player data taken from:
 https://fantasy.premierleague.com/api/bootstrap-static/

@@ -17,6 +17,10 @@ const playerSchema = new mongoose.Schema(
     team: {
       type: String,
       required: true
+    },
+    positions: {
+      type: String,
+      required: true
     }
   },
   { timestamps: true }
