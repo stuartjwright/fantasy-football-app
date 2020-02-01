@@ -6,6 +6,7 @@ import { connect } from './utils/db'
 import { port } from './config'
 import { signup, signin, protect } from './utils/auth'
 import userRouter from './resources/user/user.router'
+import playerRouter from './resources/player/player.router'
 
 export const app = express()
 
@@ -19,6 +20,7 @@ app.post('/signin', signin)
 
 app.use('/api', protect)
 app.use('/api/user', userRouter)
+app.use('/api/player', playerRouter)
 
 export const start = async () => {
   try {

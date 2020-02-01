@@ -10,8 +10,8 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexWrap: 'wrap',
     '& > *': {
-      margin: theme.spacing(3),
-      width: 325,
+      margin: theme.spacing(2),
+      width: 300,
       height: 500
     }
   },
@@ -28,13 +28,13 @@ export default () => {
   return (
     <div className={classes.root}>
       <Paper elevation={3}>
-        <Typography variant="subtitle1" className={classes.message}>
+        <Typography variant="subtitle2" className={classes.message}>
           Existing Users Login:
         </Typography>
         <Login />
       </Paper>
       <Paper elevation={3}>
-        <Typography variant="subtitle1" className={classes.message}>
+        <Typography variant="subtitle2" className={classes.message}>
           New Users Create Account:
         </Typography>
         <Signup />

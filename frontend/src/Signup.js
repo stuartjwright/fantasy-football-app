@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
       marginTop: theme.spacing(1),
       width: 100
     },
-    width: 300,
+    width: 275,
     justifyContent: 'center'
   },
   errorText: {

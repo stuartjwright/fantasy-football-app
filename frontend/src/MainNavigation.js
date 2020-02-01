@@ -19,7 +19,7 @@ import HomeIcon from '@material-ui/icons/Home'
 import LoginSignup from './LoginSignup'
 import Logout from './Logout'
 
-const drawerWidth = 240
+const drawerWidth = 200
 
 const useStyles = makeStyles(theme => ({
   root: {
