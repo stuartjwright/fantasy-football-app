@@ -4,7 +4,7 @@ const leagueSchema = new mongoose.Schema(
   {
     status: {
       type: String,
-      enum: ['registering', 'ready', 'auction', 'complete'],
+      enum: ['registering', 'ready', 'auction', 'postauction'],
       required: true
     },
     creator: {
@@ -52,7 +52,8 @@ const leagueSchema = new mongoose.Schema(
     ],
     auction: {
       type: mongoose.SchemaTypes.ObjectId,
-      ref: 'auction'
+      ref: 'auction',
+      required: true
     }
   },
   { timestamps: true, toObject: { getters: true }, toJSON: { getters: true } }

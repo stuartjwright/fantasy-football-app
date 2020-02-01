@@ -1,10 +1,12 @@
 import { League } from './league.model'
+import { Auction } from './../auction/auction.model'
 import { defaultValues } from './league.config'
 
 export const getOneLeague = async (req, res) => {
   try {
     const league = await League.findById(req.params.leagueId)
       .populate({ path: 'creator users', select: 'username' })
+      .populate('auction')
       .exec()
 
     if (!league) {
@@ -45,11 +47,14 @@ export const getMyLeagues = async (req, res) => {
 export const createLeague = async (req, res) => {
   const creator = req.user._id
   try {
+    const auction = await Auction.create({})
+    const auctionId = auction._id
     const league = await League.create({
       ...defaultValues,
       ...req.body,
       creator,
-      users: [creator]
+      users: [creator],
+      auction: auctionId
     })
     res.status(201).json({ league })
   } catch (e) {
@@ -69,7 +74,11 @@ export const joinLeague = async (req, res) => {
       },
       { new: true, useFindAndModify: false }
     )
-
+    const { numRegistered, maxEntrants } = league
+    if (numRegistered >= maxEntrants) {
+      league.status = 'ready'
+      await league.save()
+    }
     res.status(202).json({ league })
   } catch (e) {
     console.error(e)
