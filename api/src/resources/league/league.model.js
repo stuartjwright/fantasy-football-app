@@ -59,19 +59,6 @@ const leagueSchema = new mongoose.Schema(
   { timestamps: true, toObject: { getters: true }, toJSON: { getters: true } }
 )
 
-leagueSchema.pre('findOneAndUpdate', async function() {
-  const league = await this.model.findOne(this.getQuery())
-  const { users, numRegistered, maxEntrants, status } = league
-  const user = this._update.$push.users
-  if (
-    users.includes(user) ||
-    numRegistered >= maxEntrants ||
-    status !== 'registering'
-  ) {
-    throw new Error('cannot join league')
-  }
-})
-
 leagueSchema.virtual('numRegistered').get(function() {
   return this.users.length
 })

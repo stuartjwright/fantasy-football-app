@@ -70,10 +70,11 @@ export const joinLeague = async (req, res) => {
     const league = await League.findByIdAndUpdate(
       leagueId,
       {
-        $push: { users: user }
+        $addToSet: { users: user }
       },
       { new: true, useFindAndModify: false }
     )
+    console.log(league)
     const { numRegistered, maxEntrants } = league
     if (numRegistered >= maxEntrants) {
       league.status = 'ready'
