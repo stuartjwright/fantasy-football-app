@@ -5,7 +5,6 @@ const rootUrl = 'http://localhost:5000/'
 export const getUser = async () => {
   const url = rootUrl + 'api/user/'
   const token = localStorage.getItem('token')
-  console.log(token)
 
   if (!token) {
     return null

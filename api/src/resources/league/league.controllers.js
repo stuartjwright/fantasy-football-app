@@ -36,7 +36,9 @@ export const getAllLeagues = async (req, res) => {
 export const getMyLeagues = async (req, res) => {
   const user = req.user._id
   try {
-    const leagues = await League.find({ users: user }).exec()
+    const leagues = await League.find({ users: user })
+      .populate({ path: 'creator', select: 'username' })
+      .exec()
     res.status(200).json({ leagues })
   } catch (e) {
     console.error(e)
