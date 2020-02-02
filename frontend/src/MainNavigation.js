@@ -16,8 +16,15 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import HomeIcon from '@material-ui/icons/Home'
+import CreateIcon from '@material-ui/icons/Create'
+import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck'
+import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd'
 import LoginSignup from './LoginSignup'
 import Logout from './Logout'
+import Home from './Home'
+import MyLeagues from './MyLeagues'
+import CreateLeague from './CreateLeague'
+import JoinLeague from './JoinLeague'
 
 const drawerWidth = 200
 
@@ -94,27 +101,40 @@ export default ({ auth }) => {
               <Fragment>
                 <ListItem
                   component={NavLink}
-                  to="/leagues"
+                  to="/myleagues"
                   activeClassName={classes.active}
                 >
                   <ListItemIcon>
-                    <HomeIcon />
+                    <PlaylistAddCheckIcon />
                   </ListItemIcon>
                   <ListItemText
-                    primary="Leagues"
+                    primary="My Leagues"
                     className={classes.listItem}
                   />
                 </ListItem>
                 <ListItem
                   component={NavLink}
-                  to="/auction"
+                  to="/createleague"
                   activeClassName={classes.active}
                 >
                   <ListItemIcon>
-                    <HomeIcon />
+                    <CreateIcon />
                   </ListItemIcon>
                   <ListItemText
-                    primary="Auction"
+                    primary="Create League"
+                    className={classes.listItem}
+                  />
+                </ListItem>
+                <ListItem
+                  component={NavLink}
+                  to="/joinleague"
+                  activeClassName={classes.active}
+                >
+                  <ListItemIcon>
+                    <PlaylistAddIcon />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary="Join a League"
                     className={classes.listItem}
                   />
                 </ListItem>
@@ -137,11 +157,14 @@ const LoggedInRoutes = () => {
       <Route path="/" exact>
         <Home />
       </Route>
-      <Route path="/leagues" exact>
-        <Leagues />
+      <Route path="/myleagues" exact>
+        <MyLeagues />
       </Route>
-      <Route path="/auction" exact>
-        <Auction />
+      <Route path="/createleague" exact>
+        <CreateLeague />
+      </Route>
+      <Route path="/joinleague" exact>
+        <JoinLeague />
       </Route>
     </Switch>
   )
@@ -156,7 +179,3 @@ const LoggedOutRoutes = () => {
     </Switch>
   )
 }
-
-const Home = () => <h1>Home</h1>
-const Leagues = () => <h1>Leagues</h1>
-const Auction = () => <h1>Auction</h1>

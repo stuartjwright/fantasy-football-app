@@ -101,7 +101,7 @@ export default () => {
       <TextField
         error={usernameError ? true : false}
         helperText={usernameError}
-        id="username"
+        id="usernamenew"
         label="Username"
         value={username}
         onChange={handleUsernameChange}
