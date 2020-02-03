@@ -24,7 +24,7 @@ import Logout from './Logout'
 import Home from './Home'
 import MyLeagues from './MyLeagues'
 import CreateLeague from './CreateLeague'
-import JoinLeague from './JoinLeague'
+import JoinLeagues from './JoinLeagues'
 
 const drawerWidth = 200
 
@@ -127,7 +127,7 @@ export default ({ auth }) => {
                 </ListItem>
                 <ListItem
                   component={NavLink}
-                  to="/joinleague"
+                  to="/joinleagues"
                   activeClassName={classes.active}
                 >
                   <ListItemIcon>
@@ -163,8 +163,8 @@ const LoggedInRoutes = () => {
       <Route path="/createleague" exact>
         <CreateLeague />
       </Route>
-      <Route path="/joinleague" exact>
-        <JoinLeague />
+      <Route path="/joinleagues" exact>
+        <JoinLeagues />
       </Route>
     </Switch>
   )

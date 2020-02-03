@@ -23,9 +23,47 @@ export const createLeague = async leagueName => {
   }
 }
 
+export const joinLeague = async leagueId => {
+  const token = localStorage.getItem('token')
+  const url = rootUrl
+  if (!token) {
+    return null
+  }
+
+  try {
+    const res = await axios.put(
+      url,
+      { leagueId },
+      {
+        headers: { Authorization: `Bearer ${token}` }
+      }
+    )
+    return res.data
+  } catch (e) {
+    return null
+  }
+}
+
 export const getMyLeagues = async () => {
   const token = localStorage.getItem('token')
   const url = rootUrl + 'my'
+  if (!token) {
+    return null
+  }
+
+  try {
+    const res = await axios.get(url, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    return res.data
+  } catch (e) {
+    return null
+  }
+}
+
+export const getRegisteringLeagues = async () => {
+  const token = localStorage.getItem('token')
+  const url = rootUrl + 'registering'
   if (!token) {
     return null
   }

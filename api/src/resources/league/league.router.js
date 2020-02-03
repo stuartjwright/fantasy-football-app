@@ -4,12 +4,14 @@ import {
   getAllLeagues,
   createLeague,
   getMyLeagues,
-  joinLeague
+  joinLeague,
+  getRegisteringLeagues
 } from './league.controllers'
 
 const router = Router()
 
 router.get('/my', getMyLeagues)
+router.get('/registering', getRegisteringLeagues)
 router.get('/:leagueId', getOneLeague)
 router.get('/', getAllLeagues)
 router.post('/', createLeague)

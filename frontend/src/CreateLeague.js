@@ -78,7 +78,7 @@ const LeagueCreated = ({ leagueName, setLeagueName, setIsCreated }) => {
 
   return (
     <form className={classes.root}>
-      <Typography>League {leagueName} Successfully created.</Typography>
+      <Typography>League {leagueName} successfully created.</Typography>
       <Button variant="contained" color="secondary" onClick={reset}>
         Back
       </Button>
