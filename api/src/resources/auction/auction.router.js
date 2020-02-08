@@ -1,8 +1,9 @@
 import { Router } from 'express'
-import { getOneAuction } from './auction.controllers'
+import { getOneAuction, makeOpeningBid } from './auction.controllers'
 
 const router = Router()
 
 router.get('/:auctionId', getOneAuction)
+router.post('/open', makeOpeningBid)
 
 export default router

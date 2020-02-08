@@ -10,6 +10,7 @@ import { signup, signin, protect } from './utils/auth'
 import userRouter from './resources/user/user.router'
 import playerRouter from './resources/player/player.router'
 import leagueRouter from './resources/league/league.router'
+import auctionRouter from './resources/auction/auction.router'
 
 const app = express()
 const server = http.createServer(app)
@@ -31,6 +32,7 @@ app.use('/api', protect)
 app.use('/api/user', userRouter)
 app.use('/api/player', playerRouter)
 app.use('/api/league', leagueRouter)
+app.use('/api/auction', auctionRouter)
 
 export const start = async () => {
   try {

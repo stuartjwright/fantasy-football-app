@@ -10,3 +10,16 @@ export const generateAuctionItems = async () => {
   const auctionItemIds = auctionItems.map(item => item._id)
   return auctionItemIds
 }
+
+export const registerBidOnAuctionItem = async (
+  auctionItemId,
+  bidId,
+  amount
+) => {
+  let auctionItem = await AuctionItem.findById(auctionItemId)
+  auctionItem.bidHistory.push(bidId)
+  auctionItem.highBid = 0
+  auctionItem.status = 'live'
+  await auctionItem.save()
+  return auctionItem
+}
