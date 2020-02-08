@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default () => {
+const Login = () => {
   const classes = useStyles()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -117,3 +117,5 @@ export default () => {
     </form>
   )
 }
+
+export default Login

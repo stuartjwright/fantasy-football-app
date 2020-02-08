@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   }
 })
 
-export default () => {
+const JoinLeagues = () => {
   const classes = useStyles()
   const [isLoading, setIsLoading] = useState(true)
   const [isWaiting, setIsWaiting] = useState(false)
@@ -132,3 +132,5 @@ const LeagueJoined = ({
     </form>
   )
 }
+
+export default JoinLeagues

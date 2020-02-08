@@ -1,12 +1,30 @@
 import { League } from './league.model'
-import { Auction } from './../auction/auction.model'
 import { defaultValues } from './league.config'
+import { createAuction } from '../auction/auction.controllers'
+import { generateAuctionUsers } from '../auctionUser/auctionUser.controllers'
+import { generateAuctionItems } from '../auctionItem/auctionItem.controllers'
 
 export const getOneLeague = async (req, res) => {
   try {
     const league = await League.findById(req.params.leagueId)
       .populate({ path: 'creator users', select: 'username' })
-      .populate('auction')
+      .populate({
+        path: 'auction',
+        populate: [
+          {
+            path: 'auctionUsers',
+            model: 'auctionUser'
+          },
+          {
+            path: 'liveItem',
+            model: 'auctionItem'
+          },
+          {
+            path: 'nextUser',
+            model: 'auctionUser'
+          }
+        ]
+      })
       .exec()
 
     if (!league) {
@@ -64,14 +82,11 @@ export const getRegisteringLeagues = async (req, res) => {
 export const createLeague = async (req, res) => {
   const creator = req.user._id
   try {
-    const auction = await Auction.create({})
-    const auctionId = auction._id
     const league = await League.create({
       ...defaultValues,
       ...req.body,
       creator,
-      users: [creator],
-      auction: auctionId
+      users: [creator]
     })
     res.status(201).json({ league })
   } catch (e) {
@@ -100,6 +115,32 @@ export const joinLeague = async (req, res) => {
       league.status = 'ready'
       await league.save()
     }
+    res.status(202).json({ league })
+  } catch (e) {
+    console.error(e)
+    res.status(400).end()
+  }
+}
+
+export const setLeagueToStartAuction = async (req, res) => {
+  const user = req.user._id
+  try {
+    const { leagueId } = req.body
+    let league = await League.findById(leagueId).exec()
+    if (user.toString() !== league.creator.toString()) {
+      throw new Error('Only creator can start auction')
+    }
+    if (league.status.toString() !== 'ready') {
+      throw new Error('Only a league in ready state can be started')
+    }
+    const budget = defaultValues.startBudget
+    const auctionUsers = await generateAuctionUsers(league, budget)
+    const auctionItems = await generateAuctionItems()
+    const auction = await createAuction(auctionItems, auctionUsers)
+    const auctionId = auction._id
+    league.auction = auctionId
+    league.status = 'auction'
+    await league.save()
     res.status(202).json({ league })
   } catch (e) {
     console.error(e)

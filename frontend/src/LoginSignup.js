@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default () => {
+const LoginSignup = () => {
   const classes = useStyles()
   return (
     <div className={classes.root}>
@@ -42,3 +42,5 @@ export default () => {
     </div>
   )
 }
+
+export default LoginSignup

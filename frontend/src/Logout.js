@@ -2,7 +2,7 @@ import React from 'react'
 import Button from '@material-ui/core/Button'
 import { useAuthState } from './AuthContext'
 
-export default () => {
+const Logout = () => {
   const { setState } = useAuthState()
   const logout = () => {
     localStorage.removeItem('token')
@@ -15,3 +15,5 @@ export default () => {
     </Button>
   )
 }
+
+export default Logout

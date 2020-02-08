@@ -5,17 +5,23 @@ const auctionSchema = new mongoose.Schema(
     auctionUsers: [
       {
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'auctionUser',
-        default: []
+        ref: 'auctionUser'
       }
     ],
     auctionItems: [
       {
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'auctionUser',
-        default: []
+        ref: 'auctionItem'
       }
-    ]
+    ],
+    nextUser: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'auctionUser'
+    },
+    liveItem: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'auctionItem'
+    }
   },
   { timestamps: true }
 )

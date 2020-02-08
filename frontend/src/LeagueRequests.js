@@ -77,3 +77,20 @@ export const getRegisteringLeagues = async () => {
     return null
   }
 }
+
+export const getLeague = async leagueId => {
+  const token = localStorage.getItem('token')
+  const url = rootUrl + leagueId
+  if (!token) {
+    return null
+  }
+
+  try {
+    const res = await axios.get(url, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    return res.data
+  } catch (e) {
+    return null
+  }
+}

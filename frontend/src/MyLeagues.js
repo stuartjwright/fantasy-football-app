@@ -16,7 +16,7 @@ const useStyles = makeStyles({
   }
 })
 
-export default () => {
+const MyLeagues = () => {
   const classes = useStyles()
   const [isLoading, setIsLoading] = useState(true)
   const [leagues, setLeagues] = useState([])
@@ -65,3 +65,5 @@ export default () => {
     </Fragment>
   )
 }
+
+export default MyLeagues

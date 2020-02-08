@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function BasicTextFields() {
+const CreateLeague = () => {
   const classes = useStyles()
   const [leagueName, setLeagueName] = useState('')
   const [leagueNameError, setLeagueNameError] = useState('')
@@ -85,3 +85,5 @@ const LeagueCreated = ({ leagueName, setLeagueName, setIsCreated }) => {
     </form>
   )
 }
+
+export default CreateLeague

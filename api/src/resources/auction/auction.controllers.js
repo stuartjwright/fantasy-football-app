@@ -17,10 +17,12 @@ export const getOneAuction = async (req, res) => {
   }
 }
 
-// export const createAuction = async (req, res) => {
-//   const auction = await new Auction({
-//     auctionUsers: [],
-//     auctionItems: []
-//   })
-
-// }
+export const createAuction = async (auctionItems, auctionUsers) => {
+  const auction = await Auction.create({
+    auctionItems,
+    auctionUsers,
+    liveItem: null,
+    nextUser: auctionUsers[0]
+  })
+  return auction
+}

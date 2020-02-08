@@ -25,6 +25,8 @@ import Home from './Home'
 import MyLeagues from './MyLeagues'
 import CreateLeague from './CreateLeague'
 import JoinLeagues from './JoinLeagues'
+import LeagueHome from './LeagueHome'
+import AuctionHome from './AuctionHome'
 
 const drawerWidth = 200
 
@@ -61,7 +63,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default ({ auth }) => {
+const MainNavigation = ({ auth }) => {
   const classes = useStyles()
 
   return (
@@ -166,6 +168,12 @@ const LoggedInRoutes = () => {
       <Route path="/joinleagues" exact>
         <JoinLeagues />
       </Route>
+      <Route path="/myleagues/:leagueId" exact component={LeagueHome} />
+      <Route
+        path="/myleagues/:leagueId/auction"
+        exact
+        component={AuctionHome}
+      />
     </Switch>
   )
 }
@@ -179,3 +187,5 @@ const LoggedOutRoutes = () => {
     </Switch>
   )
 }
+
+export default MainNavigation

@@ -52,8 +52,7 @@ const leagueSchema = new mongoose.Schema(
     ],
     auction: {
       type: mongoose.SchemaTypes.ObjectId,
-      ref: 'auction',
-      required: true
+      ref: 'auction'
     }
   },
   { timestamps: true, toObject: { getters: true }, toJSON: { getters: true } }
