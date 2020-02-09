@@ -6,7 +6,9 @@ import {
   getMyLeagues,
   joinLeague,
   getRegisteringLeagues,
-  setLeagueToStartAuction
+  setLeagueToStartAuction,
+  makeOpeningBid,
+  makeBid
 } from './league.controllers'
 
 const router = Router()
@@ -18,5 +20,7 @@ router.get('/', getAllLeagues)
 router.post('/', createLeague)
 router.put('/', joinLeague)
 router.put('/start', setLeagueToStartAuction)
+router.post('/open', makeOpeningBid)
+router.post('/bid', makeBid)
 
 export default router

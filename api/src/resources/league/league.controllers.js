@@ -1,30 +1,10 @@
 import { League } from './league.model'
 import { defaultValues } from './league.config'
-import { createAuction } from '../auction/auction.controllers'
-import { generateAuctionUsers } from '../auctionUser/auctionUser.controllers'
-import { generateAuctionItems } from '../auctionItem/auctionItem.controllers'
 
 export const getOneLeague = async (req, res) => {
   try {
     const league = await League.findById(req.params.leagueId)
       .populate({ path: 'creator users', select: 'username' })
-      .populate({
-        path: 'auction',
-        populate: [
-          {
-            path: 'auctionUsers',
-            model: 'auctionUser'
-          },
-          {
-            path: 'liveItem',
-            model: 'auctionItem'
-          },
-          {
-            path: 'nextUser',
-            model: 'auctionUser'
-          }
-        ]
-      })
       .exec()
 
     if (!league) {
@@ -52,8 +32,8 @@ export const getAllLeagues = async (req, res) => {
 }
 
 export const getMyLeagues = async (req, res) => {
-  const user = req.user._id
   try {
+    const user = req.user._id
     const leagues = await League.find({ users: user })
       .populate({ path: 'creator', select: 'username' })
       .exec()
@@ -65,8 +45,8 @@ export const getMyLeagues = async (req, res) => {
 }
 
 export const getRegisteringLeagues = async (req, res) => {
-  const user = req.user._id
   try {
+    const user = req.user._id
     const leagues = await League.find({
       status: 'registering',
       users: { $ne: user }
@@ -80,8 +60,8 @@ export const getRegisteringLeagues = async (req, res) => {
   }
 }
 export const createLeague = async (req, res) => {
-  const creator = req.user._id
   try {
+    const creator = req.user._id
     const league = await League.create({
       ...defaultValues,
       ...req.body,
@@ -96,25 +76,49 @@ export const createLeague = async (req, res) => {
 }
 
 export const joinLeague = async (req, res) => {
-  const user = req.user._id
   try {
+    const user = req.user._id
     const { leagueId } = req.body
-    let league = await League.findById(leagueId).exec()
-    if (league.users.length >= league.maxEntrants) {
-      return res.status(400).end()
-    }
-    league = await League.findByIdAndUpdate(
-      leagueId,
+    // let league = await League.findById(leagueId).exec()
+    // if (league.users.length >= league.maxEntrants) {
+    //   return res.status(400).end()
+    // }
+    // league = await League.findByIdAndUpdate(
+    //   leagueId,
+    //   {
+    //     $addToSet: { users: user }
+    //   },
+    //   { new: true, useFindAndModify: false }
+    // )
+    // const { numRegistered, maxEntrants } = league
+    // if (numRegistered >= maxEntrants) {
+    //   league.status = 'ready'
+    //   await league.save()
+    // }
+
+    let league = await League.findOneAndUpdate(
       {
-        $addToSet: { users: user }
+        _id: leagueId,
+        users: { $ne: user },
+        status: 'registering',
+        $expr: {
+          $lt: ['$numRegistered', '$maxEntrants']
+        }
       },
+      { $push: { users: user } },
       { new: true, useFindAndModify: false }
     )
-    const { numRegistered, maxEntrants } = league
-    if (numRegistered >= maxEntrants) {
+
+    if (!league) {
+      throw new Error('could not join league')
+    }
+
+    if (league.numRegistered >= league.maxEntrants) {
+      // not strictly atomic, fix if possible but not that important here
       league.status = 'ready'
       await league.save()
     }
+
     res.status(202).json({ league })
   } catch (e) {
     console.error(e)
@@ -123,25 +127,103 @@ export const joinLeague = async (req, res) => {
 }
 
 export const setLeagueToStartAuction = async (req, res) => {
-  const user = req.user._id
   try {
+    const user = req.user._id
     const { leagueId } = req.body
-    let league = await League.findById(leagueId).exec()
-    if (user.toString() !== league.creator.toString()) {
-      throw new Error('Only creator can start auction')
+    let league = await League.findOne({
+      _id: leagueId,
+      creator: user,
+      status: 'ready'
+    })
+
+    if (!league) {
+      throw new Error('could not start auction')
     }
-    if (league.status.toString() !== 'ready') {
-      throw new Error('Only a league in ready state can be started')
-    }
-    const budget = defaultValues.startBudget
-    const auctionUsers = await generateAuctionUsers(league, budget)
-    const auctionItems = await generateAuctionItems()
-    const auction = await createAuction(auctionItems, auctionUsers)
-    const auctionId = auction._id
-    league.auction = auctionId
+
+    const auctionUsers = league.users.map(u => {
+      return { user: u, squad: [], budget: defaultValues.startBudget }
+    })
     league.status = 'auction'
+    league.auction = {
+      auctionUsers,
+      soldAuctionItems: [],
+      liveAuctionItem: null,
+      nextUser: user
+    }
+    // not strictly atomic, fix if possible but not that important here
     await league.save()
+
     res.status(202).json({ league })
+  } catch (e) {
+    console.error(e)
+    res.status(400).end()
+  }
+}
+
+export const makeOpeningBid = async (req, res) => {
+  // TODO add club/position constraints in find portion of query
+  // TODO move nextUser on
+  try {
+    const user = req.user._id
+    const { leagueId, playerId } = req.body
+    const league = await League.findOneAndUpdate(
+      {
+        _id: leagueId,
+        status: 'auction',
+        'auction.nextUser': user,
+        'auction.liveAuctionItem': null,
+        'auction.soldAuctionItems': {
+          $not: { $elemMatch: { player: playerId } }
+        }
+      },
+      {
+        'auction.liveAuctionItem': {
+          player: playerId,
+          bidHistory: [{ user: user }],
+          currentHighBidder: user
+        }
+      },
+      { new: true, useFindAndModify: false }
+    )
+
+    if (!league) {
+      throw new Error('Could not make opening bid')
+    }
+
+    res.status(201).json({ league })
+  } catch (e) {
+    console.error(e)
+    res.status(400).end()
+  }
+}
+
+export const makeBid = async (req, res) => {
+  // TODO add club/position/budget constraints in find portion of query
+  try {
+    const user = req.user._id
+    const { leagueId, auctionItemId, amount } = req.body
+    console.log(user, leagueId, auctionItemId)
+    const league = await League.findOneAndUpdate(
+      {
+        _id: leagueId,
+        users: { $eq: user },
+        'auction.liveAuctionItem._id': auctionItemId,
+        'auction.liveAuctionItem.currentHighBidder': { $ne: user },
+        'auction.liveAuctionItem.currentHighBid': { $lt: amount }
+      },
+      {
+        'auction.liveAuctionItem.currentHighBid': amount,
+        'auction.liveAuctionItem.currentHighBidder': user,
+        $push: { 'auction.liveAuctionItem.bidHistory': { user, amount } }
+      },
+      { new: true, useFindAndModify: false }
+    )
+
+    if (!league) {
+      throw new Error('Bid unsuccessful')
+    }
+
+    res.status(201).json({ league })
   } catch (e) {
     console.error(e)
     res.status(400).end()

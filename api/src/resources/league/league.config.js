@@ -1,6 +1,6 @@
 export const defaultValues = {
   status: 'registering',
-  maxEntrants: 3,
+  maxEntrants: 2,
   startBudget: 100000000,
   maxPerClub: 2,
   numGoalkeepers: 1,
