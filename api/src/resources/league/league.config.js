@@ -6,5 +6,6 @@ export const defaultValues = {
   numGoalkeepers: 1,
   numDefenders: 4,
   numMidfielders: 4,
-  numForwards: 2
+  numForwards: 2,
+  countdownTimer: 10
 }

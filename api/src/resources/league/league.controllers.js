@@ -162,7 +162,6 @@ export const setLeagueToStartAuction = async (req, res) => {
 
 export const makeOpeningBid = async (req, res) => {
   // TODO add club/position constraints in find portion of query
-  // TODO move nextUser on
   try {
     const user = req.user._id
     const { leagueId, playerId } = req.body
@@ -202,10 +201,10 @@ export const makeBid = async (req, res) => {
   try {
     const user = req.user._id
     const { leagueId, auctionItemId, amount } = req.body
-    console.log(user, leagueId, auctionItemId)
     const league = await League.findOneAndUpdate(
       {
         _id: leagueId,
+        status: 'auction',
         users: { $eq: user },
         'auction.liveAuctionItem._id': auctionItemId,
         'auction.liveAuctionItem.currentHighBidder': { $ne: user },
@@ -223,9 +222,64 @@ export const makeBid = async (req, res) => {
       throw new Error('Bid unsuccessful')
     }
 
+    startCountdown(leagueId, auctionItemId, amount)
+
     res.status(201).json({ league })
   } catch (e) {
     console.error(e)
     res.status(400).end()
   }
+}
+
+const checkBidIsHighest = async (leagueId, auctionItemId, amount) => {
+  const league = await League.findOne({
+    _id: leagueId,
+    status: 'auction',
+    'auction.liveAuctionItem._id': auctionItemId,
+    'auction.liveAuctionItem.currentHighBid': amount
+  }).exec()
+  return !!league
+}
+
+const startCountdown = (leagueId, auctionItemId, amount) => {
+  let count = defaultValues.countdownTimer
+  const countdown = setInterval(async () => {
+    count -= 1
+    if (count <= 0) {
+      await lockAuction(leagueId)
+      await setAuctionItemComplete(leagueId)
+      // TODO update all clients on sale via socket.IO
+      return clearInterval(countdown)
+    }
+    const league = await checkBidIsHighest(leagueId, auctionItemId, amount)
+    if (!league) {
+      return clearInterval(countdown)
+    }
+    // TODO: send countdown via socket.IO here
+    console.log(amount, count)
+  }, 1000)
+}
+
+const lockAuction = async leagueId => {
+  const league = League.findByIdAndUpdate(
+    leagueId,
+    {
+      status: 'locked'
+    },
+    { useFindAndModify: false }
+  )
+  return league
+}
+
+const setAuctionItemComplete = async leagueId => {
+  // TODO: a lot!!
+  // But doesn't have to be atomic because we will keep status = 'locked' until done
+  // So no need to use findOneAndUpdate. Just findbyId, do plain JS manipulation, then league.save()
+  // - move live auction item to sold auction items
+  // - decrease winning user budget
+  // - add player to squad of winning bidder
+  // - update position/club constraints, not yet added to schema but think I should
+  // - choose next user to open bidding
+  // - set live auction item to null
+  // - finally, remove 'locked' status so bidding can start on next item
 }
