@@ -21,7 +21,7 @@ export const squadItemSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  positions: {
+  position: {
     type: String,
     required: true
   }

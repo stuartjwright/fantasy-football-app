@@ -26,8 +26,3 @@ export const auctionSchema = new mongoose.Schema(
   },
   { timestamps: true }
 )
-
-auctionSchema.pre('validate', function(next) {
-  console.log('hello from auction middleware')
-  next()
-})

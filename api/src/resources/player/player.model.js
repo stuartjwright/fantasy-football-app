@@ -18,7 +18,7 @@ const playerSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    positions: {
+    position: {
       type: String,
       required: true
     }

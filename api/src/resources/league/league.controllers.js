@@ -1,5 +1,6 @@
 import { League } from './league.model'
 import { defaultValues } from './league.config'
+import { Player } from '../player/player.model'
 
 export const getOneLeague = async (req, res) => {
   try {
@@ -161,10 +162,19 @@ export const setLeagueToStartAuction = async (req, res) => {
 }
 
 export const makeOpeningBid = async (req, res) => {
-  // TODO add club/position constraints in find portion of query
   try {
     const user = req.user._id
     const { leagueId, playerId } = req.body
+
+    const constraintsExist = await checkConstraintsOpening(
+      user,
+      leagueId,
+      playerId
+    )
+    if (constraintsExist) {
+      throw new Error('Bid unsuccessful (club or position)')
+    }
+
     const league = await League.findOneAndUpdate(
       {
         _id: leagueId,
@@ -189,6 +199,8 @@ export const makeOpeningBid = async (req, res) => {
       throw new Error('Could not make opening bid')
     }
 
+    startCountdown(leagueId, league.auction.liveAuctionItem._id, 0)
+
     res.status(201).json({ league })
   } catch (e) {
     console.error(e)
@@ -196,11 +208,50 @@ export const makeOpeningBid = async (req, res) => {
   }
 }
 
+const checkConstraintsOpening = async (user, leagueId, playerId) => {
+  const league = await League.findById(leagueId)
+  const player = await Player.findById(playerId)
+  const { position, team } = player
+  const auctionUser = league.auction.auctionUsers.filter(
+    u => u.user.toString() === user.toString()
+  )[0]
+  const { positionConstraints, clubConstraints } = auctionUser
+  return (
+    positionConstraints.includes(position) || clubConstraints.includes(team)
+  )
+}
+
+const checkConstraints = async (user, leagueId, amount) => {
+  const league = await League.findById(leagueId)
+  const playerId = league.auction.liveAuctionItem.player._id
+  const player = await Player.findById(playerId)
+  const { position, team } = player
+  const auctionUser = league.auction.auctionUsers.filter(
+    u => u.user.toString() === user.toString()
+  )[0]
+  const { budget, positionConstraints, clubConstraints } = auctionUser
+  return (
+    amount > budget ||
+    positionConstraints.includes(position) ||
+    clubConstraints.includes(team)
+  )
+}
+
 export const makeBid = async (req, res) => {
-  // TODO add club/position/budget constraints in find portion of query
   try {
     const user = req.user._id
     const { leagueId, auctionItemId, amount } = req.body
+
+    const constraintsExist = await checkConstraints(
+      user,
+      leagueId,
+      auctionItemId,
+      amount
+    )
+    if (constraintsExist) {
+      throw new Error('Bid unsuccessful (club, position or budget')
+    }
+
     const league = await League.findOneAndUpdate(
       {
         _id: leagueId,
@@ -272,14 +323,98 @@ const lockAuction = async leagueId => {
 }
 
 const setAuctionItemComplete = async leagueId => {
-  // TODO: a lot!!
-  // But doesn't have to be atomic because we will keep status = 'locked' until done
-  // So no need to use findOneAndUpdate. Just findbyId, do plain JS manipulation, then league.save()
-  // - move live auction item to sold auction items
-  // - decrease winning user budget
-  // - add player to squad of winning bidder
-  // - update position/club constraints, not yet added to schema but think I should
-  // - choose next user to open bidding
-  // - set live auction item to null
-  // - finally, remove 'locked' status so bidding can start on next item
+  // TODO: Refactor this a bit. I think it all works, but is a pretty massive function.
+  try {
+    let league = await League.findById(leagueId).exec()
+    const winningBidderId = league.auction.liveAuctionItem.currentHighBidder
+    const winningBid = league.auction.liveAuctionItem.currentHighBid
+    const playerIdSold = league.auction.liveAuctionItem.player
+    const player = await Player.findById(playerIdSold)
+      .select('-_id')
+      .lean()
+      .exec()
+
+    const {
+      maxPerClub,
+      numGoalkeepers,
+      numDefenders,
+      numMidfielders,
+      numForwards
+    } = league
+    const positionConstraints = {
+      Goalkeeper: numGoalkeepers,
+      Defender: numDefenders,
+      Midfielder: numMidfielders,
+      Forward: numForwards
+    }
+    const maxSquad = Object.values(positionConstraints).reduce((a, b) => a + b)
+
+    const soldItem = {
+      player: playerIdSold,
+      winner: winningBidderId,
+      cost: winningBid
+    }
+
+    let auctionUsers = league.auction.auctionUsers
+    auctionUsers.forEach((auctionUser, i) => {
+      if (auctionUser.user.toString() === winningBidderId.toString()) {
+        auctionUsers[i].budget -= winningBid
+        auctionUsers[i].squad.push({
+          ...player,
+          cost: winningBid
+        })
+
+        const { team } = player
+        if (
+          auctionUsers[i].squad.filter(s => s.team === team).length >=
+          maxPerClub
+        ) {
+          auctionUsers[i].clubConstraints.push(team)
+        }
+
+        for (let [position, maximum] of Object.entries(positionConstraints)) {
+          if (
+            position === player.position &&
+            auctionUsers[i].squad.filter(s => s.position === position).length >=
+              maximum
+          ) {
+            auctionUsers[i].positionConstraints.push(position)
+          }
+        }
+      }
+    })
+
+    const { nextUser } = league.auction
+    const candidates = auctionUsers
+      .filter(
+        u =>
+          u.squad.length < maxSquad || u.user.toString() === nextUser.toString()
+      )
+      .map(u => u.user)
+    const idx = candidates.indexOf(nextUser)
+    const newIdx = (idx + 1) % candidates.length
+    const newNextUser = candidates[newIdx]
+
+    let status = 'auction'
+    if (auctionUsers.every(u => u.squad.length >= maxSquad)) {
+      status = 'postauction'
+    }
+
+    league.auction.soldAuctionItems.push(soldItem)
+    league.auction.auctionUsers = auctionUsers
+    league.auction.liveAuctionItem = null
+    league.auction.nextUser = newNextUser
+    league.status = status
+
+    await league.save()
+
+    console.log('Player successfully sold.')
+  } catch (e) {
+    console.error(e)
+    await League.findByIdAndUpdate(
+      leagueId,
+      { status: 'auction' },
+      { useFindAndModify: false }
+    )
+  }
 }

@@ -14,8 +14,3 @@ export const bidSchema = new mongoose.Schema(
   },
   { timestamps: true }
 )
-
-bidSchema.pre('validate', function(next) {
-  console.log('hello from bid middleware')
-  next()
-})

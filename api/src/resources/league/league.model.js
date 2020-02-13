@@ -62,9 +62,4 @@ leagueSchema.virtual('numRegistered').get(function() {
   return this.users.length
 })
 
-leagueSchema.pre('update', function(next) {
-  console.log('hello from league middleware')
-  next()
-})
-
 export const League = mongoose.model('league', leagueSchema)
