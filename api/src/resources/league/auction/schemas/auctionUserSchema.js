@@ -17,12 +17,16 @@ export const auctionUserSchema = new mongoose.Schema(
         type: squadItemSchema
       }
     ],
-    positionConstraints: [{
-      type: String
-    }],
-    clubConstraints: [{
-      type: String
-    }]
+    positionConstraints: [
+      {
+        type: String
+      }
+    ],
+    clubConstraints: [
+      {
+        type: String
+      }
+    ]
   },
   { timestamps: true }
 )

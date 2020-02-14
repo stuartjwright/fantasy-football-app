@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { auctionSchema } from './auctionSchema'
+import { auctionSchema } from './auction/schemas/auctionSchema'
 
 const leagueSchema = new mongoose.Schema(
   {

@@ -4,8 +4,8 @@ export const defaultValues = {
   startBudget: 100000000,
   maxPerClub: 2,
   numGoalkeepers: 1,
-  numDefenders: 4,
-  numMidfielders: 4,
-  numForwards: 2,
-  countdownTimer: 10
+  numDefenders: 2,
+  numMidfielders: 2,
+  numForwards: 1,
+  countdownTimer: 2
 }
