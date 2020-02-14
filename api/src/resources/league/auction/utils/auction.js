@@ -32,14 +32,13 @@ export const startCountdown = (leagueId, auctionItemId, amount) => {
 }
 
 const lockAuction = async leagueId => {
-  const league = League.findByIdAndUpdate(
+  League.findByIdAndUpdate(
     leagueId,
     {
       status: 'locked'
     },
     { useFindAndModify: false }
   )
-  return league
 }
 
 const getPositionConstraints = league => {
