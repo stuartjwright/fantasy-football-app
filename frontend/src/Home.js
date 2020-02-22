@@ -1,50 +1,43 @@
-import React, { useState, useEffect, Fragment } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import io from 'socket.io-client'
-import Button from '@material-ui/core/Button'
-import Paper from '@material-ui/core/Paper'
-import TextField from '@material-ui/core/TextField'
-import Chip from '@material-ui/core/Chip'
+import React from 'react'
+// import { makeStyles } from '@material-ui/core/styles'
+// import Button from '@material-ui/core/Button'
+// import Paper from '@material-ui/core/Paper'
+// import TextField from '@material-ui/core/TextField'
+// import Chip from '@material-ui/core/Chip'
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    '& > *': {
-      margin: theme.spacing(1),
-      width: 500
-    }
-  },
-  paper: {
-    width: 500,
-    height: 500,
-    '& > *': {
-      margin: theme.spacing(1)
-    }
-  }
-}))
+// const useStyles = makeStyles(theme => ({
+//   root: {
+//     '& > *': {
+//       margin: theme.spacing(1),
+//       width: 500
+//     }
+//   },
+//   paper: {
+//     width: 500,
+//     height: 500,
+//     '& > *': {
+//       margin: theme.spacing(1)
+//     }
+//   }
+// }))
 
 const Home = () => {
-  const classes = useStyles()
-  const [message, setMessage] = useState('')
-  const [messages, setMessages] = useState([])
+  // const classes = useStyles()
+  // const [message, setMessage] = useState('')
+  // const [messages, setMessages] = useState([])
 
-  useEffect(() => {
-    const socket = io('http://localhost:5000')
-    console.log(socket)
-    setMessages(['Chat messages will go here.'])
-  }, [])
+  // const handleMessageChange = event => {
+  //   setMessage(event.target.value)
+  // }
 
-  const handleMessageChange = event => {
-    setMessage(event.target.value)
-  }
-
-  const handleSubmit = event => {
-    event.preventDefault()
-    console.log(message)
-  }
+  // const handleSubmit = event => {
+  //   event.preventDefault()
+  //   console.log(message)
+  // }
 
   return (
     <div>
-      <Paper className={classes.paper}>
+      {/* <Paper className={classes.paper}>
         {messages.map((message, idx) => (
           <Fragment key={idx}>
             <Chip color="primary" label={message} />
@@ -63,7 +56,7 @@ const Home = () => {
         <Button variant="contained" color="primary" type="submit">
           Send
         </Button>
-      </form>
+      </form> */}
     </div>
   )
 }

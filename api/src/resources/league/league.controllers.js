@@ -5,6 +5,7 @@ import {
   checkConstraints
 } from './auction/utils/constraints'
 import { startCountdown } from './auction/utils/auction'
+import { nsp as socketIO } from '../../server'
 
 export const getOneLeague = async (req, res) => {
   try {
@@ -141,6 +142,7 @@ export const setLeagueToStartAuction = async (req, res) => {
     }
     // not strictly atomic, fix if possible but not that important here
     await league.save()
+    socketIO.to(leagueId).emit('auction start', league)
 
     res.status(202).json({ league })
   } catch (e) {

@@ -1,38 +1,25 @@
-import React, { useState, useEffect } from 'react'
-import Loading from './Loading'
-import Error from './Error'
-import { getLeague } from './LeagueRequests'
-import LeagueSummary from './LeagueSummary'
+import React, { useContext } from 'react'
+import { useHistory } from 'react-router-dom'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+import { LeagueStateContext } from './LeagueContext'
 
-const LeagueHome = ({ match }) => {
-  const [isLoading, setIsLoading] = useState(true)
-  const [league, setLeague] = useState({})
-  const [isError, setIsError] = useState(false)
-  console.log(league)
+const LeagueHome = () => {
+  const state = useContext(LeagueStateContext)
+  const history = useHistory()
+  const { league } = state
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLeague({})
-      setIsLoading(true)
-      try {
-        const { league } = await getLeague(match.params.leagueId)
-        setIsLoading(false)
-        setLeague(league)
-      } catch {
-        setLeague({})
-        setIsError(true)
-        setIsLoading(false)
-      }
-    }
-    fetchData()
-  }, [match.params.leagueId])
+  const goToAuction = () => {
+    history.push(history.location.pathname + '/auction')
+  }
 
-  return isLoading ? (
-    <Loading />
-  ) : isError ? (
-    <Error />
-  ) : (
-    <LeagueSummary league={league} />
+  return (
+    <div>
+      <Typography variant="h6">{league.leagueName}</Typography>
+      <Button variant="contained" color="primary" onClick={goToAuction}>
+        Go To Auction
+      </Button>
+    </div>
   )
 }
 

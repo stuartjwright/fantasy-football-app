@@ -25,8 +25,8 @@ import Home from './Home'
 import MyLeagues from './MyLeagues'
 import CreateLeague from './CreateLeague'
 import JoinLeagues from './JoinLeagues'
-import LeagueHome from './LeagueHome'
-import AuctionHome from './AuctionHome'
+import LeagueContainer from './LeagueContainer'
+import AuctionContainer from './AuctionContainer'
 
 const drawerWidth = 200
 
@@ -168,11 +168,11 @@ const LoggedInRoutes = () => {
       <Route path="/joinleagues" exact>
         <JoinLeagues />
       </Route>
-      <Route path="/myleagues/:leagueId" exact component={LeagueHome} />
+      <Route path="/myleagues/:leagueId" exact component={LeagueContainer} />
       <Route
         path="/myleagues/:leagueId/auction"
         exact
-        component={AuctionHome}
+        component={AuctionContainer}
       />
     </Switch>
   )

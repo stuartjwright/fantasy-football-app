@@ -67,22 +67,16 @@ const JoinLeagues = () => {
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
+              <TableCell align="right"></TableCell>
               <TableCell>League Name</TableCell>
               <TableCell>Owner</TableCell>
               <TableCell align="right">Players Registered</TableCell>
               <TableCell align="right">Max Players</TableCell>
-              <TableCell align="right"></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {leagues.map(league => (
               <TableRow key={league._id}>
-                <TableCell component="th" scope="row">
-                  {league.leagueName}
-                </TableCell>
-                <TableCell>{league.creator.username}</TableCell>
-                <TableCell align="right">{league.numRegistered}</TableCell>
-                <TableCell align="right">{league.maxEntrants}</TableCell>
                 <TableCell align="right">
                   <Button
                     disabled={isWaiting ? true : false}
@@ -93,6 +87,12 @@ const JoinLeagues = () => {
                     Join
                   </Button>
                 </TableCell>
+                <TableCell component="th" scope="row">
+                  {league.leagueName}
+                </TableCell>
+                <TableCell>{league.creator.username}</TableCell>
+                <TableCell align="right">{league.numRegistered}</TableCell>
+                <TableCell align="right">{league.maxEntrants}</TableCell>
               </TableRow>
             ))}
           </TableBody>
