@@ -1,31 +1,27 @@
 import React, { useState, createContext, useEffect } from 'react'
 import Loading from './Loading'
 import Error from './Error'
-import { getLeague } from './LeagueRequests'
+import { getAllPlayers } from './PlayerRequests'
 
-export const LeagueContext = createContext()
+export const PlayersContext = createContext()
 
-export const LeagueProvider = ({ children, leagueId }) => {
+export const PlayersProvider = ({ children }) => {
   const initialState = {
     status: 'loading',
     error: null,
-    league: null,
-    leagueId
+    players: null
   }
   const [state, setState] = useState(initialState)
 
   useEffect(() => {
-    if (!state.leagueId) {
-      return
-    }
-    getLeague(state.leagueId).then(
+    getAllPlayers().then(
       data => setState({ status: 'success', error: null, ...data }),
-      error => setState({ status: 'error', error, league: null })
+      error => setState({ status: 'error', error, players: null })
     )
-  }, [state.leagueId])
+  }, [])
 
   return (
-    <LeagueContext.Provider value={{ state, setState }}>
+    <PlayersContext.Provider value={{ state, setState }}>
       {state.status === 'loading' ? (
         <Loading />
       ) : state.status === 'error' ? (
@@ -33,6 +29,6 @@ export const LeagueProvider = ({ children, leagueId }) => {
       ) : (
         children
       )}
-    </LeagueContext.Provider>
+    </PlayersContext.Provider>
   )
 }

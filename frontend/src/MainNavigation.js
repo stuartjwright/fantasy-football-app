@@ -27,6 +27,7 @@ import CreateLeague from './CreateLeague'
 import JoinLeagues from './JoinLeagues'
 import LeagueContainer from './LeagueContainer'
 import AuctionContainer from './AuctionContainer'
+import { PlayersProvider } from './PlayersContext'
 
 const drawerWidth = 200
 
@@ -155,26 +156,28 @@ const MainNavigation = ({ auth }) => {
 
 const LoggedInRoutes = () => {
   return (
-    <Switch>
-      <Route path="/" exact>
-        <Home />
-      </Route>
-      <Route path="/myleagues" exact>
-        <MyLeagues />
-      </Route>
-      <Route path="/createleague" exact>
-        <CreateLeague />
-      </Route>
-      <Route path="/joinleagues" exact>
-        <JoinLeagues />
-      </Route>
-      <Route path="/myleagues/:leagueId" exact component={LeagueContainer} />
-      <Route
-        path="/myleagues/:leagueId/auction"
-        exact
-        component={AuctionContainer}
-      />
-    </Switch>
+    <PlayersProvider>
+      <Switch>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/myleagues" exact>
+          <MyLeagues />
+        </Route>
+        <Route path="/createleague" exact>
+          <CreateLeague />
+        </Route>
+        <Route path="/joinleagues" exact>
+          <JoinLeagues />
+        </Route>
+        <Route path="/myleagues/:leagueId" exact component={LeagueContainer} />
+        <Route
+          path="/myleagues/:leagueId/auction"
+          exact
+          component={AuctionContainer}
+        />
+      </Switch>
+    </PlayersProvider>
   )
 }
 

@@ -20,8 +20,7 @@ export const auctionSchema = new mongoose.Schema(
     },
     nextUser: {
       type: mongoose.SchemaTypes.ObjectId,
-      ref: 'user',
-      required: true
+      ref: 'user'
     }
   },
   { timestamps: true }

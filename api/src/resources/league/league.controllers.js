@@ -190,6 +190,7 @@ export const makeOpeningBid = async (req, res) => {
     }
 
     startCountdown(leagueId, league.auction.liveAuctionItem._id, 0)
+    socketIO.to(leagueId).emit('opening bid', league)
 
     res.status(201).json({ league })
   } catch (e) {

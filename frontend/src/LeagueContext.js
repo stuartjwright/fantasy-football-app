@@ -46,6 +46,21 @@ export const LeagueProvider = ({ children, leagueId }) => {
         dispatch({ type: 'SOCKETIO_AUCTION_START', data })
       }
     })
+    socket.on('opening bid', data => {
+      console.log('someone has bid!')
+      dispatch({ type: 'SOCKETIO_OPENING_BID', data })
+    })
+    socket.on('opening bid', data => {
+      console.log('someone has bid!')
+      dispatch({ type: 'SOCKETIO_OPENING_BID', data })
+    })
+    socket.on('countdown', count => {
+      console.log('Counting down: ' + count)
+    })
+    socket.on('player sold', data => {
+      console.log('player sold!')
+      dispatch({ type: 'SOCKETIO_PLAYER_SOLD', data })
+    })
     return () => socket.disconnect()
   }, [leagueId, user._id])
 

@@ -1,6 +1,7 @@
 import { League } from '../../league.model'
 import { defaultValues } from '../../league.config'
 import { Player } from '../../../player/player.model'
+import { nsp as socketIO } from '../../../../server'
 
 const checkBidIsHighest = async (leagueId, auctionItemId, amount) => {
   const league = await League.findOne({
@@ -19,14 +20,13 @@ export const startCountdown = (leagueId, auctionItemId, amount) => {
     if (count <= 0) {
       await lockAuction(leagueId)
       await setAuctionItemComplete(leagueId)
-      // TODO update all clients on sale via socket.IO
       return clearInterval(countdown)
     }
     const league = await checkBidIsHighest(leagueId, auctionItemId, amount)
     if (!league) {
       return clearInterval(countdown)
     }
-    // TODO: send countdown via socket.IO here
+    socketIO.to(leagueId).emit('countdown', count)
     console.log(auctionItemId, amount, count)
   }, 1000)
 }
@@ -155,6 +155,7 @@ const setAuctionItemComplete = async leagueId => {
     const nextUser = getNextUser(league, auctionUsers, maxSquad, status)
     updateLeague(league, auctionUsers, nextUser, status, soldItem)
     await league.save()
+    socketIO.to(leagueId).emit('player sold', league)
     console.log('Player successfully sold.')
   } catch (e) {
     console.error(e)
