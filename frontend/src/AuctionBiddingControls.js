@@ -40,6 +40,9 @@ const AuctionBiddingControls = () => {
     return { value: b, label: getMoneyFormat(b) }
   })
 
+  // TODO: disable slider/buttons based on budget/club/player constraints,
+  // and if this user is already high bidder
+
   useEffect(() => {
     setBid(currentHighBid + increments[0])
     // eslint-disable-next-line react-hooks/exhaustive-deps

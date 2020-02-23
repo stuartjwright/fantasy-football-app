@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { LeagueStateContext, LeagueDispatchContext } from './LeagueContext'
+import { useAuthState } from './AuthContext'
 import { PlayersContext } from './PlayersContext'
 import MaterialTable from 'material-table'
 import AddCircleIcon from '@material-ui/icons/AddCircle'
@@ -10,8 +11,26 @@ const AuctionOpeningBid = () => {
   const {
     state: { players }
   } = useContext(PlayersContext)
-  const { league } = useContext(LeagueStateContext)
   const dispatch = useContext(LeagueDispatchContext)
+  const { league } = useContext(LeagueStateContext)
+  const {
+    state: { user }
+  } = useAuthState()
+
+  const { auction } = league
+  const soldPlayers = auction.soldAuctionItems.map(i => i.player)
+  const unsoldPlayers = players.filter(p => !soldPlayers.includes(p._id))
+
+  const thisUserId = user._id
+  const thisAuctionUser = auction.auctionUsers.filter(
+    a => a.user === thisUserId
+  )[0]
+  const { positionConstraints, clubConstraints } = thisAuctionUser
+  const availablePlayers = unsoldPlayers.filter(
+    p =>
+      !positionConstraints.includes(p.position) &&
+      !clubConstraints.includes(p.team)
+  )
 
   const handleOpeningBid = playerId => async () => {
     dispatch({ type: 'OPENING_BID_LOADING' })
@@ -33,15 +52,17 @@ const AuctionOpeningBid = () => {
       columns={[
         { title: 'Name', field: 'name' },
         { title: 'Team', field: 'team' },
+        { title: 'Position', field: 'position' },
         {
           title: 'Select',
           field: 'button'
         }
       ]}
-      data={players.map(p => {
+      data={availablePlayers.map(p => {
         return {
           name: p.displayName,
           team: p.team,
+          position: p.position,
           button: (
             <IconButton color="primary" onClick={handleOpeningBid(p._id)}>
               <AddCircleIcon />
