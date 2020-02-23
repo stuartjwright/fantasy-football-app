@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import AuctionSideBar from './AuctionSideBar'
 import AuctionOpeningBid from './AuctionOpeningBid'
+import AuctionBiddingLayout from './AuctionBiddingLayout'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,16 +28,13 @@ const AuctionLive = () => {
   const thisUserId = user._id
   const { auction } = league
   const { liveAuctionItem, nextUser } = auction
-  console.log(league)
-  console.log(auction)
-  console.log(thisUserId)
 
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
         <Grid item xs={8}>
           {liveAuctionItem ? (
-            <p>Bidding in progress</p>
+            <AuctionBiddingLayout />
           ) : nextUser === thisUserId ? (
             <AuctionOpeningBid />
           ) : (

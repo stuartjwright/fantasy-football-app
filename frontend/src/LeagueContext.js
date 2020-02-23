@@ -13,7 +13,8 @@ export const LeagueProvider = ({ children, leagueId }) => {
   const initialState = {
     status: 'loading',
     error: null,
-    league: null
+    league: null,
+    countdown: 10 // change this so it refs same value as reducer file
   }
   const [state, dispatch] = useReducer(leagueReducer, initialState)
   const {
@@ -47,15 +48,15 @@ export const LeagueProvider = ({ children, leagueId }) => {
       }
     })
     socket.on('opening bid', data => {
-      console.log('someone has bid!')
+      console.log('someone has opened bidding!')
       dispatch({ type: 'SOCKETIO_OPENING_BID', data })
     })
-    socket.on('opening bid', data => {
+    socket.on('counter bid', data => {
       console.log('someone has bid!')
-      dispatch({ type: 'SOCKETIO_OPENING_BID', data })
+      dispatch({ type: 'SOCKETIO_BID', data })
     })
     socket.on('countdown', count => {
-      console.log('Counting down: ' + count)
+      dispatch({ type: 'SOCKETIO_COUNTDOWN', count })
     })
     socket.on('player sold', data => {
       console.log('player sold!')

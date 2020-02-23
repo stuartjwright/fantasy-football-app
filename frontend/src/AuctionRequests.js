@@ -43,3 +43,24 @@ export const makeOpeningBid = async (leagueId, playerId) => {
     return null
   }
 }
+
+export const makeCounterBid = async (leagueId, auctionItemId, amount) => {
+  const token = localStorage.getItem('token')
+  const url = rootUrl + 'bid'
+  if (!token) {
+    return null
+  }
+
+  try {
+    const res = await axios.post(
+      url,
+      { leagueId, auctionItemId, amount },
+      {
+        headers: { Authorization: `Bearer ${token}` }
+      }
+    )
+    return res.data
+  } catch (e) {
+    return null
+  }
+}

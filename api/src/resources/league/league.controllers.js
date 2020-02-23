@@ -236,6 +236,7 @@ export const makeBid = async (req, res) => {
     }
 
     startCountdown(leagueId, auctionItemId, amount)
+    socketIO.to(leagueId).emit('counter bid', league)
 
     res.status(201).json({ league })
   } catch (e) {

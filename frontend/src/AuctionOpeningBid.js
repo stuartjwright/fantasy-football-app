@@ -12,7 +12,6 @@ const AuctionOpeningBid = () => {
   } = useContext(PlayersContext)
   const { league } = useContext(LeagueStateContext)
   const dispatch = useContext(LeagueDispatchContext)
-  // const { auction } = league
 
   const handleOpeningBid = playerId => async () => {
     dispatch({ type: 'OPENING_BID_LOADING' })
