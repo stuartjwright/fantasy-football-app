@@ -42,6 +42,9 @@ const AuctionBiddingControls = () => {
 
   // TODO: disable slider/buttons based on budget/club/player constraints,
   // and if this user is already high bidder
+  // TODO: bidding in last second seems impossible, maybe display counter + 3,
+  // and disable buttons 3 seconds before actual backend sale confirmation. Will
+  // also allow for some kind of sale message, although does mean backend can't fail
 
   useEffect(() => {
     setBid(currentHighBid + increments[0])
