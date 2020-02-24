@@ -14,7 +14,7 @@ export const LeagueProvider = ({ children, leagueId }) => {
     status: 'loading',
     error: null,
     league: null,
-    countdown: 10 // change this so it refs same value as reducer file
+    countdown: null
   }
   const [state, dispatch] = useReducer(leagueReducer, initialState)
   const {
@@ -57,6 +57,13 @@ export const LeagueProvider = ({ children, leagueId }) => {
     })
     socket.on('countdown', count => {
       dispatch({ type: 'SOCKETIO_COUNTDOWN', count })
+    })
+    socket.on('presale lock', data => {
+      console.log('processing sale!')
+      dispatch({
+        type: 'SOCKETIO_PRESALE_LOCK',
+        data: { ...data, status: 'auction', itemSold: true }
+      })
     })
     socket.on('player sold', data => {
       console.log('player sold!')

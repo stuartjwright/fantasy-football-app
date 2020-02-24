@@ -1,7 +1,5 @@
 // Need to do something to make unsuccessful bids not make frontend blowup
 
-const countdownStart = 10 // make sure this is same as backend default value
-
 export const leagueReducer = (state, action) => {
   switch (action.type) {
     case 'GET_LEAGUE_LOADING': {
@@ -26,7 +24,8 @@ export const leagueReducer = (state, action) => {
         ...state,
         status: 'success',
         error: null,
-        league: action.data.league
+        league: action.data.league,
+        countdown: null
       }
     }
     case 'START_AUCTION_ERROR': {
@@ -40,21 +39,23 @@ export const leagueReducer = (state, action) => {
         ...state,
         status: 'success',
         error: null,
-        league: action.data.league
+        league: action.data.league,
+        countdown: null
       }
     }
     case 'OPENING_BID_ERROR': {
       return { ...state, status: 'error', error: action.error }
     }
     case 'BID_LOADING': {
-      return { ...state, status: 'loading', error: null }
+      return { ...state, error: null } // removed status: 'loading', experimental
     }
     case 'BID_COMPLETE': {
       return {
         ...state,
         status: 'success',
         error: null,
-        league: action.data.league
+        league: action.data.league,
+        countdown: null
       }
     }
     case 'BID_ERROR': {
@@ -66,7 +67,7 @@ export const leagueReducer = (state, action) => {
         status: 'success',
         error: null,
         league: action.data,
-        countdown: countdownStart
+        countdown: null
       }
     }
     case 'SOCKETIO_OPENING_BID': {
@@ -74,7 +75,8 @@ export const leagueReducer = (state, action) => {
         ...state,
         status: 'success',
         error: null,
-        league: action.data
+        league: action.data,
+        countdown: null
       }
     }
     case 'SOCKETIO_BID': {
@@ -83,7 +85,7 @@ export const leagueReducer = (state, action) => {
         status: 'success',
         error: null,
         league: action.data,
-        countdown: countdownStart
+        countdown: null
       }
     }
     case 'SOCKETIO_COUNTDOWN': {
@@ -94,13 +96,22 @@ export const leagueReducer = (state, action) => {
         countdown: action.count
       }
     }
+    case 'SOCKETIO_PRESALE_LOCK': {
+      return {
+        ...state,
+        status: 'success',
+        error: null,
+        league: action.data,
+        countdown: null
+      }
+    }
     case 'SOCKETIO_PLAYER_SOLD': {
       return {
         ...state,
         status: 'success',
         error: null,
         league: action.data,
-        countdown: countdownStart
+        countdown: null
       }
     }
     default: {

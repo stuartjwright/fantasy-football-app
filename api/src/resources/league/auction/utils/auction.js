@@ -16,23 +16,30 @@ const checkBidIsHighest = async (leagueId, auctionItemId, amount) => {
 export const startCountdown = (leagueId, auctionItemId, amount) => {
   let count = defaultValues.countdownTimer
   const countdown = setInterval(async () => {
-    count -= 1
-    if (count <= 0) {
-      await lockAuction(leagueId)
-      await setAuctionItemComplete(leagueId)
-      return clearInterval(countdown)
-    }
     const league = await checkBidIsHighest(leagueId, auctionItemId, amount)
     if (!league) {
       return clearInterval(countdown)
     }
+    // TODO: Maybe need to checkBidIsHighestAndLock in one atomic transaction
+    count -= 1
+    if (count <= 0) {
+      const lockedLeague = await lockAuction(leagueId)
+      clearInterval(countdown)
+      socketIO.to(leagueId).emit('presale lock', lockedLeague)
+      const updatedLeague = await setAuctionItemComplete(leagueId)
+      setTimeout(() => {
+        socketIO.to(leagueId).emit('player sold', updatedLeague)
+      }, 3000)
+      return
+    }
+
     socketIO.to(leagueId).emit('countdown', count)
     console.log(auctionItemId, amount, count)
   }, 1000)
 }
 
 const lockAuction = async leagueId => {
-  League.findByIdAndUpdate(
+  return League.findByIdAndUpdate(
     leagueId,
     {
       status: 'locked'
@@ -154,9 +161,9 @@ const setAuctionItemComplete = async leagueId => {
     const status = getAuctionStatus(auctionUsers, maxSquad)
     const nextUser = getNextUser(league, auctionUsers, maxSquad, status)
     updateLeague(league, auctionUsers, nextUser, status, soldItem)
-    await league.save()
-    socketIO.to(leagueId).emit('player sold', league)
+    const updatedLeague = await league.save()
     console.log('Player successfully sold.')
+    return updatedLeague
   } catch (e) {
     console.error(e)
   }

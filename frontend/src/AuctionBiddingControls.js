@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { LeagueStateContext, LeagueDispatchContext } from './LeagueContext'
+import { useAuthState } from './AuthContext'
 import { makeStyles } from '@material-ui/core/styles'
 import Slider from '@material-ui/core/Slider'
 import BidIcon from '@material-ui/icons/EmojiPeople'
@@ -26,7 +27,9 @@ const AuctionBiddingControls = () => {
   const classes = useStyles()
   const dispatch = useContext(LeagueDispatchContext)
   const { league } = useContext(LeagueStateContext)
-  const { currentHighBid } = league.auction.liveAuctionItem
+  const { auction } = league
+  const { liveAuctionItem } = auction
+  const { currentHighBid, currentHighBidder } = liveAuctionItem
   const increments =
     currentHighBid < 2500000
       ? [100000, 250000, 500000, 1000000]
@@ -40,11 +43,24 @@ const AuctionBiddingControls = () => {
     return { value: b, label: getMoneyFormat(b) }
   })
 
-  // TODO: disable slider/buttons based on budget/club/player constraints,
-  // and if this user is already high bidder
-  // TODO: bidding in last second seems impossible, maybe display counter + 3,
-  // and disable buttons 3 seconds before actual backend sale confirmation. Will
-  // also allow for some kind of sale message, although does mean backend can't fail
+  const { player } = liveAuctionItem
+  const {
+    state: { user }
+  } = useAuthState()
+  const thisUserId = user._id
+  const thisAuctionUser = auction.auctionUsers.filter(
+    a => a.user === thisUserId
+  )[0]
+  const { positionConstraints, clubConstraints, budget } = thisAuctionUser
+  const { position, team } = player
+  const positionConstraint = positionConstraints.includes(position)
+  const clubConstraint = clubConstraints.includes(team)
+  const budgetConstraint = currentHighBid + bidAmounts[0] >= budget
+  const bidderConstraint = currentHighBidder === thisUserId
+  const highBidConstraint = bid > budget
+  const disableSlider =
+    bidderConstraint || positionConstraint || clubConstraint || budgetConstraint
+  const disableButton = disableSlider || highBidConstraint
 
   useEffect(() => {
     setBid(currentHighBid + increments[0])
@@ -80,12 +96,14 @@ const AuctionBiddingControls = () => {
         max={bidAmounts[bidAmounts.length - 1]}
         onChange={handleBidChange}
         value={bid}
+        disabled={disableSlider}
       />
       <Button
         className={classes.button}
         variant="contained"
         color="primary"
         onClick={handleBidSubmit}
+        disabled={disableButton}
       >
         Bid
         <BidIcon />
