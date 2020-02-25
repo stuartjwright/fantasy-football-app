@@ -183,7 +183,9 @@ export const makeOpeningBid = async (req, res) => {
         }
       },
       { new: true, useFindAndModify: false }
-    ).populate('auction.liveAuctionItem.player')
+    )
+      .populate('auction.liveAuctionItem.player')
+      .populate('users', 'username')
 
     if (!league) {
       throw new Error('Could not make opening bid')
@@ -229,7 +231,9 @@ export const makeBid = async (req, res) => {
         $push: { 'auction.liveAuctionItem.bidHistory': { user, amount } }
       },
       { new: true, useFindAndModify: false }
-    ).populate('auction.liveAuctionItem.player')
+    )
+      .populate('auction.liveAuctionItem.player')
+      .populate('users', 'username')
 
     if (!league) {
       throw new Error('Bid unsuccessful')

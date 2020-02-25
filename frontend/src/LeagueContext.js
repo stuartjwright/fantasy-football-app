@@ -6,6 +6,8 @@ import { leagueReducer } from './leagueReducer'
 import io from 'socket.io-client'
 import { useAuthState } from './AuthContext'
 
+const socketIoUrl = 'http://localhost:5000/leagues' // move this to another file
+
 export const LeagueStateContext = createContext()
 export const LeagueDispatchContext = createContext()
 
@@ -32,7 +34,7 @@ export const LeagueProvider = ({ children, leagueId }) => {
       }
     }
     getLeagueOnLoad()
-    const socket = io.connect('http://localhost:5000/leagues', {
+    const socket = io.connect(socketIoUrl, {
       query: `leagueId=${leagueId}`
     })
     socket.on('connect', () => {
@@ -43,9 +45,7 @@ export const LeagueProvider = ({ children, leagueId }) => {
     })
     socket.on('auction start', data => {
       console.log('auction starting!')
-      if (data.creator !== user._id) {
-        dispatch({ type: 'SOCKETIO_AUCTION_START', data })
-      }
+      dispatch({ type: 'SOCKETIO_AUCTION_START', data })
     })
     socket.on('opening bid', data => {
       console.log('someone has opened bidding!')

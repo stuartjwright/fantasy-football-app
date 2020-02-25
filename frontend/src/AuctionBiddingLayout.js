@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import AuctionCountdownTimer from './AuctionCountdownTimer'
 import AuctionBiddingControls from './AuctionBiddingControls'
+import AuctionBidHistory from './AuctionBidHistory'
 
 const useStyles = makeStyles(theme => ({
   paperTall: {
@@ -31,7 +32,7 @@ const AuctionBiddingLayout = () => {
       <Grid container spacing={3}>
         <Grid item xs={6}>
           <Paper className={classes.paperTall}>
-            <p>Bid history goes here.</p>
+            <AuctionBidHistory />
           </Paper>
         </Grid>
         <Grid item xs={6}>
