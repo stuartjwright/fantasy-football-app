@@ -62,4 +62,6 @@ typings/
 
 dist
 
+public
+
 .DS_Store
