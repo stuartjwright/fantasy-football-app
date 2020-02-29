@@ -3,12 +3,12 @@ import {
   LeagueStateContext,
   LeagueDispatchContext
 } from '../../contexts/LeagueContext'
-import { useAuthState } from '../../contexts/AuthContext'
 import { makeStyles } from '@material-ui/core/styles'
 import Slider from '@material-ui/core/Slider'
 import BidIcon from '@material-ui/icons/EmojiPeople'
 import Button from '@material-ui/core/Button'
 import { makeCounterBid } from '../../requests/AuctionRequests'
+import useConstraints from './useConstraints'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -26,49 +26,52 @@ const getMoneyFormat = value => {
   return value >= 1e6 ? `£${value / 1e6}M` : `£${value / 1e3}K`
 }
 
+const getBidAmounts = (current, budget) => {
+  const increment =
+    current < 1000000 ? 100000 : current < 2500000 ? 250000 : 500000
+  const bidAmounts = [1, 2, 3, 4].map(i => current + i * increment)
+  const rounded = bidAmounts.map(b => Math.floor(b / increment) * increment)
+  const filtered = rounded.filter(b => b > current && b <= budget)
+  if (filtered.length < 4 && filtered[filtered.length - 1] !== budget) {
+    // Let a bidder go 'all-in'
+    return filtered.push(budget)
+  }
+  return filtered
+}
+
 const AuctionBiddingControls = () => {
   const classes = useStyles()
   const dispatch = useContext(LeagueDispatchContext)
   const { league, countdown } = useContext(LeagueStateContext)
-  const { auction } = league
-  const { liveAuctionItem } = auction
-  const { currentHighBid, currentHighBidder } = liveAuctionItem
-  const increments =
-    currentHighBid < 2500000
-      ? [100000, 250000, 500000, 1000000]
-      : currentHighBid < 5000000
-      ? [250000, 500000, 1000000, 1500000]
-      : [500000, 1000000, 1500000, 2000000]
-  const bidAmounts = increments.map(i => currentHighBid + i)
+  const {
+    auction: {
+      liveAuctionItem: { currentHighBid }
+    }
+  } = league
+
+  const constraints = useConstraints()
+
+  const bidAmounts = getBidAmounts(currentHighBid, constraints.budget)
+
+  useEffect(() => {
+    setBid(bidAmounts[0])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentHighBid])
 
   const [bid, setBid] = useState(bidAmounts[0])
-  const marks = bidAmounts.map(b => {
+  const bidTicks = bidAmounts.map(b => {
     return { value: b, label: getMoneyFormat(b) }
   })
 
-  const { player } = liveAuctionItem
   const {
-    state: { user }
-  } = useAuthState()
-  const thisUserId = user._id
-  const thisAuctionUser = auction.auctionUsers.filter(
-    a => a.user === thisUserId
-  )[0]
-  const { positionConstraints, clubConstraints, budget } = thisAuctionUser
-  const { position, team } = player
-  const positionConstraint = positionConstraints.includes(position)
-  const clubConstraint = clubConstraints.includes(team)
-  const budgetConstraint = currentHighBid + bidAmounts[0] >= budget
-  const bidderConstraint = currentHighBidder === thisUserId
-  const highBidConstraint = bid > budget
+    positionConstraint,
+    clubConstraint,
+    budgetConstraint,
+    bidderConstraint
+  } = constraints
   const disableSlider =
     bidderConstraint || positionConstraint || clubConstraint || budgetConstraint
-  const disableButton = disableSlider || highBidConstraint || countdown === null
-
-  useEffect(() => {
-    setBid(currentHighBid + increments[0])
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentHighBid])
+  const disableButton = disableSlider || countdown === null
 
   const handleBidChange = (event, value) => {
     setBid(value)
@@ -89,12 +92,13 @@ const AuctionBiddingControls = () => {
       dispatch({ type: 'BID_ERROR', error })
     }
   }
+
   return (
     <form className={classes.root}>
       <Slider
         aria-labelledby="discrete-slider-restrict"
         step={null}
-        marks={marks}
+        marks={bidTicks}
         min={bidAmounts[0]}
         max={bidAmounts[bidAmounts.length - 1]}
         onChange={handleBidChange}
