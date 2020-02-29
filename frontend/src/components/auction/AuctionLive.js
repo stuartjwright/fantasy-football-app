@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
-import { LeagueStateContext } from './LeagueContext'
-import { useAuthState } from './AuthContext'
+import { LeagueStateContext } from '../../contexts/LeagueContext'
+import { useAuthState } from '../../contexts/AuthContext'
 import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'

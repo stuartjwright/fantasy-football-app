@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { LeagueStateContext } from './LeagueContext'
+import { LeagueStateContext } from '../../contexts/LeagueContext'
 // import AuctionStatus from './AuctionStatus'
 import AuctionReady from './AuctionReady'
 import AuctionLive from './AuctionLive'

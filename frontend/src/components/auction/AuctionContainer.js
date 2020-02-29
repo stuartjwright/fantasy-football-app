@@ -1,6 +1,6 @@
 import React from 'react'
 import AuctionHome from './AuctionHome'
-import { LeagueProvider } from './LeagueContext'
+import { LeagueProvider } from '../../contexts/LeagueContext'
 
 const AuctionContainer = ({ match }) => {
   return (

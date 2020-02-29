@@ -1,6 +1,5 @@
 import axios from 'axios'
-
-const rootUrl = 'http://localhost:5000/'
+import rootUrl from '../constants/rootUrl'
 
 export const getUser = async () => {
   const url = rootUrl + 'api/user/'

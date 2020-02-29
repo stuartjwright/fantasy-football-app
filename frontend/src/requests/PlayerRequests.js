@@ -1,6 +1,7 @@
 import axios from 'axios'
+import rootUrl from '../constants/rootUrl'
 
-const url = 'http://localhost:5000/api/player/'
+const url = rootUrl + 'api/player/'
 
 export const getAllPlayers = async () => {
   const token = localStorage.getItem('token')

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
-import { LeagueStateContext } from './LeagueContext'
+import { LeagueStateContext } from '../../contexts/LeagueContext'
 
 const LeagueHome = () => {
   const state = useContext(LeagueStateContext)

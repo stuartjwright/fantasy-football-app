@@ -1,10 +1,11 @@
 import axios from 'axios'
+import rootUrl from '../constants/rootUrl'
 
-const rootUrl = 'http://localhost:5000/api/league/'
+const apiUrl = rootUrl + 'api/league/'
 
 export const createLeague = async leagueName => {
   const token = localStorage.getItem('token')
-  const url = rootUrl
+  const url = apiUrl
   if (!token) {
     return null
   }
@@ -25,7 +26,7 @@ export const createLeague = async leagueName => {
 
 export const joinLeague = async leagueId => {
   const token = localStorage.getItem('token')
-  const url = rootUrl
+  const url = apiUrl
   if (!token) {
     return null
   }
@@ -46,7 +47,7 @@ export const joinLeague = async leagueId => {
 
 export const getMyLeagues = async () => {
   const token = localStorage.getItem('token')
-  const url = rootUrl + 'my'
+  const url = apiUrl + 'my'
   if (!token) {
     return null
   }
@@ -63,7 +64,7 @@ export const getMyLeagues = async () => {
 
 export const getRegisteringLeagues = async () => {
   const token = localStorage.getItem('token')
-  const url = rootUrl + 'registering'
+  const url = apiUrl + 'registering'
   if (!token) {
     return null
   }
@@ -80,7 +81,7 @@ export const getRegisteringLeagues = async () => {
 
 export const getLeague = async leagueId => {
   const token = localStorage.getItem('token')
-  const url = rootUrl + leagueId
+  const url = apiUrl + leagueId
   if (!token) {
     return null
   }

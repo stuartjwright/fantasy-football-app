@@ -1,11 +1,14 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { LeagueStateContext, LeagueDispatchContext } from './LeagueContext'
-import { useAuthState } from './AuthContext'
+import {
+  LeagueStateContext,
+  LeagueDispatchContext
+} from '../../contexts/LeagueContext'
+import { useAuthState } from '../../contexts/AuthContext'
 import { makeStyles } from '@material-ui/core/styles'
 import Slider from '@material-ui/core/Slider'
 import BidIcon from '@material-ui/icons/EmojiPeople'
 import Button from '@material-ui/core/Button'
-import { makeCounterBid } from './AuctionRequests'
+import { makeCounterBid } from '../../requests/AuctionRequests'
 
 const useStyles = makeStyles(theme => ({
   root: {

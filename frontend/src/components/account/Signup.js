@@ -3,8 +3,8 @@ import TextField from '@material-ui/core/TextField'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles'
-import { useAuthState } from './AuthContext'
-import { signUp, getUser } from './AuthRequests'
+import { useAuthState } from '../../contexts/AuthContext'
+import { signUp, getUser } from '../../requests/AuthRequests'
 
 const useStyles = makeStyles(theme => ({
   root: {

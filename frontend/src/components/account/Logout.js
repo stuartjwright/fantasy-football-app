@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
-import { useAuthState } from './AuthContext'
+import { useAuthState } from '../../contexts/AuthContext'
 
 const Logout = () => {
   const { setState } = useAuthState()

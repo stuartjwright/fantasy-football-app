@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { LeagueStateContext } from './LeagueContext'
+import { LeagueStateContext } from '../../contexts/LeagueContext'
 import Typography from '@material-ui/core/Typography'
 import BidIcon from '@material-ui/icons/EmojiPeopleRounded'
 import { makeStyles } from '@material-ui/core/styles'

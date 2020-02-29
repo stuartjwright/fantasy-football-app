@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { LeagueStateContext } from './LeagueContext'
+import { LeagueStateContext } from '../../contexts/LeagueContext'
 
 const AuctionSideBar = () => {
   const { league } = useContext(LeagueStateContext)

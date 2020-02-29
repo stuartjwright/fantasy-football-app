@@ -1,11 +1,14 @@
 import React, { useContext } from 'react'
-import { LeagueStateContext, LeagueDispatchContext } from './LeagueContext'
-import { useAuthState } from './AuthContext'
-import { PlayersContext } from './PlayersContext'
+import {
+  LeagueStateContext,
+  LeagueDispatchContext
+} from '../../contexts/LeagueContext'
+import { useAuthState } from '../../contexts/AuthContext'
+import { PlayersContext } from '../../contexts/PlayersContext'
 import MaterialTable from 'material-table'
 import AddCircleIcon from '@material-ui/icons/AddCircle'
 import IconButton from '@material-ui/core/IconButton'
-import { makeOpeningBid } from './AuctionRequests'
+import { makeOpeningBid } from '../../requests/AuctionRequests'
 
 const AuctionOpeningBid = () => {
   const {

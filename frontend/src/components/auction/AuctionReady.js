@@ -1,8 +1,11 @@
 import React, { useContext } from 'react'
-import { LeagueStateContext, LeagueDispatchContext } from './LeagueContext'
-import { useAuthState } from './AuthContext'
+import {
+  LeagueStateContext,
+  LeagueDispatchContext
+} from '../../contexts/LeagueContext'
+import { useAuthState } from '../../contexts/AuthContext'
 import Button from '@material-ui/core/Button'
-import { startAuction } from './AuctionRequests'
+import { startAuction } from '../../requests/AuctionRequests'
 
 const AuctionReady = () => {
   const { league } = useContext(LeagueStateContext)

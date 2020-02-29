@@ -1,6 +1,6 @@
 import React from 'react'
 import LeagueHome from './LeagueHome'
-import { LeagueProvider } from './LeagueContext'
+import { LeagueProvider } from '../../contexts/LeagueContext'
 
 const LeagueContainer = ({ match }) => {
   return (

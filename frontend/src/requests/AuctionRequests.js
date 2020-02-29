@@ -1,10 +1,11 @@
 import axios from 'axios'
+import rootUrl from '../constants/rootUrl'
 
-const rootUrl = 'http://localhost:5000/api/league/'
+const apiUrl = rootUrl + 'api/league/'
 
 export const startAuction = async leagueId => {
   const token = localStorage.getItem('token')
-  const url = rootUrl + 'start'
+  const url = apiUrl + 'start'
   if (!token) {
     return null
   }
@@ -25,7 +26,7 @@ export const startAuction = async leagueId => {
 
 export const makeOpeningBid = async (leagueId, playerId) => {
   const token = localStorage.getItem('token')
-  const url = rootUrl + 'open'
+  const url = apiUrl + 'open'
   if (!token) {
     return null
   }
@@ -46,7 +47,7 @@ export const makeOpeningBid = async (leagueId, playerId) => {
 
 export const makeCounterBid = async (leagueId, auctionItemId, amount) => {
   const token = localStorage.getItem('token')
-  const url = rootUrl + 'bid'
+  const url = apiUrl + 'bid'
   if (!token) {
     return null
   }

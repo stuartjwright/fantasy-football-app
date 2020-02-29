@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
-import { useAuthState } from './AuthContext'
-import { LeagueStateContext } from './LeagueContext'
+import { useAuthState } from '../../contexts/AuthContext'
+import { LeagueStateContext } from '../../contexts/LeagueContext'
 import Typography from '@material-ui/core/Typography'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'

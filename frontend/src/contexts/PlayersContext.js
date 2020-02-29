@@ -1,7 +1,7 @@
 import React, { useState, createContext, useEffect } from 'react'
-import Loading from './Loading'
-import Error from './Error'
-import { getAllPlayers } from './PlayerRequests'
+import Loading from '../components/generic/Loading'
+import Error from '../components/generic/Error'
+import { getAllPlayers } from '../requests/PlayerRequests'
 
 export const PlayersContext = createContext()
 

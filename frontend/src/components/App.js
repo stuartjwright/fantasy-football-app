@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAuthState, AuthProvider } from './AuthContext'
+import { useAuthState, AuthProvider } from '../contexts/AuthContext'
 import MainNavigation from './MainNavigation'
 
 const AuthContainer = () => {
