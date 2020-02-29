@@ -27,7 +27,7 @@ app.use(json())
 app.use(urlencoded({ extended: true }))
 app.use(morgan('dev'))
 
-app.use(express.static('public')) // put contents of react dist in here for production
+// app.use(express.static('public')) // put contents of react dist in here for production
 
 app.post('/signup', signup)
 app.post('/signin', signin)

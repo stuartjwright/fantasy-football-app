@@ -29,7 +29,7 @@ const getMoneyFormat = value => {
 const AuctionBiddingControls = () => {
   const classes = useStyles()
   const dispatch = useContext(LeagueDispatchContext)
-  const { league } = useContext(LeagueStateContext)
+  const { league, countdown } = useContext(LeagueStateContext)
   const { auction } = league
   const { liveAuctionItem } = auction
   const { currentHighBid, currentHighBidder } = liveAuctionItem
@@ -63,7 +63,7 @@ const AuctionBiddingControls = () => {
   const highBidConstraint = bid > budget
   const disableSlider =
     bidderConstraint || positionConstraint || clubConstraint || budgetConstraint
-  const disableButton = disableSlider || highBidConstraint
+  const disableButton = disableSlider || highBidConstraint || countdown === null
 
   useEffect(() => {
     setBid(currentHighBid + increments[0])
