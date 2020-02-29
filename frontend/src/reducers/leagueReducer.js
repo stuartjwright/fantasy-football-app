@@ -59,7 +59,7 @@ export const leagueReducer = (state, action) => {
       }
     }
     case 'BID_ERROR': {
-      return { ...state, status: 'error', error: action.error }
+      return { ...state, error: action.error } // removed status: 'error', experimental
     }
     case 'SOCKETIO_AUCTION_START': {
       return {
