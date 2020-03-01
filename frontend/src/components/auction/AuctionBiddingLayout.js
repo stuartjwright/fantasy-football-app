@@ -6,6 +6,7 @@ import AuctionCountdownTimer from './AuctionCountdownTimer'
 import AuctionBiddingControls from './AuctionBiddingControls'
 import AuctionBidHistory from './AuctionBidHistory'
 import AuctionLiveItemInfo from './AuctionLiveItemInfo'
+import AuctionUserStatus from './AuctionUserStatus'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,13 +21,13 @@ const useStyles = makeStyles(theme => ({
   paperMedium: {
     padding: theme.spacing(2),
     color: theme.palette.text.secondary,
-    height: 340,
+    height: 320,
     marginBottom: 20
   },
   paperShort: {
     padding: theme.spacing(2),
     color: theme.palette.text.secondary,
-    height: 240,
+    height: 260,
     marginBottom: 20
   },
   paperBottom: {
@@ -50,8 +51,11 @@ const AuctionBiddingLayout = () => {
           </Paper>
         </Grid>
         <Grid item xs={6}>
-          <Paper className={classes.paperTall}>
+          <Paper className={classes.paperMedium}>
             <AuctionLiveItemInfo />
+          </Paper>
+          <Paper className={classes.paperShort}>
+            <AuctionUserStatus />
           </Paper>
         </Grid>
       </Grid>

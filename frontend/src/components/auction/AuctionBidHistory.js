@@ -9,18 +9,18 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: 260,
+    height: 235,
     overflow: 'auto'
   },
-  bidText: {
-    color: theme.palette.text.primary
-  },
   highBid: {
-    color: theme.palette.common.black,
     fontWeight: 'bold'
   },
   title: {
-    color: theme.palette.primary.main
+    color: theme.palette.primary.light,
+    textAlign: 'center'
+  },
+  subtitle: {
+    textAlign: 'center'
   }
 }))
 
@@ -58,7 +58,9 @@ const AuctionBidHistory = () => {
       <Typography className={classes.title} variant="h6">
         Bid History
       </Typography>
-      <Typography variant="subtitle2">(most recent first)</Typography>
+      <Typography className={classes.subtitle} ariant="subtitle2">
+        (most recent first)
+      </Typography>
       <List dense={true} className={classes.root}>
         <ListItem>
           <ListItemText
@@ -71,7 +73,6 @@ const AuctionBidHistory = () => {
           return (
             <ListItem key={b.num}>
               <ListItemText
-                className={classes.bidText}
                 primary={`${b.user} bid ${getMoneyFormat(b.amount)}`}
               />
             </ListItem>
