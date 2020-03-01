@@ -11,8 +11,8 @@ const useStyles = makeStyles(theme => ({
   gavel: {
     color: theme.palette.primary.contrastText,
     backgroundColor: theme.palette.primary.main,
-    width: 300,
-    height: 300,
+    width: 250,
+    height: 250,
     borderRadius: '15%',
     marginTop: 50
   }
@@ -22,7 +22,7 @@ const AuctionItemSold = () => {
   const classes = useStyles()
   return (
     <div className={classes.root}>
-      <Typography variant="h3">Gone!</Typography>
+      <Typography variant="h4">Gone!</Typography>
       <GavelIcon className={classes.gavel} />
     </div>
   )

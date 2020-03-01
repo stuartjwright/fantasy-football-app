@@ -1,21 +1,32 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import AuctionCountdownTimer from './AuctionCountdownTimer'
 import AuctionBiddingControls from './AuctionBiddingControls'
 import AuctionBidHistory from './AuctionBidHistory'
+import AuctionLiveItemInfo from './AuctionLiveItemInfo'
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+    maxWidth: 800
+  },
   paperTall: {
     padding: theme.spacing(2),
     color: theme.palette.text.secondary,
     height: 600
   },
+  paperMedium: {
+    padding: theme.spacing(2),
+    color: theme.palette.text.secondary,
+    height: 340,
+    marginBottom: 20
+  },
   paperShort: {
     padding: theme.spacing(2),
     color: theme.palette.text.secondary,
-    height: 290,
+    height: 240,
     marginBottom: 20
   },
   paperBottom: {
@@ -28,26 +39,26 @@ const useStyles = makeStyles(theme => ({
 const AuctionBiddingLayout = () => {
   const classes = useStyles()
   return (
-    <Fragment>
+    <div className={classes.root}>
       <Grid container spacing={3}>
         <Grid item xs={6}>
-          <Paper className={classes.paperTall}>
+          <Paper className={classes.paperMedium}>
             <AuctionBidHistory />
-          </Paper>
-        </Grid>
-        <Grid item xs={6}>
-          <Paper className={classes.paperShort}>
-            <p>Live auction item details go here.</p>
           </Paper>
           <Paper className={classes.paperShort}>
             <AuctionCountdownTimer />
+          </Paper>
+        </Grid>
+        <Grid item xs={6}>
+          <Paper className={classes.paperTall}>
+            <AuctionLiveItemInfo />
           </Paper>
         </Grid>
       </Grid>
       <Paper className={classes.paperBottom}>
         <AuctionBiddingControls />
       </Paper>
-    </Fragment>
+    </div>
   )
 }
 

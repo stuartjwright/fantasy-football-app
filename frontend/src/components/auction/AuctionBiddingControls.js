@@ -32,9 +32,11 @@ const getBidAmounts = (current, budget) => {
   const bidAmounts = [1, 2, 3, 4].map(i => current + i * increment)
   const rounded = bidAmounts.map(b => Math.floor(b / increment) * increment)
   const filtered = rounded.filter(b => b > current && b <= budget)
+  console.log(filtered)
+
   if (filtered.length < 4 && filtered[filtered.length - 1] !== budget) {
-    // Let a bidder go 'all-in'
-    return filtered.push(budget)
+    // Let a bidder go 'all-in' when necessary
+    return [...filtered, budget]
   }
   return filtered
 }

@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: 520,
+    height: 260,
     overflow: 'auto'
   },
   bidText: {

@@ -11,6 +11,7 @@ export const getOneLeague = async (req, res) => {
   try {
     const league = await League.findById(req.params.leagueId)
       .populate({ path: 'creator users', select: 'username' })
+      .populate('auction.liveAuctionItem.player')
       .exec()
 
     if (!league) {
