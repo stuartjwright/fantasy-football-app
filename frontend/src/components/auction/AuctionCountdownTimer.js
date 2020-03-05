@@ -34,8 +34,8 @@ const useStyles = makeStyles(theme => ({
       props.highBidder === true
         ? theme.palette.primary.main
         : theme.palette.secondary.main,
-    height: '50%',
-    width: '50%',
+    height: '120px',
+    width: '120px',
     margin: 'auto',
     borderRadius: '15%'
   },

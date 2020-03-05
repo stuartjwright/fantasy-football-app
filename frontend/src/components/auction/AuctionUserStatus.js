@@ -51,10 +51,10 @@ const AuctionUserStatus = () => {
   } = useConstaints`${team} slot remaining`
   const clubMessage = clubConstraint
     ? `${team} slots full`
-    : `${team} slot available`
+    : `${team} slot free`
   const positionMessage = positionConstraint
     ? `${position} slots full`
-    : `${position} slot available`
+    : `${position} slot free`
   const budgetMessage = `Budget: ${getMoneyFormat(budget)}`
 
   const canBid = !(positionConstraint || clubConstraint || budgetConstraint)

@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: 235,
+    height: 160,
     overflow: 'auto'
   },
   highBid: {
@@ -58,7 +58,7 @@ const AuctionBidHistory = () => {
       <Typography className={classes.title} variant="h6">
         Bid History
       </Typography>
-      <Typography className={classes.subtitle} ariant="subtitle2">
+      <Typography className={classes.subtitle} variant="subtitle2">
         (most recent first)
       </Typography>
       <List dense={true} className={classes.root}>

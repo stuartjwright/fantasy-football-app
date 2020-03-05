@@ -32,7 +32,7 @@ const AuctionLive = () => {
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        <Grid item xs={8}>
+        <Grid item md={8} sm={12}>
           {liveAuctionItem ? (
             <AuctionBiddingLayout />
           ) : nextUser === thisUserId ? (
@@ -41,7 +41,7 @@ const AuctionLive = () => {
             <p>Waiting on opening bid from someone else.</p>
           )}
         </Grid>
-        <Grid item xs={4}>
+        <Grid item md={4} sm={12}>
           <Paper className={classes.paper}>
             <AuctionSideBar />
           </Paper>

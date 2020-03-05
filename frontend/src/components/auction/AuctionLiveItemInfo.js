@@ -5,6 +5,8 @@ import Typography from '@material-ui/core/Typography'
 import FootballIcon from '@material-ui/icons/SportsSoccer'
 import MoneyIcon from '@material-ui/icons/AttachMoney'
 import BidIcon from '@material-ui/icons/EmojiPeople'
+import PlayerIcon from '@material-ui/icons/Person'
+import TeamIcon from '@material-ui/icons/People'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
@@ -13,12 +15,8 @@ import ListItemText from '@material-ui/core/ListItemText'
 const useStyles = makeStyles(theme => ({
   title: {
     color: theme.palette.primary.light,
-    marginBottom: 15,
+    marginBottom: 0,
     textAlign: 'center'
-  },
-  card: {
-    marginTop: 25,
-    color: theme.palette.text.primary
   }
 }))
 
@@ -42,13 +40,19 @@ const AuctionLiveItemInfo = () => {
       <Typography className={classes.title} variant="h6">
         Current Auction Item
       </Typography>
-      <Typography variant="h6">
+      {/* <Typography variant="h6">
         {player.firstName} {player.lastName}
-      </Typography>
+      </Typography> */}
       <List dense>
         <ListItem>
           <ListItemIcon>
-            <FootballIcon />
+            <PlayerIcon />
+          </ListItemIcon>
+          <ListItemText primary={`${player.firstName} ${player.lastName}`} />
+        </ListItem>
+        <ListItem>
+          <ListItemIcon>
+            <TeamIcon />
           </ListItemIcon>
           <ListItemText primary={player.team} />
         </ListItem>

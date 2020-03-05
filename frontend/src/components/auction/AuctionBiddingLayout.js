@@ -11,29 +11,19 @@ import AuctionUserStatus from './AuctionUserStatus'
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    maxWidth: 800
+    maxWidth: 900,
+    minWidth: 550
   },
-  paperTall: {
-    padding: theme.spacing(2),
+  panel: {
+    padding: theme.spacing(1),
     color: theme.palette.text.secondary,
-    height: 600
-  },
-  paperMedium: {
-    padding: theme.spacing(2),
-    color: theme.palette.text.secondary,
-    height: 320,
-    marginBottom: 20
-  },
-  paperShort: {
-    padding: theme.spacing(2),
-    color: theme.palette.text.secondary,
-    height: 260,
-    marginBottom: 20
+    height: 235,
+    marginBottom: theme.spacing(1)
   },
   paperBottom: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(1),
     color: theme.palette.text.secondary,
-    height: 180
+    height: 160
   }
 }))
 
@@ -41,20 +31,20 @@ const AuctionBiddingLayout = () => {
   const classes = useStyles()
   return (
     <div className={classes.root}>
-      <Grid container spacing={3}>
+      <Grid container spacing={1}>
         <Grid item xs={6}>
-          <Paper className={classes.paperMedium}>
+          <Paper className={classes.panel}>
             <AuctionBidHistory />
           </Paper>
-          <Paper className={classes.paperShort}>
+          <Paper className={classes.panel}>
             <AuctionCountdownTimer />
           </Paper>
         </Grid>
         <Grid item xs={6}>
-          <Paper className={classes.paperMedium}>
+          <Paper className={classes.panel}>
             <AuctionLiveItemInfo />
           </Paper>
-          <Paper className={classes.paperShort}>
+          <Paper className={classes.panel}>
             <AuctionUserStatus />
           </Paper>
         </Grid>
