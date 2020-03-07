@@ -45,7 +45,7 @@ const AuctionSideBar = () => {
           Available Players
         </MenuItem>
         <MenuItem onClick={handleClose('sold')}>Sold Players</MenuItem>
-        <MenuItem onClick={handleClose('rules')}>Game Rules</MenuItem>
+        <MenuItem onClick={handleClose('rules')}>League Rules</MenuItem>
       </Menu>
       {currentView === 'budgets' && <AuctionSideBarBudgets />}
       {currentView === 'squads' && <AuctionSideBarSquads />}

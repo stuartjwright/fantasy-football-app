@@ -5,6 +5,14 @@ import { getAllPlayers } from '../requests/PlayerRequests'
 
 export const PlayersContext = createContext()
 
+const getPlayersLookup = players => {
+  let playersLookup = {}
+  players.forEach(p => {
+    playersLookup[p._id] = p
+  })
+  return playersLookup
+}
+
 export const PlayersProvider = ({ children }) => {
   const initialState = {
     status: 'loading',
@@ -15,7 +23,13 @@ export const PlayersProvider = ({ children }) => {
 
   useEffect(() => {
     getAllPlayers().then(
-      data => setState({ status: 'success', error: null, ...data }),
+      data =>
+        setState({
+          status: 'success',
+          error: null,
+          players: data.players,
+          playersLookup: getPlayersLookup(data.players)
+        }),
       error => setState({ status: 'error', error, players: null })
     )
   }, [])

@@ -18,6 +18,12 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.primary.light,
     marginTop: 15,
     textAlign: 'center'
+  },
+  content: {
+    maxHeight: 690,
+    overflow: 'auto',
+    margin: 0,
+    padding: 0
   }
 }))
 
@@ -25,6 +31,10 @@ const AuctionSideBarSquads = () => {
   const classes = useStyles()
   const {
     league: {
+      numGoalkeepers,
+      numDefenders,
+      numMidfielders,
+      numForwards,
       users,
       auction: { auctionUsers }
     }
@@ -36,6 +46,13 @@ const AuctionSideBarSquads = () => {
   auctionUsers.forEach(a => {
     auctionUsersLookup[a.user] = a
   })
+
+  const positions = {
+    numGoalkeepers,
+    numDefenders,
+    numMidfielders,
+    numForwards
+  }
 
   const [currentUser, setCurrentUser] = useState(
     users.filter(u => u._id === user._id)[0]._id
@@ -50,25 +67,27 @@ const AuctionSideBarSquads = () => {
       <Typography className={classes.title} variant="h6">
         Current Squads
       </Typography>
-      <FormControl className={classes.formControl}>
-        <InputLabel id="user-select">User</InputLabel>
-        <Select
-          labelId="user-select"
-          value={currentUser}
-          onChange={handleChange}
-        >
-          {users.map(u => {
-            return (
-              <MenuItem value={u._id} key={u._id}>
-                {`${u.username}${u._id === user._id ? ' (You)' : ''}`}
-              </MenuItem>
-            )
-          })}
-        </Select>
-      </FormControl>
-
+      <div className={classes.content}>
+        <FormControl className={classes.formControl}>
+          <InputLabel id="user-select">User</InputLabel>
+          <Select
+            labelId="user-select"
+            value={currentUser}
+            onChange={handleChange}
+          >
+            {users.map(u => {
+              return (
+                <MenuItem value={u._id} key={u._id}>
+                  {`${u.username}${u._id === user._id ? ' (You)' : ''}`}
+                </MenuItem>
+              )
+            })}
+          </Select>
+        </FormControl>
+      </div>
       <AuctionSideBarSingleSquad
         squad={auctionUsersLookup[currentUser].squad}
+        positions={positions}
       />
     </div>
   )

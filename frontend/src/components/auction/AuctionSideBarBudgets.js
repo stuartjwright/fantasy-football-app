@@ -15,6 +15,12 @@ const useStyles = makeStyles(theme => ({
     marginBottom: 10,
     marginTop: 15,
     textAlign: 'center'
+  },
+  content: {
+    maxHeight: 690,
+    overflow: 'auto',
+    margin: 0,
+    padding: 0
   }
 }))
 
@@ -41,26 +47,30 @@ const AuctionSideBarBudgets = () => {
       <Typography className={classes.title} variant="h6">
         Budget Summary
       </Typography>
-      <Table className={classes.table} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>User</TableCell>
-            <TableCell align="right">Players</TableCell>
-            <TableCell align="right">Budget</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map(row => (
-            <TableRow key={row.username}>
-              <TableCell component="th" scope="row">
-                {row.username}
-              </TableCell>
-              <TableCell align="right">{row.players}</TableCell>
-              <TableCell align="right">{getMoneyFormat(row.budget)}</TableCell>
+      <div className={classes.content}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>User</TableCell>
+              <TableCell align="right">Players</TableCell>
+              <TableCell align="right">Budget</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHead>
+          <TableBody>
+            {rows.map(row => (
+              <TableRow key={row.username}>
+                <TableCell component="th" scope="row">
+                  {row.username}
+                </TableCell>
+                <TableCell align="right">{row.players}</TableCell>
+                <TableCell align="right">
+                  {getMoneyFormat(row.budget)}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
     </>
   )
 }
