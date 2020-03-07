@@ -9,6 +9,7 @@ import BidIcon from '@material-ui/icons/EmojiPeople'
 import Button from '@material-ui/core/Button'
 import { makeCounterBid } from '../../requests/AuctionRequests'
 import useConstraints from './useConstraints'
+import { getMoneyFormat } from './auctionUtils'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,10 +22,6 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center'
   }
 }))
-
-const getMoneyFormat = value => {
-  return value >= 1e6 ? `£${value / 1e6}M` : `£${value / 1e3}K`
-}
 
 const getBidAmounts = (current, budget) => {
   const increment =

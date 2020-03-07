@@ -9,7 +9,9 @@ const checkBidIsHighest = async (leagueId, auctionItemId, amount) => {
     status: 'auction',
     'auction.liveAuctionItem._id': auctionItemId,
     'auction.liveAuctionItem.currentHighBid': amount
-  }).exec()
+  })
+    .populate('users', 'username')
+    .exec()
   return !!league
 }
 
@@ -17,6 +19,7 @@ export const startCountdown = (leagueId, auctionItemId, amount) => {
   let count = defaultValues.countdownTimer
   const countdown = setInterval(async () => {
     const league = await checkBidIsHighest(leagueId, auctionItemId, amount)
+
     if (!league) {
       return clearInterval(countdown)
     }
@@ -140,7 +143,9 @@ const updateLeague = (league, auctionUsers, nextUser, status, soldItem) => {
 
 const setAuctionItemComplete = async leagueId => {
   try {
-    let league = await League.findById(leagueId).exec()
+    let league = await League.findById(leagueId)
+      .populate('users', 'username')
+      .exec()
     const winningBidderId = league.auction.liveAuctionItem.currentHighBidder
     const winningBid = league.auction.liveAuctionItem.currentHighBid
     const playerIdSold = league.auction.liveAuctionItem.player

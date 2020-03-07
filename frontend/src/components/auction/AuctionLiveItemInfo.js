@@ -11,6 +11,7 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
+import { getMoneyFormat, getUsersLookup } from './auctionUtils'
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -20,18 +21,12 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const getMoneyFormat = value => {
-  if (value === 0) return '£0'
-  return value >= 1e6 ? `£${value / 1e6}M` : `£${value / 1e3}K`
-}
-
 const AuctionLiveItemInfo = () => {
   const classes = useStyles()
   const {
     league: { auction, users }
   } = useContext(LeagueStateContext)
-  let usersLookup = {}
-  users.forEach(u => (usersLookup[u._id] = u.username))
+  const usersLookup = getUsersLookup(users)
   const { liveAuctionItem } = auction
   const { player, currentHighBid, currentHighBidder } = liveAuctionItem
 
@@ -40,9 +35,6 @@ const AuctionLiveItemInfo = () => {
       <Typography className={classes.title} variant="h6">
         Current Auction Item
       </Typography>
-      {/* <Typography variant="h6">
-        {player.firstName} {player.lastName}
-      </Typography> */}
       <List dense>
         <ListItem>
           <ListItemIcon>

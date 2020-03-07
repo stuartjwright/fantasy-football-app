@@ -6,6 +6,7 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import { makeStyles } from '@material-ui/core/styles'
+import { getMoneyFormat, getUsersLookup } from './auctionUtils'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,11 +25,6 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const getMoneyFormat = value => {
-  if (value === 0) return '£0'
-  return value >= 1e6 ? `£${value / 1e6}M` : `£${value / 1e3}K`
-}
-
 const AuctionBidHistory = () => {
   const classes = useStyles()
   const {
@@ -38,8 +34,7 @@ const AuctionBidHistory = () => {
   const {
     league: { auction, users }
   } = useContext(LeagueStateContext)
-  let usersLookup = {}
-  users.forEach(u => (usersLookup[u._id] = u.username))
+  const usersLookup = getUsersLookup(users)
   const {
     liveAuctionItem: { bidHistory }
   } = auction

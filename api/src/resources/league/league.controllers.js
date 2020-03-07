@@ -12,6 +12,7 @@ export const getOneLeague = async (req, res) => {
     const league = await League.findById(req.params.leagueId)
       .populate({ path: 'creator users', select: 'username' })
       .populate('auction.liveAuctionItem.player')
+      .populate('users', 'username')
       .exec()
 
     if (!league) {
@@ -143,6 +144,10 @@ export const setLeagueToStartAuction = async (req, res) => {
     }
     // not strictly atomic, fix if possible but not that important here
     await league.save()
+    league = await League.findById(leagueId)
+      .populate('users', 'username')
+      .exec()
+
     socketIO.to(leagueId).emit('auction start', league)
 
     res.status(202).json({ league })

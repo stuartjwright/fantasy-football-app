@@ -9,11 +9,7 @@ import BadIcon from '@material-ui/icons/Cancel'
 import GoodIcon from '@material-ui/icons/CheckCircle'
 import { makeStyles } from '@material-ui/core/styles'
 import { Typography } from '@material-ui/core'
-
-const getMoneyFormat = value => {
-  if (value === 0) return '£0'
-  return value >= 1e6 ? `£${value / 1e6}M` : `£${value / 1e3}K`
-}
+import { getMoneyFormat } from './auctionUtils'
 
 const useStyles = makeStyles(theme => ({
   bad: {
