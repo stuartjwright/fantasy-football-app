@@ -5,12 +5,19 @@ import { makeStyles } from '@material-ui/core/styles'
 import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
+import Typography from '@material-ui/core/Typography'
 import Select from '@material-ui/core/Select'
+import AuctionSideBarSingleSquad from './AuctionSideBarSingleSquad'
 
 const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120
+  },
+  title: {
+    color: theme.palette.primary.light,
+    marginTop: 15,
+    textAlign: 'center'
   }
 }))
 
@@ -38,10 +45,11 @@ const AuctionSideBarSquads = () => {
     setCurrentUser(event.target.value)
   }
 
-  console.log(auctionUsersLookup[currentUser]) // TODO: display this
-
   return (
     <div>
+      <Typography className={classes.title} variant="h6">
+        Current Squads
+      </Typography>
       <FormControl className={classes.formControl}>
         <InputLabel id="user-select">User</InputLabel>
         <Select
@@ -58,6 +66,10 @@ const AuctionSideBarSquads = () => {
           })}
         </Select>
       </FormControl>
+
+      <AuctionSideBarSingleSquad
+        squad={auctionUsersLookup[currentUser].squad}
+      />
     </div>
   )
 }
