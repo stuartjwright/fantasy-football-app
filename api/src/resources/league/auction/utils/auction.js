@@ -49,6 +49,8 @@ const lockAuction = async leagueId => {
     },
     { useFindAndModify: false }
   )
+    .populate('users', 'username')
+    .exec()
 }
 
 const getPositionConstraints = league => {

@@ -7,6 +7,7 @@ import Paper from '@material-ui/core/Paper'
 import AuctionSideBar from './AuctionSideBar'
 import AuctionOpeningBid from './AuctionOpeningBid'
 import AuctionBiddingLayout from './AuctionBiddingLayout'
+import AuctionWaitingOpeningBid from './AuctionWaitingOpeningBid'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -38,7 +39,7 @@ const AuctionLive = () => {
           ) : nextUser === thisUserId ? (
             <AuctionOpeningBid />
           ) : (
-            <p>Waiting on opening bid from someone else.</p>
+            <AuctionWaitingOpeningBid />
           )}
         </Grid>
         <Grid item md={4} sm={12}>
