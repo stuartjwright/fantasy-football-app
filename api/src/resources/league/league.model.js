@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 import { auctionSchema } from './auction/schemas/auctionSchema'
+import { Event } from '../event/event.model'
 
 const leagueSchema = new mongoose.Schema(
   {
@@ -11,6 +12,11 @@ const leagueSchema = new mongoose.Schema(
     creator: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'user'
+    },
+    event: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'event',
+      required: true
     },
     maxEntrants: {
       type: Number,
@@ -57,6 +63,16 @@ const leagueSchema = new mongoose.Schema(
   },
   { timestamps: true, toObject: { getters: true }, toJSON: { getters: true } }
 )
+
+const getDefaultEvent = async () => {
+  const event = await Event.findOne({ status: 'not started' }).exec()
+  return event._id
+}
+
+leagueSchema.pre('validate', async function() {
+  const event = await getDefaultEvent()
+  this.event = event
+})
 
 leagueSchema.virtual('numRegistered').get(function() {
   return this.users.length

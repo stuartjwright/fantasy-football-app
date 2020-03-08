@@ -67,6 +67,7 @@ export const getRegisteringLeagues = async (req, res) => {
     res.status(400).end()
   }
 }
+
 export const createLeague = async (req, res) => {
   try {
     const creator = req.user._id

@@ -10,6 +10,8 @@ import { signup, signin, protect } from './utils/auth'
 import userRouter from './resources/user/user.router'
 import playerRouter from './resources/player/player.router'
 import leagueRouter from './resources/league/league.router'
+import eventRouter from './resources/event/event.router'
+
 // import path from 'path'
 
 const app = express()
@@ -36,6 +38,7 @@ app.use('/api', protect)
 app.use('/api/user', userRouter)
 app.use('/api/player', playerRouter)
 app.use('/api/league', leagueRouter)
+app.use('/api/event', eventRouter)
 
 // production only
 // app.get('/*', function(req, res) {
