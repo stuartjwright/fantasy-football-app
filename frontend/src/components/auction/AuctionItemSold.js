@@ -20,7 +20,9 @@ const useStyles = makeStyles(theme => ({
   iconLarge: {
     color: props =>
       props.winner ? theme.palette.primary.main : theme.palette.secondary.main,
-    margin: 100,
+    marginLeft: 100,
+    marginTop: 50,
+    marginBottom: 25,
     width: 200,
     height: 200
   },

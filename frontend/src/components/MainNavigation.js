@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import {
   BrowserRouter as Router,
   Switch,
@@ -28,29 +28,40 @@ import JoinLeagues from './JoinLeagues'
 import LeagueContainer from './league/LeagueContainer'
 import AuctionContainer from './auction/AuctionContainer'
 import { PlayersProvider } from '../contexts/PlayersContext'
+import IconButton from '@material-ui/core/IconButton'
+import MenuIcon from '@material-ui/icons/Menu'
+import Hidden from '@material-ui/core/Hidden'
 
-const drawerWidth = 200
+const drawerWidth = 240
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: 'flex',
-    flexGrow: 1
-  },
-  appBar: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth
+    display: 'flex'
   },
   drawer: {
-    width: drawerWidth,
-    flexShrink: 0
+    [theme.breakpoints.up('lg')]: {
+      width: drawerWidth,
+      flexShrink: 0
+    }
   },
+  appBar: {
+    [theme.breakpoints.up('lg')]: {
+      width: `calc(100% - ${drawerWidth}px)`,
+      marginLeft: drawerWidth
+    }
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.up('lg')]: {
+      display: 'none'
+    }
+  },
+  toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth
   },
-  toolbar: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
     padding: theme.spacing(3)
   },
   active: {
@@ -66,6 +77,78 @@ const useStyles = makeStyles(theme => ({
 
 const MainNavigation = ({ auth }) => {
   const classes = useStyles()
+  const [mobileOpen, setMobileOpen] = useState(false)
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen)
+  }
+
+  const handleDrawerClose = () => {
+    setMobileOpen(false)
+  }
+
+  const drawer = (
+    <div>
+      <div className={classes.toolbar} />
+      <List>
+        <ListItem
+          component={NavLink}
+          to="/"
+          exact
+          activeClassName={classes.active}
+          onClick={handleDrawerClose}
+        >
+          <ListItemIcon>
+            <HomeIcon />
+          </ListItemIcon>
+          <ListItemText primary="Home" className={classes.listItem} />
+        </ListItem>
+        {auth && (
+          <Fragment>
+            <ListItem
+              component={NavLink}
+              to="/myleagues"
+              activeClassName={classes.active}
+              onClick={handleDrawerClose}
+            >
+              <ListItemIcon>
+                <PlaylistAddCheckIcon />
+              </ListItemIcon>
+              <ListItemText primary="My Leagues" className={classes.listItem} />
+            </ListItem>
+            <ListItem
+              component={NavLink}
+              to="/createleague"
+              activeClassName={classes.active}
+              onClick={handleDrawerClose}
+            >
+              <ListItemIcon>
+                <CreateIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary="Create League"
+                className={classes.listItem}
+              />
+            </ListItem>
+            <ListItem
+              component={NavLink}
+              to="/joinleagues"
+              activeClassName={classes.active}
+              onClick={handleDrawerClose}
+            >
+              <ListItemIcon>
+                <PlaylistAddIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary="Join a League"
+                className={classes.listItem}
+              />
+            </ListItem>
+          </Fragment>
+        )}
+      </List>
+    </div>
+  )
 
   return (
     <Router>
@@ -73,78 +156,46 @@ const MainNavigation = ({ auth }) => {
         <CssBaseline />
         <AppBar position="fixed" className={classes.appBar}>
           <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              className={classes.menuButton}
+            >
+              <MenuIcon />
+            </IconButton>
             <Typography variant="h6" noWrap className={classes.heading}>
               Fantasy Football League
             </Typography>
             {auth && <Logout />}
           </Toolbar>
         </AppBar>
-        <Drawer
-          className={classes.drawer}
-          variant="permanent"
-          classes={{
-            paper: classes.drawerPaper
-          }}
-          anchor="left"
-        >
-          <div className={classes.toolbar} />
-          <List>
-            <ListItem
-              component={NavLink}
-              to="/"
-              exact
-              activeClassName={classes.active}
+        <nav className={classes.drawer}>
+          <Hidden lgUp implementation="css">
+            <Drawer
+              variant="temporary"
+              anchor="left"
+              open={mobileOpen}
+              onClose={handleDrawerToggle}
+              classes={{
+                paper: classes.drawerPaper
+              }}
+              ModalProps={{ keepMounted: true }}
             >
-              <ListItemIcon>
-                <HomeIcon />
-              </ListItemIcon>
-              <ListItemText primary="Home" className={classes.listItem} />
-            </ListItem>
-            {auth && (
-              <Fragment>
-                <ListItem
-                  component={NavLink}
-                  to="/myleagues"
-                  activeClassName={classes.active}
-                >
-                  <ListItemIcon>
-                    <PlaylistAddCheckIcon />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary="My Leagues"
-                    className={classes.listItem}
-                  />
-                </ListItem>
-                <ListItem
-                  component={NavLink}
-                  to="/createleague"
-                  activeClassName={classes.active}
-                >
-                  <ListItemIcon>
-                    <CreateIcon />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary="Create League"
-                    className={classes.listItem}
-                  />
-                </ListItem>
-                <ListItem
-                  component={NavLink}
-                  to="/joinleagues"
-                  activeClassName={classes.active}
-                >
-                  <ListItemIcon>
-                    <PlaylistAddIcon />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary="Join a League"
-                    className={classes.listItem}
-                  />
-                </ListItem>
-              </Fragment>
-            )}
-          </List>
-        </Drawer>
+              {drawer}
+            </Drawer>
+          </Hidden>
+          <Hidden mdDown implementation="css">
+            <Drawer
+              classes={{ paper: classes.drawerPaper }}
+              variant="permanent"
+              open
+            >
+              {drawer}
+            </Drawer>
+          </Hidden>
+        </nav>
         <main className={classes.content}>
           <div className={classes.toolbar} />
           {auth ? <LoggedInRoutes /> : <LoggedOutRoutes />}

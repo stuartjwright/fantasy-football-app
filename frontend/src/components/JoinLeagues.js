@@ -10,12 +10,25 @@ import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import { getRegisteringLeagues, joinLeague } from '../requests/LeagueRequests'
+import { useHistory } from 'react-router-dom'
+import CheckCircleIcon from '@material-ui/icons/CheckCircle'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   table: {
     minWidth: 600
+  },
+  button: { width: 200, margin: theme.spacing(2) },
+  paper: {
+    width: 500,
+    margin: theme.spacing(1),
+    padding: theme.spacing(3),
+    display: 'flex'
+  },
+  icon: {
+    marginRight: theme.spacing(2),
+    color: theme.palette.primary.main
   }
-})
+}))
 
 const JoinLeagues = () => {
   const classes = useStyles()
@@ -25,6 +38,7 @@ const JoinLeagues = () => {
   const [leagueName, setLeagueName] = useState('')
   const [leagues, setLeagues] = useState([])
   const [trigger, setTrigger] = useState(true)
+  const [leagueId, setLeagueId] = useState(null)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,11 +51,12 @@ const JoinLeagues = () => {
 
   const handleRegistration = leagueId => async () => {
     setIsWaiting(true)
-    const league = await joinLeague(leagueId)
-    if (!league) {
+    const data = await joinLeague(leagueId)
+    if (!data.league) {
       setIsWaiting(false)
     } else {
-      setLeagueName(league.leagueName)
+      setLeagueName(data.league.leagueName)
+      setLeagueId(data.league._id)
       setIsJoined(true)
     }
   }
@@ -58,6 +73,8 @@ const JoinLeagues = () => {
       setLeagueName={setLeagueName}
       setTrigger={setTrigger}
       trigger={trigger}
+      leagueId={leagueId}
+      setLeagueId={setLeagueId}
     />
   ) : (
     <Fragment>
@@ -67,16 +84,22 @@ const JoinLeagues = () => {
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="right"></TableCell>
               <TableCell>League Name</TableCell>
               <TableCell>Owner</TableCell>
               <TableCell align="right">Players Registered</TableCell>
               <TableCell align="right">Max Players</TableCell>
+              <TableCell align="right"></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {leagues.map(league => (
               <TableRow key={league._id}>
+                <TableCell component="th" scope="row">
+                  {league.leagueName}
+                </TableCell>
+                <TableCell>{league.creator.username}</TableCell>
+                <TableCell align="right">{league.numRegistered}</TableCell>
+                <TableCell align="right">{league.maxEntrants}</TableCell>
                 <TableCell align="right">
                   <Button
                     disabled={isWaiting ? true : false}
@@ -87,12 +110,6 @@ const JoinLeagues = () => {
                     Join
                   </Button>
                 </TableCell>
-                <TableCell component="th" scope="row">
-                  {league.leagueName}
-                </TableCell>
-                <TableCell>{league.creator.username}</TableCell>
-                <TableCell align="right">{league.numRegistered}</TableCell>
-                <TableCell align="right">{league.maxEntrants}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -110,9 +127,12 @@ const LeagueJoined = ({
   setLeagueName,
   setLeagues,
   trigger,
-  setTrigger
+  setTrigger,
+  leagueId,
+  setLeagueId
 }) => {
   const classes = useStyles()
+  const history = useHistory()
 
   const reset = () => {
     setIsJoined(false)
@@ -121,15 +141,38 @@ const LeagueJoined = ({
     setLeagueName('')
     setLeagues([])
     setTrigger(!trigger)
+    setLeagueId(null)
+  }
+
+  const goToLeague = leagueId => () => {
+    history.push(`/myleagues/${leagueId}`)
   }
 
   return (
-    <form className={classes.root}>
-      <Typography>League {leagueName} successfully joined.</Typography>
-      <Button variant="contained" color="secondary" onClick={reset}>
-        Back
-      </Button>
-    </form>
+    <>
+      <Paper className={classes.paper}>
+        <CheckCircleIcon className={classes.icon} />
+        <Typography>Successfully joined league {leagueName}.</Typography>
+      </Paper>
+      <form>
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={reset}
+          className={classes.button}
+        >
+          Back
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={goToLeague(leagueId)}
+          className={classes.button}
+        >
+          Go To League
+        </Button>
+      </form>
+    </>
   )
 }
 

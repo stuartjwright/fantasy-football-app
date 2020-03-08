@@ -13,7 +13,9 @@ import ListItemText from '@material-ui/core/ListItemText'
 const useStyles = makeStyles(theme => ({
   iconLarge: {
     color: theme.palette.primary.main,
-    margin: 100,
+    marginLeft: 100,
+    marginTop: 50,
+    marginBottom: 25,
     width: 200,
     height: 200
   },
