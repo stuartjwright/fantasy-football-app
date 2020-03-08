@@ -51,7 +51,7 @@ const AuctionOpeningBid = () => {
 
   return (
     <MaterialTable
-      title="Available Players"
+      title="Select a Player"
       columns={[
         { title: 'Name', field: 'name' },
         { title: 'Team', field: 'team' },

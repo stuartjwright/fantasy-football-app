@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { LeagueStateContext } from '../../contexts/LeagueContext'
-// import AuctionStatus from './AuctionStatus'
+import AuctionNotReady from './AuctionNotReady'
 import AuctionReady from './AuctionReady'
 import AuctionLive from './AuctionLive'
 import AuctionItemSold from './AuctionItemSold'
@@ -10,13 +10,12 @@ const AuctionHome = () => {
   const { status, itemSold } = league
 
   return (
-    <div>
-      {/* <p>Auction Page - {league.leagueName}</p>
-      <AuctionStatus /> */}
+    <>
+      {status === 'registering' && <AuctionNotReady />}
       {status === 'ready' && <AuctionReady />}
       {status === 'auction' && !itemSold && <AuctionLive />}
       {status === 'auction' && itemSold && <AuctionItemSold />}
-    </div>
+    </>
   )
 }
 
