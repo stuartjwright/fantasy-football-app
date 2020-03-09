@@ -3,7 +3,7 @@ import {
   getOneEvent,
   getAllEvents,
   createEvent,
-  updateEventPoints
+  simulateEvent
 } from './event.controllers'
 
 const router = Router()
@@ -11,6 +11,6 @@ const router = Router()
 router.get('/:eventId', getOneEvent)
 router.get('/', getAllEvents)
 router.post('/', createEvent)
-router.put('/', updateEventPoints)
+router.put('/', simulateEvent)
 
 export default router

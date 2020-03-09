@@ -1,5 +1,5 @@
 import { Event } from './event.model'
-import { getInitialPlayers, addRandomPlayerPoints } from './utils/eventPlayers'
+import { getInitialPlayers, startSimulation } from './utils/eventPlayers'
 
 export const getOneEvent = async (req, res) => {
   try {
@@ -50,11 +50,11 @@ export const createEvent = async (req, res) => {
   }
 }
 
-export const updateEventPoints = async (req, res) => {
+export const simulateEvent = async (req, res) => {
   try {
     const { eventId } = req.body
-    const event = await addRandomPlayerPoints(eventId)
-    res.status(201).json({ event })
+    startSimulation(eventId)
+    res.status(201).json({ message: 'Simulation started' })
   } catch (e) {
     console.error(e)
     res.status(400).end()
