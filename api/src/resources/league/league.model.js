@@ -7,7 +7,14 @@ const leagueSchema = new mongoose.Schema(
   {
     status: {
       type: String,
-      enum: ['registering', 'ready', 'auction', 'locked', 'postauction'],
+      enum: [
+        'registering',
+        'ready',
+        'auction',
+        'locked',
+        'postauction',
+        'complete'
+      ],
       required: true
     },
     creator: {

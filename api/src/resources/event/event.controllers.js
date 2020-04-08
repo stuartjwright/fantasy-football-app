@@ -1,5 +1,5 @@
 import { Event } from './event.model'
-import { getInitialPlayers, startSimulation } from './utils/eventPlayers'
+import { getInitialPlayers, startSimulation } from './utils/playerPoints'
 
 export const getOneEvent = async (req, res) => {
   try {

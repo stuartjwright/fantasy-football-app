@@ -1,5 +1,3 @@
-// Need to do something to make unsuccessful bids not make frontend blowup
-
 export const leagueReducer = (state, action) => {
   switch (action.type) {
     case 'GET_LEAGUE_LOADING': {
@@ -112,6 +110,12 @@ export const leagueReducer = (state, action) => {
         error: null,
         league: action.data,
         countdown: null
+      }
+    }
+    case 'SOCKETIO_UPDATE_POINTS': {
+      return {
+        ...state,
+        league: action.data
       }
     }
     default: {
