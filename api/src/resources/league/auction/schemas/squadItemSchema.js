@@ -24,5 +24,10 @@ export const squadItemSchema = new mongoose.Schema({
   position: {
     type: String,
     required: true
+  },
+  playerId: {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: 'player',
+    required: true
   }
 })

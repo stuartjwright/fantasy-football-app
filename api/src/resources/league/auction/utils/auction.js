@@ -107,7 +107,8 @@ const getUpdatedAuctionUsers = async (
       auctionUsers[i].budget -= winningBid
       auctionUsers[i].squad.push({
         ...player,
-        cost: winningBid
+        cost: winningBid,
+        playerId: playerIdSold
       })
       const { team } = player
       if (hasMaxPerClub(auctionUsers[i].squad, team, maxPerClub)) {
@@ -157,6 +158,7 @@ const updateLeagueAuctionComplete = (league, auctionUsers) => {
         displayName: p.displayName,
         team: p.team,
         position: p.position,
+        playerId: p.playerId,
         points: 0
       }
     })

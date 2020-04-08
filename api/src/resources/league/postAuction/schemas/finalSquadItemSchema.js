@@ -24,5 +24,10 @@ export const finalSquadItemSchema = new mongoose.Schema({
   points: {
     type: Number,
     required: true
+  },
+  playerId: {
+    type: mongoose.SchemaTypes.ObjectId,
+    ref: 'player',
+    required: true
   }
 })

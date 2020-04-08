@@ -76,8 +76,10 @@ const getDefaultEvent = async () => {
 }
 
 leagueSchema.pre('validate', async function() {
-  const event = await getDefaultEvent()
-  this.event = event
+  if (!this.event) {
+    const event = await getDefaultEvent()
+    this.event = event
+  }
 })
 
 leagueSchema.virtual('numRegistered').get(function() {
