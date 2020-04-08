@@ -141,6 +141,31 @@ const updateLeague = (league, auctionUsers, nextUser, status, soldItem) => {
   league.auction.nextUser = nextUser
   league.status = status
   league.auction.soldAuctionItems.push(soldItem)
+  if (league.status === 'postauction') {
+    updateLeagueAuctionComplete(league, auctionUsers)
+    // TODO: maybe delete auction history data at this point if not going to have any use for it
+    console.log('Auction completed, copying final squad data.')
+  }
+}
+
+const updateLeagueAuctionComplete = (league, auctionUsers) => {
+  const postAuctionUsers = auctionUsers.map(u => {
+    const squad = u.squad.map(p => {
+      return {
+        firstName: p.firstName,
+        lastName: p.lastName,
+        displayName: p.displayName,
+        team: p.team,
+        position: p.position,
+        points: 0
+      }
+    })
+    return {
+      user: u.user,
+      squad: squad
+    }
+  })
+  league.postAuctionUsers = postAuctionUsers
 }
 
 const setAuctionItemComplete = async leagueId => {

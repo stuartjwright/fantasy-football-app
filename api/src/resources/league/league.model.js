@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 import { auctionSchema } from './auction/schemas/auctionSchema'
+import { postAuctionUserSchema } from './postAuction/schemas/postAuctionUserSchema'
 import { Event } from '../event/event.model'
 
 const leagueSchema = new mongoose.Schema(
@@ -59,7 +60,12 @@ const leagueSchema = new mongoose.Schema(
     ],
     auction: {
       type: auctionSchema
-    }
+    },
+    postAuctionUsers: [
+      {
+        type: postAuctionUserSchema
+      }
+    ]
   },
   { timestamps: true, toObject: { getters: true }, toJSON: { getters: true } }
 )
