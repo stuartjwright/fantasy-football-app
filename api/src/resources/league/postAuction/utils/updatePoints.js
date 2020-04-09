@@ -13,6 +13,10 @@ export const updateLeaguePoints = async (leagueId, playerPointsLookup) => {
       return {
         _id: u._id,
         user: u.user,
+        points: u.squad.reduce(
+          (acc, p) => acc + playerPointsLookup[p.playerId],
+          0
+        ),
         squad: u.squad.map(p => {
           return {
             _id: p._id,

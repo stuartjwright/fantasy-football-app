@@ -12,7 +12,11 @@ export const postAuctionUserSchema = new mongoose.Schema(
       {
         type: finalSquadItemSchema
       }
-    ]
+    ],
+    points: {
+      type: Number,
+      required: true
+    }
   },
   { timestamps: true }
 )

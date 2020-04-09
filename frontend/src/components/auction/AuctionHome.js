@@ -4,6 +4,7 @@ import AuctionNotReady from './AuctionNotReady'
 import AuctionReady from './AuctionReady'
 import AuctionLive from './AuctionLive'
 import AuctionItemSold from './AuctionItemSold'
+import AuctionFinished from './AuctionFinished'
 
 const AuctionHome = () => {
   const { league } = useContext(LeagueStateContext)
@@ -15,6 +16,9 @@ const AuctionHome = () => {
       {status === 'ready' && <AuctionReady />}
       {status === 'auction' && !itemSold && <AuctionLive />}
       {status === 'auction' && itemSold && <AuctionItemSold />}
+      {(status === 'postauction' || status === 'complete') && (
+        <AuctionFinished />
+      )}
     </>
   )
 }
