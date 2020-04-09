@@ -118,6 +118,12 @@ export const leagueReducer = (state, action) => {
         league: action.data
       }
     }
+    case 'SOCKETIO_FINAL_POINTS': {
+      return {
+        ...state,
+        league: action.data
+      }
+    }
     default: {
       return state
     }

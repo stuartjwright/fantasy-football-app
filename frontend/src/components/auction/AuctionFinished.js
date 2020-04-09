@@ -3,14 +3,13 @@ import { useHistory } from 'react-router-dom'
 
 const AuctionFinished = () => {
   const history = useHistory()
-  const redirect = () => {
-    history.push(history.location.pathname.slice(0, -7))
-  }
-
   useEffect(() => {
+    const redirect = () => {
+      history.push(history.location.pathname.slice(0, -8))
+    }
     const timer = setTimeout(redirect, 3000)
     return () => clearTimeout(timer)
-  }, [])
+  }, [history])
 
   return (
     <div>

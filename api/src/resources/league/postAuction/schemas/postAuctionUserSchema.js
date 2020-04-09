@@ -16,6 +16,10 @@ export const postAuctionUserSchema = new mongoose.Schema(
     points: {
       type: Number,
       required: true
+    },
+    rank: {
+      type: Number,
+      required: true
     }
   },
   { timestamps: true }

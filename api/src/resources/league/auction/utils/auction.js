@@ -159,7 +159,8 @@ const updateLeagueAuctionComplete = (league, auctionUsers) => {
         team: p.team,
         position: p.position,
         playerId: p.playerId,
-        points: 0
+        points: 0,
+        rank: 1
       }
     })
     return {

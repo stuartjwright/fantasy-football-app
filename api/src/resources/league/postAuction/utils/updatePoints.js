@@ -9,7 +9,7 @@ export const updateLeaguePoints = async (leagueId, playerPointsLookup) => {
       status: 'postauction'
     }).exec()
     let { postAuctionUsers } = league
-    const updated = postAuctionUsers.map(u => {
+    const updatedUsers = postAuctionUsers.map(u => {
       return {
         _id: u._id,
         user: u.user,
@@ -32,7 +32,12 @@ export const updateLeaguePoints = async (leagueId, playerPointsLookup) => {
       }
     })
 
-    league.postAuctionUsers = updated
+    const allPoints = updatedUsers.map(u => u.points)
+    updatedUsers.forEach((u, i) => {
+      updatedUsers[i].rank = allPoints.filter(p => p > u.points).length + 1
+    })
+    console.log(updatedUsers)
+    league.postAuctionUsers = updatedUsers
     await league.save()
     socketIO.to(leagueId).emit('update points', league)
   } catch (e) {
@@ -53,7 +58,7 @@ export const setFinalLeaguePoints = async leagueId => {
     socketIO.to(leagueId).emit('final points', league)
 
     // TODO: Delete this, just saves work while testing
-    League.findByIdAndUpdate(
+    await League.findByIdAndUpdate(
       leagueId,
       { status: 'postauction' },
       { useFindAndModify: false }
