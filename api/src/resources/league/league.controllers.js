@@ -13,6 +13,7 @@ export const getOneLeague = async (req, res) => {
       .populate({ path: 'creator users', select: 'username' })
       .populate('auction.liveAuctionItem.player')
       .populate('users', 'username')
+      .populate('event')
       .exec()
 
     if (!league) {

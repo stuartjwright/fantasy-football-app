@@ -36,7 +36,6 @@ export const updateLeaguePoints = async (leagueId, playerPointsLookup) => {
     updatedUsers.forEach((u, i) => {
       updatedUsers[i].rank = allPoints.filter(p => p > u.points).length + 1
     })
-    console.log(updatedUsers)
     league.postAuctionUsers = updatedUsers
     await league.save()
     socketIO.to(leagueId).emit('update points', league)
