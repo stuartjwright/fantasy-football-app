@@ -7,7 +7,10 @@ export const updateLeaguePoints = async (leagueId, playerPointsLookup) => {
     let league = await League.findOne({
       _id: leagueId,
       status: 'postauction'
-    }).exec()
+    })
+      .populate('users', 'username')
+      .populate('event')
+      .exec()
     let { postAuctionUsers } = league
     const updatedUsers = postAuctionUsers.map(u => {
       return {
@@ -54,6 +57,8 @@ export const setFinalLeaguePoints = async leagueId => {
       },
       { new: true, useFindAndModify: false }
     )
+      .populate('users', 'username')
+      .populate('event')
     socketIO.to(leagueId).emit('final points', league)
 
     // TODO: Delete this, just saves work while testing

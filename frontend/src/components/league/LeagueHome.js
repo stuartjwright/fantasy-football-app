@@ -21,8 +21,6 @@ const LeagueHome = () => {
     league: { status }
   } = state
 
-  console.log(status)
-
   return (
     <div>
       <Typography className={classes.header} variant="h6">
@@ -31,8 +29,9 @@ const LeagueHome = () => {
       {status === 'registering' && <LeagueRegistering />}
       {status === 'ready' && <LeagueReady />}
       {status === 'auction' && <LeagueAuction />}
-      {status === 'postauction' && <LeaguePostAuction />}
-      {status === 'complete' && <LeagueComplete />}
+      {(status === 'postauction' || status === 'complete') && (
+        <LeaguePostAuction />
+      )}
     </div>
   )
 }
