@@ -1,39 +1,38 @@
 import React, { useContext } from 'react'
-import { useHistory } from 'react-router-dom'
 import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
 import { LeagueStateContext } from '../../contexts/LeagueContext'
 import LeagueRegistering from './LeagueRegistering'
 import LeagueReady from './LeagueReady'
 import LeagueAuction from './LeagueAuction'
 import LeaguePostAuction from './LeaguePostAuction'
 import LeagueComplete from './LeagueComplete'
+import { makeStyles } from '@material-ui/core/styles'
+
+const useStyles = makeStyles(theme => ({
+  header: {
+    marginBottom: 20
+  }
+}))
 
 const LeagueHome = () => {
   const state = useContext(LeagueStateContext)
-  const history = useHistory()
+  const classes = useStyles()
   const {
-    league: { status, leagueName }
+    league: { status }
   } = state
-
-  const goToAuction = () => {
-    history.push(history.location.pathname + '/auction')
-  }
 
   console.log(status)
 
   return (
     <div>
-      <Typography variant="h6">League Home: {leagueName}</Typography>
+      <Typography className={classes.header} variant="h6">
+        League Home
+      </Typography>
       {status === 'registering' && <LeagueRegistering />}
       {status === 'ready' && <LeagueReady />}
       {status === 'auction' && <LeagueAuction />}
       {status === 'postauction' && <LeaguePostAuction />}
       {status === 'complete' && <LeagueComplete />}
-
-      <Button variant="contained" color="primary" onClick={goToAuction}>
-        Go To Auction
-      </Button>
     </div>
   )
 }
