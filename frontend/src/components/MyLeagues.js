@@ -63,7 +63,10 @@ const MyLeagues = () => {
                   {league.leagueName}
                 </TableCell>
                 <TableCell>{league.creator.username}</TableCell>
-                <TableCell>{league.status}</TableCell>
+                <TableCell>
+                  {league.status.charAt(0).toUpperCase() +
+                    league.status.slice(1)}
+                </TableCell>
                 <TableCell align="right">{league.numRegistered}</TableCell>
                 <TableCell align="right">{league.maxEntrants}</TableCell>
                 <TableCell align="right">
