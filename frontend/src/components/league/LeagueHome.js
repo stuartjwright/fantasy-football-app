@@ -5,7 +5,7 @@ import LeagueRegistering from './LeagueRegistering'
 import LeagueReady from './LeagueReady'
 import LeagueAuction from './LeagueAuction'
 import LeaguePostAuction from './LeaguePostAuction'
-import LeagueComplete from './LeagueComplete'
+// import LeagueComplete from './LeagueComplete'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({

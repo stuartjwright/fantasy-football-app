@@ -3,7 +3,7 @@ import rootUrl from '../constants/rootUrl'
 
 const apiUrl = rootUrl + 'api/league/'
 
-export const createLeague = async leagueName => {
+export const createLeague = async params => {
   const token = localStorage.getItem('token')
   const url = apiUrl
   if (!token) {
@@ -11,13 +11,9 @@ export const createLeague = async leagueName => {
   }
 
   try {
-    const res = await axios.post(
-      url,
-      { leagueName },
-      {
-        headers: { Authorization: `Bearer ${token}` }
-      }
-    )
+    const res = await axios.post(url, params, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
     return res.data
   } catch (e) {
     return null
