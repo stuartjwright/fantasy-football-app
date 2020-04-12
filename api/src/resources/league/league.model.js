@@ -13,7 +13,8 @@ const leagueSchema = new mongoose.Schema(
         'auction',
         'locked',
         'postauction',
-        'complete'
+        'complete',
+        'cancelled'
       ],
       required: true
     },

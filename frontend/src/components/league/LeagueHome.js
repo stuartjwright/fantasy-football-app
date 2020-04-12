@@ -5,8 +5,8 @@ import LeagueRegistering from './LeagueRegistering'
 import LeagueReady from './LeagueReady'
 import LeagueAuction from './LeagueAuction'
 import LeaguePostAuction from './LeaguePostAuction'
-// import LeagueComplete from './LeagueComplete'
 import { makeStyles } from '@material-ui/core/styles'
+import LeagueCancelled from './LeagueCancelled'
 
 const useStyles = makeStyles(theme => ({
   header: {
@@ -32,6 +32,7 @@ const LeagueHome = () => {
       {(status === 'postauction' || status === 'complete') && (
         <LeaguePostAuction />
       )}
+      {status === 'cancelled' && <LeagueCancelled />}
     </div>
   )
 }

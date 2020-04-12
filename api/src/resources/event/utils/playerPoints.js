@@ -61,6 +61,17 @@ export const startSimulation = async eventId => {
     if (!event) {
       throw new Error('Could not find event to simulate')
     }
+
+    const leaguesToCancel = await League.find({
+      event: eventId,
+      status: { $in: ['registering', 'ready', 'auction', 'locked'] }
+    })
+    leaguesToCancel.forEach(async league => {
+      console.log(`Cancelling league ${league._id}`)
+      league.status = 'cancelled'
+      await league.save()
+    })
+
     const leagues = await League.find(
       { event: eventId, status: 'postauction' },
       'id users'
@@ -86,7 +97,7 @@ export const startSimulation = async eventId => {
         leagueIds.forEach(leagueId => setFinalLeaguePoints(leagueId))
 
         // TODO: Delete this, just saves testing work for now
-        event = await resetEvent(eventId)
+        // event = await resetEvent(eventId)
       }
     }, interval)
   } catch (e) {

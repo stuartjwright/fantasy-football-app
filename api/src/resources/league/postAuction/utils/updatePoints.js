@@ -62,11 +62,11 @@ export const setFinalLeaguePoints = async leagueId => {
     socketIO.to(leagueId).emit('final points', league)
 
     // TODO: Delete this, just saves work while testing
-    await League.findByIdAndUpdate(
-      leagueId,
-      { status: 'postauction' },
-      { useFindAndModify: false }
-    )
+    // await League.findByIdAndUpdate(
+    //   leagueId,
+    //   { status: 'postauction' },
+    //   { useFindAndModify: false }
+    // )
   } catch (e) {
     console.error(e)
   }

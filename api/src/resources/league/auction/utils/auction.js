@@ -159,14 +159,14 @@ const updateLeagueAuctionComplete = (league, auctionUsers) => {
         team: p.team,
         position: p.position,
         playerId: p.playerId,
-        points: 0,
-        rank: 1
+        points: 0
       }
     })
     return {
       user: u.user,
       squad: squad,
-      points: 0
+      points: 0,
+      rank: 1
     }
   })
   league.postAuctionUsers = postAuctionUsers
