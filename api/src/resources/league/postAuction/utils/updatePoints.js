@@ -1,7 +1,11 @@
 import { League } from '../../league.model'
 import { nsp as socketIO } from '../../../../server'
 
-export const updateLeaguePoints = async (leagueId, playerPointsLookup) => {
+export const updateLeaguePoints = async (
+  leagueId,
+  playerPointsLookup,
+  playerTrendLookup
+) => {
   try {
     console.log(`Updating league ${leagueId}`)
     let league = await League.findOne({
@@ -20,6 +24,7 @@ export const updateLeaguePoints = async (leagueId, playerPointsLookup) => {
           (acc, p) => acc + playerPointsLookup[p.playerId],
           0
         ),
+        rank: u.rank,
         squad: u.squad.map(p => {
           return {
             _id: p._id,
@@ -29,7 +34,8 @@ export const updateLeaguePoints = async (leagueId, playerPointsLookup) => {
             team: p.team,
             position: p.position,
             playerId: p.playerId,
-            points: playerPointsLookup[p.playerId]
+            points: playerPointsLookup[p.playerId],
+            trend: playerTrendLookup[p.playerId]
           }
         })
       }
@@ -37,8 +43,12 @@ export const updateLeaguePoints = async (leagueId, playerPointsLookup) => {
 
     const allPoints = updatedUsers.map(u => u.points)
     updatedUsers.forEach((u, i) => {
-      updatedUsers[i].rank = allPoints.filter(p => p > u.points).length + 1
+      const prevRank = updatedUsers[i].rank || 1
+      const newRank = allPoints.filter(p => p > u.points).length + 1
+      updatedUsers[i].trend = newRank - prevRank
+      updatedUsers[i].rank = newRank
     })
+
     league.postAuctionUsers = updatedUsers
     await league.save()
     socketIO.to(leagueId).emit('update points', league)
@@ -60,13 +70,6 @@ export const setFinalLeaguePoints = async leagueId => {
       .populate('users', 'username')
       .populate('event')
     socketIO.to(leagueId).emit('final points', league)
-
-    // TODO: Delete this, just saves work while testing
-    // await League.findByIdAndUpdate(
-    //   leagueId,
-    //   { status: 'postauction' },
-    //   { useFindAndModify: false }
-    // )
   } catch (e) {
     console.error(e)
   }

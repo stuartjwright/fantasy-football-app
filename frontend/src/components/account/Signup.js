@@ -36,7 +36,7 @@ export default () => {
   const [password1Error, setPassword1Error] = useState('')
   const [password2Error, setPassword2Error] = useState('')
   const [authError, setAuthError] = useState('')
-  const isValidUsername = () => username.length >= 4 && username.length <= 16
+  const isValidUsername = () => username.length >= 3 && username.length <= 16
   const isValidPassword = () => password1.length > 0
   const isPasswordMatch = () => password1 === password2
   const { setState } = useAuthState()
@@ -78,7 +78,7 @@ export default () => {
     }
 
     if (!isValidUsername()) {
-      setUsernameError('Must be 4-16 characters')
+      setUsernameError('Must be 3-16 characters')
     }
     if (!isValidPassword()) {
       setPassword1Error('Required')

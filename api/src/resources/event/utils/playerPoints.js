@@ -18,11 +18,16 @@ export const getInitialPlayers = async () => {
 const addRandomPlayerPoints = async eventId => {
   let event = await Event.findById(eventId).exec()
   const { playerPoints } = event
-  const updatedPlayerPoints = playerPoints.map(p => ({
-    _id: p._id,
-    player: p.player,
-    points: p.points + Math.floor(Math.random() * 5 + 1)
-  }))
+  const updatedPlayerPoints = playerPoints.map(p => {
+    const newPoints =
+      Math.random() < 0.75 ? 0 : Math.floor(Math.random() * 12) - 3
+    return {
+      _id: p._id,
+      player: p.player,
+      points: p.points + newPoints,
+      trend: newPoints
+    }
+  })
   event.playerPoints = updatedPlayerPoints
   await event.save()
   return event
@@ -71,7 +76,7 @@ export const startSimulation = async eventId => {
     ).exec()
     const leagueIds = leagues.map(l => l.id)
     const interval = 3000 // update every 3 seconds, can probs make this a little higher
-    let numUpdates = 4 // num times points updates come through, would be higher in reality but 4 fine for now
+    let numUpdates = 20 // num times points updates come through, would be higher in reality but 4 fine for now
     event = await startEvent(eventId)
     console.log('Simulation started')
     const countdown = setInterval(async () => {
@@ -80,17 +85,16 @@ export const startSimulation = async eventId => {
       const { playerPoints } = event
       let playerPointsLookup = {}
       playerPoints.forEach(p => (playerPointsLookup[p.player] = p.points))
+      let playerTrendLookup = {}
+      playerPoints.forEach(p => (playerTrendLookup[p.player] = p.trend))
       leagueIds.forEach(leagueId =>
-        updateLeaguePoints(leagueId, playerPointsLookup)
+        updateLeaguePoints(leagueId, playerPointsLookup, playerTrendLookup)
       )
       if (numUpdates <= 0) {
         clearInterval(countdown)
         event = await setEventComplete(eventId)
         console.log('Event Complete')
         leagueIds.forEach(leagueId => setFinalLeaguePoints(leagueId))
-
-        //TODO: Delete this, just saves testing work for now
-        event = await resetEvent(eventId)
       }
     }, interval)
   } catch (e) {

@@ -33,7 +33,7 @@ const Login = () => {
   const [usernameError, setUsernameError] = useState('')
   const [passwordError, setPasswordError] = useState('')
   const [authError, setAuthError] = useState('')
-  const isValidUsername = () => username.length >= 4 && username.length <= 16
+  const isValidUsername = () => username.length >= 3 && username.length <= 16
   const isValidPassword = () => password.length > 0
   const { setState } = useAuthState()
 
@@ -67,7 +67,7 @@ const Login = () => {
       }
     }
     if (!isValidUsername()) {
-      setUsernameError('Must be 4-16 characters')
+      setUsernameError('Must be 3-16 characters')
     }
     if (!isValidPassword()) {
       setPasswordError('Required')

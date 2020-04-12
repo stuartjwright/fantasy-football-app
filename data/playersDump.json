@@ -1,0 +1,619 @@
+{"_id":{"$oid":"5e446596cc1bf108ecfec6ed"},"firstName":"Shkodran","lastName":"Mustafi","displayName":"Mustafi","team":"Arsenal","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec6ee"},"firstName":"Héctor","lastName":"Bellerín","displayName":"Bellerín","team":"Arsenal","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec6ef"},"firstName":"Sead","lastName":"Kolasinac","displayName":"Kolasinac","team":"Arsenal","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec6f0"},"firstName":"Ainsley","lastName":"Maitland-Niles","displayName":"Maitland-Niles","team":"Arsenal","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec6f1"},"firstName":"Sokratis","lastName":"Papastathopoulos","displayName":"Sokratis","team":"Arsenal","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec6f2"},"firstName":"Nacho","lastName":"Monreal","displayName":"Monreal","team":"Arsenal","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec6f3"},"firstName":"Laurent","lastName":"Koscielny","displayName":"Koscielny","team":"Arsenal","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec6f4"},"firstName":"Konstantinos","lastName":"Mavropanos","displayName":"Mavropanos","team":"Arsenal","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec6f5"},"firstName":"Carl","lastName":"Jenkinson","displayName":"Jenkinson","team":"Arsenal","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec6f6"},"firstName":"Rob","lastName":"Holding","displayName":"Holding","team":"Arsenal","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec6f7"},"firstName":"Pierre-Emerick","lastName":"Aubameyang","displayName":"Aubameyang","team":"Arsenal","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec6f8"},"firstName":"Alexandre","lastName":"Lacazette","displayName":"Lacazette","team":"Arsenal","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec6f9"},"firstName":"Edward","lastName":"Nketiah","displayName":"Nketiah","team":"Arsenal","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec6fa"},"firstName":"Bernd","lastName":"Leno","displayName":"Leno","team":"Arsenal","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec6fb"},"firstName":"Mesut","lastName":"Özil","displayName":"Özil","team":"Arsenal","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec6fc"},"firstName":"Henrikh","lastName":"Mkhitaryan","displayName":"Mkhitaryan","team":"Arsenal","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec6fd"},"firstName":"Granit","lastName":"Xhaka","displayName":"Xhaka","team":"Arsenal","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec6fe"},"firstName":"Lucas","lastName":"Torreira","displayName":"Torreira","team":"Arsenal","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec6ff"},"firstName":"Mohamed","lastName":"Elneny","displayName":"Elneny","team":"Arsenal","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec700"},"firstName":"Matteo","lastName":"Guendouzi","displayName":"Guendouzi","team":"Arsenal","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec701"},"firstName":"David","lastName":"Luiz Moreira Marinho","displayName":"David Luiz","team":"Arsenal","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec702"},"firstName":"Emiliano","lastName":"Martínez","displayName":"Martínez","team":"Arsenal","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec703"},"firstName":"Calum","lastName":"Chambers","displayName":"Chambers","team":"Arsenal","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec704"},"firstName":"Daniel","lastName":"Ceballos Fernández","displayName":"Ceballos","team":"Arsenal","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec705"},"firstName":"Cédric","lastName":"Soares","displayName":"Cédric","team":"Arsenal","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec706"},"firstName":"Nicolas","lastName":"Pépé","displayName":"Pépé","team":"Arsenal","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec707"},"firstName":"Reiss","lastName":"Nelson","displayName":"Nelson","team":"Arsenal","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec708"},"firstName":"Joseph","lastName":"Willock","displayName":"Willock","team":"Arsenal","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec709"},"firstName":"Gabriel Teodoro","lastName":"Martinelli Silva","displayName":"Martinelli","team":"Arsenal","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec70a"},"firstName":"Kieran","lastName":"Tierney","displayName":"Tierney","team":"Arsenal","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec70b"},"firstName":"Bukayo","lastName":"Saka","displayName":"Saka","team":"Arsenal","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec70c"},"firstName":"Emile","lastName":"Smith Rowe","displayName":"Smith Rowe","team":"Arsenal","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec70d"},"firstName":"Tyreece","lastName":"John-Jules","displayName":"John-Jules","team":"Arsenal","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec70e"},"firstName":"Pablo","lastName":"Marí","displayName":"Marí","team":"Arsenal","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec70f"},"firstName":"Ahmed","lastName":"El Mohamady","displayName":"El Mohamady","team":"Aston Villa","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec710"},"firstName":"James","lastName":"Chester","displayName":"Chester","team":"Aston Villa","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec711"},"firstName":"Neil","lastName":"Taylor","displayName":"Taylor","team":"Aston Villa","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec712"},"firstName":"Kortney","lastName":"Hause","displayName":"Hause","team":"Aston Villa","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec713"},"firstName":"Jonathan","lastName":"Kodjia","displayName":"Kodjia","team":"Aston Villa","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec714"},"firstName":"Ørjan","lastName":"Nyland","displayName":"Nyland","team":"Aston Villa","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec715"},"firstName":"Conor","lastName":"Hourihane","displayName":"Hourihane","team":"Aston Villa","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec716"},"firstName":"Jack","lastName":"Grealish","displayName":"Grealish","team":"Aston Villa","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec717"},"firstName":"Anwar","lastName":"El Ghazi","displayName":"El Ghazi","team":"Aston Villa","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec718"},"firstName":"John","lastName":"McGinn","displayName":"McGinn","team":"Aston Villa","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec719"},"firstName":"Andre","lastName":"Green","displayName":"Green","team":"Aston Villa","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec71a"},"firstName":"Birkir","lastName":"Bjarnason","displayName":"Bjarnason","team":"Aston Villa","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec71b"},"firstName":"Keinan","lastName":"Davis","displayName":"Davis","team":"Aston Villa","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec71c"},"firstName":"Henri","lastName":"Lansbury","displayName":"Lansbury","team":"Aston Villa","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec71d"},"firstName":"José Ignacio","lastName":"Peleteiro Romallo","displayName":"Jota","team":"Aston Villa","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec71e"},"firstName":"Tom","lastName":"Heaton","displayName":"Heaton","team":"Aston Villa","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec71f"},"firstName":"Daniel","lastName":"Drinkwater","displayName":"Drinkwater","team":"Aston Villa","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec720"},"firstName":"Matt","lastName":"Targett","displayName":"Targett","team":"Aston Villa","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec721"},"firstName":"Wesley","lastName":"Moraes","displayName":"Wesley","team":"Aston Villa","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec722"},"firstName":"Jed","lastName":"Steer","displayName":"Steer","team":"Aston Villa","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec723"},"firstName":"Tyrone","lastName":"Mings","displayName":"Mings","team":"Aston Villa","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec724"},"firstName":"Ezri","lastName":"Konsa Ngoyo","displayName":"Konsa","team":"Aston Villa","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec725"},"firstName":"Bjorn","lastName":"Engels","displayName":"Engels","team":"Aston Villa","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec726"},"firstName":"Frédéric","lastName":"Guilbert","displayName":"Guilbert","team":"Aston Villa","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec727"},"firstName":"Mahmoud Ahmed","lastName":"Ibrahim Hassan","displayName":"Trézéguet","team":"Aston Villa","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec728"},"firstName":"Douglas Luiz","lastName":"Soares de Paulo","displayName":"Douglas Luiz","team":"Aston Villa","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec729"},"firstName":"Lovre","lastName":"Kalinic","displayName":"Kalinic","team":"Aston Villa","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec72a"},"firstName":"Marvelous","lastName":"Nakamba","displayName":"Nakamba","team":"Aston Villa","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec72b"},"firstName":"Indiana","lastName":"Vassilev","displayName":"Vassilev","team":"Aston Villa","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec72c"},"firstName":"José","lastName":"Reina","displayName":"Reina","team":"Aston Villa","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec72d"},"firstName":"Mbwana","lastName":"Samatta","displayName":"Samatta","team":"Aston Villa","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec72e"},"firstName":"Steve","lastName":"Cook","displayName":"Steve Cook","team":"Bournemouth","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec72f"},"firstName":"Nathan","lastName":"Aké","displayName":"Aké","team":"Bournemouth","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec730"},"firstName":"Charlie","lastName":"Daniels","displayName":"Daniels","team":"Bournemouth","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec731"},"firstName":"Chris","lastName":"Mepham","displayName":"Mepham","team":"Bournemouth","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec732"},"firstName":"Simon","lastName":"Francis","displayName":"Francis","team":"Bournemouth","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec733"},"firstName":"Adam","lastName":"Smith","displayName":"Adam Smith","team":"Bournemouth","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec734"},"firstName":"Lloyd","lastName":"Kelly","displayName":"Kelly","team":"Bournemouth","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec735"},"firstName":"Diego","lastName":"Rico","displayName":"Rico","team":"Bournemouth","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec736"},"firstName":"Jack","lastName":"Simpson","displayName":"Simpson","team":"Bournemouth","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec737"},"firstName":"Callum","lastName":"Wilson","displayName":"Callum Wilson","team":"Bournemouth","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec738"},"firstName":"Joshua","lastName":"King","displayName":"King","team":"Bournemouth","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec739"},"firstName":"Dominic","lastName":"Solanke","displayName":"Solanke","team":"Bournemouth","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec73a"},"firstName":"Sam","lastName":"Surridge","displayName":"Surridge","team":"Bournemouth","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec73b"},"firstName":"Asmir","lastName":"Begovic","displayName":"Begovic","team":"Bournemouth","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec73c"},"firstName":"Artur","lastName":"Boruc","displayName":"Boruc","team":"Bournemouth","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec73d"},"firstName":"Mark","lastName":"Travers","displayName":"Travers","team":"Bournemouth","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec73e"},"firstName":"Ryan","lastName":"Fraser","displayName":"Fraser","team":"Bournemouth","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec73f"},"firstName":"David","lastName":"Brooks","displayName":"Brooks","team":"Bournemouth","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec740"},"firstName":"Junior","lastName":"Stanislas","displayName":"Stanislas","team":"Bournemouth","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec741"},"firstName":"Jordon","lastName":"Ibe","displayName":"Ibe","team":"Bournemouth","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec742"},"firstName":"Lewis","lastName":"Cook","displayName":"Lewis Cook","team":"Bournemouth","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec743"},"firstName":"Andrew","lastName":"Surman","displayName":"Surman","team":"Bournemouth","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec744"},"firstName":"Dan","lastName":"Gosling","displayName":"Gosling","team":"Bournemouth","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec745"},"firstName":"Jefferson","lastName":"Lerma","displayName":"Lerma","team":"Bournemouth","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec746"},"firstName":"Jack","lastName":"Stacey","displayName":"Stacey","team":"Bournemouth","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec747"},"firstName":"Philip","lastName":"Billing","displayName":"Billing","team":"Bournemouth","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec748"},"firstName":"Arnaut","lastName":"Danjuma Groeneveld","displayName":"Danjuma","team":"Bournemouth","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec749"},"firstName":"Aaron","lastName":"Ramsdale","displayName":"Ramsdale","team":"Bournemouth","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec74a"},"firstName":"Harry","lastName":"Wilson","displayName":"Harry Wilson","team":"Bournemouth","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec74b"},"firstName":"Christian","lastName":"Saydee","displayName":"Saydee","team":"Bournemouth","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec74c"},"firstName":"Gavin","lastName":"Kilkenny","displayName":"Kilkenny","team":"Bournemouth","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec74d"},"firstName":"Mihai-Alexandru","lastName":"Dobre","displayName":"Dobre","team":"Bournemouth","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec74e"},"firstName":"Shane","lastName":"Duffy","displayName":"Duffy","team":"Brighton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec74f"},"firstName":"Martín","lastName":"Montoya","displayName":"Montoya","team":"Brighton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec750"},"firstName":"Bernardo","lastName":"Fernandes da Silva Junior","displayName":"Bernardo","team":"Brighton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec751"},"firstName":"Leon","lastName":"Balogun","displayName":"Balogun","team":"Brighton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec752"},"firstName":"Gaëtan","lastName":"Bong","displayName":"Bong","team":"Brighton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec753"},"firstName":"Lewis","lastName":"Dunk","displayName":"Dunk","team":"Brighton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec754"},"firstName":"Matthew","lastName":"Clarke","displayName":"Clarke","team":"Brighton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec755"},"firstName":"Glenn","lastName":"Murray","displayName":"Murray","team":"Brighton","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec756"},"firstName":"Jürgen","lastName":"Locadia","displayName":"Locadia","team":"Brighton","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec757"},"firstName":"Florin","lastName":"Andone","displayName":"Andone","team":"Brighton","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec758"},"firstName":"Mathew","lastName":"Ryan","displayName":"Ryan","team":"Brighton","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec759"},"firstName":"David","lastName":"Button","displayName":"Button","team":"Brighton","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec75a"},"firstName":"Pascal","lastName":"Groß","displayName":"Groß","team":"Brighton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec75b"},"firstName":"Alireza","lastName":"Jahanbakhsh","displayName":"Jahanbakhsh","team":"Brighton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec75c"},"firstName":"José Heriberto","lastName":"Izquierdo Mena","displayName":"Izquierdo","team":"Brighton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec75d"},"firstName":"Anthony","lastName":"Knockaert","displayName":"Knockaert","team":"Brighton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec75e"},"firstName":"Yves","lastName":"Bissouma","displayName":"Bissouma","team":"Brighton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec75f"},"firstName":"Davy","lastName":"Pröpper","displayName":"Pröpper","team":"Brighton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec760"},"firstName":"Solomon","lastName":"March","displayName":"March","team":"Brighton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec761"},"firstName":"Beram","lastName":"Kayal","displayName":"Kayal","team":"Brighton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec762"},"firstName":"Dale","lastName":"Stephens","displayName":"Stephens","team":"Brighton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec763"},"firstName":"Leandro","lastName":"Trossard","displayName":"Trossard","team":"Brighton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec764"},"firstName":"Dan","lastName":"Burn","displayName":"Burn","team":"Brighton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec765"},"firstName":"Adam","lastName":"Webster","displayName":"Webster","team":"Brighton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec766"},"firstName":"Neal","lastName":"Maupay","displayName":"Maupay","team":"Brighton","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec767"},"firstName":"Aaron","lastName":"Mooy","displayName":"Mooy","team":"Brighton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec768"},"firstName":"Aaron","lastName":"Connolly","displayName":"Connolly","team":"Brighton","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec769"},"firstName":"Tudor","lastName":"Baluta","displayName":"Baluta","team":"Brighton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec76a"},"firstName":"Steven","lastName":"Alzate","displayName":"Alzate","team":"Brighton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec76b"},"firstName":"Ezequiel","lastName":"Schelotto","displayName":"Schelotto","team":"Brighton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec76c"},"firstName":"Tariq","lastName":"Lamptey","displayName":"Lamptey","team":"Brighton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec76d"},"firstName":"Ben","lastName":"Mee","displayName":"Mee","team":"Burnley","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec76e"},"firstName":"James","lastName":"Tarkowski","displayName":"Tarkowski","team":"Burnley","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec76f"},"firstName":"Matthew","lastName":"Lowton","displayName":"Lowton","team":"Burnley","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec770"},"firstName":"Phil","lastName":"Bardsley","displayName":"Bardsley","team":"Burnley","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec771"},"firstName":"Charlie","lastName":"Taylor","displayName":"Taylor","team":"Burnley","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec772"},"firstName":"Kevin","lastName":"Long","displayName":"Long","team":"Burnley","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec773"},"firstName":"Ben","lastName":"Gibson","displayName":"Gibson","team":"Burnley","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec774"},"firstName":"Ashley","lastName":"Barnes","displayName":"Barnes","team":"Burnley","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec775"},"firstName":"Chris","lastName":"Wood","displayName":"Wood","team":"Burnley","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec776"},"firstName":"Matej","lastName":"Vydra","displayName":"Vydra","team":"Burnley","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec777"},"firstName":"Nick","lastName":"Pope","displayName":"Pope","team":"Burnley","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec778"},"firstName":"Joe","lastName":"Hart","displayName":"Hart","team":"Burnley","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec779"},"firstName":"Johann Berg","lastName":"Gudmundsson","displayName":"Gudmundsson","team":"Burnley","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec77a"},"firstName":"Dwight","lastName":"McNeil","displayName":"McNeil","team":"Burnley","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec77b"},"firstName":"Robbie","lastName":"Brady","displayName":"Brady","team":"Burnley","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec77c"},"firstName":"Steven","lastName":"Defour","displayName":"Defour","team":"Burnley","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec77d"},"firstName":"Jeff","lastName":"Hendrick","displayName":"Hendrick","team":"Burnley","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec77e"},"firstName":"Ashley","lastName":"Westwood","displayName":"Westwood","team":"Burnley","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec77f"},"firstName":"Jack","lastName":"Cork","displayName":"Cork","team":"Burnley","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec780"},"firstName":"Aaron","lastName":"Lennon","displayName":"Lennon","team":"Burnley","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec781"},"firstName":"Erik","lastName":"Pieters","displayName":"Pieters","team":"Burnley","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec782"},"firstName":"Jay","lastName":"Rodriguez","displayName":"Rodriguez","team":"Burnley","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec783"},"firstName":"Bailey","lastName":"Peacock-Farrell","displayName":"Peacock-Farrell","team":"Burnley","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec784"},"firstName":"Mace","lastName":"Goodridge","displayName":"Goodridge","team":"Burnley","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec785"},"firstName":"Anthony","lastName":"Driscoll-Glennon","displayName":"Driscoll-Glennon","team":"Burnley","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec786"},"firstName":"Abd-Al-Ali Morakinyo Olaposi","lastName":"Koiki","displayName":"Koiki","team":"Burnley","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec787"},"firstName":"Josh","lastName":"Brownhill","displayName":"Brownhill","team":"Burnley","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec788"},"firstName":"Marcos","lastName":"Alonso","displayName":"Alonso","team":"Chelsea","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec789"},"firstName":"Antonio","lastName":"Rüdiger","displayName":"Rüdiger","team":"Chelsea","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec78a"},"firstName":"César","lastName":"Azpilicueta","displayName":"Azpilicueta","team":"Chelsea","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec78b"},"firstName":"Emerson","lastName":"Palmieri dos Santos","displayName":"Emerson","team":"Chelsea","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec78c"},"firstName":"Andreas","lastName":"Christensen","displayName":"Christensen","team":"Chelsea","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec78d"},"firstName":"Davide","lastName":"Zappacosta","displayName":"Zappacosta","team":"Chelsea","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec78e"},"firstName":"Olivier","lastName":"Giroud","displayName":"Giroud","team":"Chelsea","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec78f"},"firstName":"Kepa","lastName":"Arrizabalaga","displayName":"Kepa","team":"Chelsea","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec790"},"firstName":"Willy","lastName":"Caballero","displayName":"Caballero","team":"Chelsea","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec791"},"firstName":"Willian","lastName":"Borges Da Silva","displayName":"Willian","team":"Chelsea","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec792"},"firstName":"Pedro","lastName":"Rodríguez Ledesma","displayName":"Pedro","team":"Chelsea","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec793"},"firstName":"Ruben","lastName":"Loftus-Cheek","displayName":"Loftus-Cheek","team":"Chelsea","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec794"},"firstName":"Callum","lastName":"Hudson-Odoi","displayName":"Hudson-Odoi","team":"Chelsea","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec795"},"firstName":"Ross","lastName":"Barkley","displayName":"Barkley","team":"Chelsea","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec796"},"firstName":"Jorge Luiz","lastName":"Frello Filho","displayName":"Jorginho","team":"Chelsea","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec797"},"firstName":"N'Golo","lastName":"Kanté","displayName":"Kanté","team":"Chelsea","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec798"},"firstName":"Ethan","lastName":"Ampadu","displayName":"Ampadu","team":"Chelsea","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec799"},"firstName":"Christian","lastName":"Pulisic","displayName":"Pulisic","team":"Chelsea","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec79a"},"firstName":"Mateo","lastName":"Kovacic","displayName":"Kovacic","team":"Chelsea","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec79b"},"firstName":"Kurt","lastName":"Zouma","displayName":"Zouma","team":"Chelsea","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec79c"},"firstName":"Tammy","lastName":"Abraham","displayName":"Abraham","team":"Chelsea","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec79d"},"firstName":"Michy","lastName":"Batshuayi","displayName":"Batshuayi","team":"Chelsea","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec79e"},"firstName":"Robert Kenedy","lastName":"Nunes do Nascimento","displayName":"Kenedy","team":"Chelsea","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec79f"},"firstName":"Mason","lastName":"Mount","displayName":"Mount","team":"Chelsea","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7a0"},"firstName":"Reece","lastName":"James","displayName":"James","team":"Chelsea","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7a1"},"firstName":"Fikayo","lastName":"Tomori","displayName":"Tomori","team":"Chelsea","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7a2"},"firstName":"Billy","lastName":"Gilmour","displayName":"Gilmour","team":"Chelsea","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7a3"},"firstName":"Addji Keaninkin Marc-Israel","lastName":"Guehi","displayName":"Guehi","team":"Chelsea","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7a4"},"firstName":"Patrick","lastName":"van Aanholt","displayName":"van Aanholt","team":"Crystal Palace","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7a5"},"firstName":"James","lastName":"Tomkins","displayName":"Tomkins","team":"Crystal Palace","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7a6"},"firstName":"Mamadou","lastName":"Sakho","displayName":"Sakho","team":"Crystal Palace","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7a7"},"firstName":"Joel","lastName":"Ward","displayName":"Ward","team":"Crystal Palace","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7a8"},"firstName":"Scott","lastName":"Dann","displayName":"Dann","team":"Crystal Palace","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7a9"},"firstName":"Martin","lastName":"Kelly","displayName":"Kelly","team":"Crystal Palace","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7aa"},"firstName":"Christian","lastName":"Benteke","displayName":"Benteke","team":"Crystal Palace","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7ab"},"firstName":"Connor","lastName":"Wickham","displayName":"Wickham","team":"Crystal Palace","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7ac"},"firstName":"Vicente","lastName":"Guaita","displayName":"Guaita","team":"Crystal Palace","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7ad"},"firstName":"Wayne","lastName":"Hennessey","displayName":"Hennessey","team":"Crystal Palace","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7ae"},"firstName":"Wilfried","lastName":"Zaha","displayName":"Zaha","team":"Crystal Palace","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7af"},"firstName":"Luka","lastName":"Milivojevic","displayName":"Milivojevic","team":"Crystal Palace","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7b0"},"firstName":"Andros","lastName":"Townsend","displayName":"Townsend","team":"Crystal Palace","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7b1"},"firstName":"Max","lastName":"Meyer","displayName":"Meyer","team":"Crystal Palace","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7b2"},"firstName":"Jeffrey","lastName":"Schlupp","displayName":"Schlupp","team":"Crystal Palace","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7b3"},"firstName":"James","lastName":"McArthur","displayName":"McArthur","team":"Crystal Palace","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7b4"},"firstName":"Cheikhou","lastName":"Kouyaté","displayName":"Kouyaté","team":"Crystal Palace","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7b5"},"firstName":"Luke","lastName":"Dreher","displayName":"Dreher","team":"Crystal Palace","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7b6"},"firstName":"Cenk","lastName":"Tosun","displayName":"Tosun","team":"Crystal Palace","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7b7"},"firstName":"James","lastName":"McCarthy","displayName":"McCarthy","team":"Crystal Palace","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7b8"},"firstName":"Jordan","lastName":"Ayew","displayName":"Ayew","team":"Crystal Palace","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7b9"},"firstName":"Gary","lastName":"Cahill","displayName":"Cahill","team":"Crystal Palace","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7ba"},"firstName":"Víctor","lastName":"Camarasa","displayName":"Camarasa","team":"Crystal Palace","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7bb"},"firstName":"Jairo","lastName":"Riedewald","displayName":"Riedewald","team":"Crystal Palace","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7bc"},"firstName":"Stephen","lastName":"Henderson","displayName":"Henderson","team":"Crystal Palace","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7bd"},"firstName":"Sam","lastName":"Woods","displayName":"Woods","team":"Crystal Palace","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7be"},"firstName":"Tyrick","lastName":"Mitchell","displayName":"Mitchell","team":"Crystal Palace","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7bf"},"firstName":"Brandon","lastName":"Pierrick","displayName":"Pierrick","team":"Crystal Palace","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7c0"},"firstName":"James","lastName":"Daly","displayName":"Daly","team":"Crystal Palace","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7c1"},"firstName":"Nya","lastName":"Kirby","displayName":"Kirby","team":"Crystal Palace","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7c2"},"firstName":"Giovanni","lastName":"McGregor","displayName":"McGregor","team":"Crystal Palace","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7c3"},"firstName":"Alex","lastName":"Iwobi","displayName":"Iwobi","team":"Everton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7c4"},"firstName":"Lucas","lastName":"Digne","displayName":"Digne","team":"Everton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7c5"},"firstName":"Yerry","lastName":"Mina","displayName":"Mina","team":"Everton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7c6"},"firstName":"Michael","lastName":"Keane","displayName":"Keane","team":"Everton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7c7"},"firstName":"Seamus","lastName":"Coleman","displayName":"Coleman","team":"Everton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7c8"},"firstName":"Leighton","lastName":"Baines","displayName":"Baines","team":"Everton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7c9"},"firstName":"Dominic","lastName":"Calvert-Lewin","displayName":"Calvert-Lewin","team":"Everton","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7ca"},"firstName":"Jordan","lastName":"Pickford","displayName":"Pickford","team":"Everton","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7cb"},"firstName":"Maarten","lastName":"Stekelenburg","displayName":"Stekelenburg","team":"Everton","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7cc"},"firstName":"Richarlison","lastName":"de Andrade","displayName":"Richarlison","team":"Everton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7cd"},"firstName":"Gylfi","lastName":"Sigurdsson","displayName":"Sigurdsson","team":"Everton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7ce"},"firstName":"Bernard","lastName":"Anício Caldeira Duarte","displayName":"Bernard","team":"Everton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7cf"},"firstName":"Theo","lastName":"Walcott","displayName":"Walcott","team":"Everton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7d0"},"firstName":"Tom","lastName":"Davies","displayName":"Davies","team":"Everton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7d1"},"firstName":"Ademola","lastName":"Lookman","displayName":"Lookman","team":"Everton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7d2"},"firstName":"Idrissa","lastName":"Gueye","displayName":"Gueye","team":"Everton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7d3"},"firstName":"Morgan","lastName":"Schneiderlin","displayName":"Schneiderlin","team":"Everton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7d4"},"firstName":"Fabian","lastName":"Delph","displayName":"Delph","team":"Everton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7d5"},"firstName":"André Filipe","lastName":"Tavares Gomes","displayName":"André Gomes","team":"Everton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7d6"},"firstName":"Lewis","lastName":"Gibson","displayName":"Gibson","team":"Everton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7d7"},"firstName":"Mason","lastName":"Holgate","displayName":"Holgate","team":"Everton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7d8"},"firstName":"Jonas","lastName":"Lössl","displayName":"Lössl","team":"Everton","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7d9"},"firstName":"Moise","lastName":"Kean","displayName":"Kean","team":"Everton","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7da"},"firstName":"Jean-Philippe","lastName":"Gbamin","displayName":"Gbamin","team":"Everton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7db"},"firstName":"Djibril","lastName":"Sidibé","displayName":"Sidibé","team":"Everton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7dc"},"firstName":"Beni","lastName":"Baningime","displayName":"Baningime","team":"Everton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7dd"},"firstName":"Anthony","lastName":"Gordon","displayName":"Gordon","team":"Everton","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7de"},"firstName":"Oumar","lastName":"Niasse","displayName":"Niasse","team":"Everton","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7df"},"firstName":"Rhu-endly","lastName":"Martina","displayName":"Cuco Martina","team":"Everton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7e0"},"firstName":"Ricardo Domingos","lastName":"Barbosa Pereira","displayName":"Pereira","team":"Leicester","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7e1"},"firstName":"Benjamin","lastName":"Chilwell","displayName":"Chilwell","team":"Leicester","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7e2"},"firstName":"Jonny","lastName":"Evans","displayName":"Evans","team":"Leicester","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7e3"},"firstName":"Christian","lastName":"Fuchs","displayName":"Fuchs","team":"Leicester","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7e4"},"firstName":"Çaglar","lastName":"Söyüncü","displayName":"Söyüncü","team":"Leicester","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7e5"},"firstName":"Wes","lastName":"Morgan","displayName":"Morgan","team":"Leicester","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7e6"},"firstName":"Jamie","lastName":"Vardy","displayName":"Vardy","team":"Leicester","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7e7"},"firstName":"Kelechi","lastName":"Iheanacho","displayName":"Iheanacho","team":"Leicester","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7e8"},"firstName":"Kasper","lastName":"Schmeichel","displayName":"Schmeichel","team":"Leicester","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7e9"},"firstName":"Eldin","lastName":"Jakupovic","displayName":"Jakupovic","team":"Leicester","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7ea"},"firstName":"Danny","lastName":"Ward","displayName":"Ward","team":"Leicester","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7eb"},"firstName":"James","lastName":"Maddison","displayName":"Maddison","team":"Leicester","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7ec"},"firstName":"Harvey","lastName":"Barnes","displayName":"Barnes","team":"Leicester","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7ed"},"firstName":"Rachid","lastName":"Ghezzal","displayName":"Ghezzal","team":"Leicester","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7ee"},"firstName":"Marc","lastName":"Albrighton","displayName":"Albrighton","team":"Leicester","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7ef"},"firstName":"Demarai","lastName":"Gray","displayName":"Gray","team":"Leicester","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7f0"},"firstName":"Wilfred","lastName":"Ndidi","displayName":"Ndidi","team":"Leicester","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7f1"},"firstName":"Matty","lastName":"James","displayName":"James","team":"Leicester","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7f2"},"firstName":"Daniel","lastName":"Amartey","displayName":"Amartey","team":"Leicester","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7f3"},"firstName":"Nampalys","lastName":"Mendy","displayName":"Mendy","team":"Leicester","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7f4"},"firstName":"Hamza","lastName":"Choudhury","displayName":"Choudhury","team":"Leicester","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7f5"},"firstName":"Ayoze","lastName":"Pérez","displayName":"Pérez","team":"Leicester","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7f6"},"firstName":"Ryan","lastName":"Bennett","displayName":"Bennett","team":"Leicester","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7f7"},"firstName":"James","lastName":"Justin","displayName":"Justin","team":"Leicester","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7f8"},"firstName":"Youri","lastName":"Tielemans","displayName":"Tielemans","team":"Leicester","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7f9"},"firstName":"Andy","lastName":"King","displayName":"King","team":"Leicester","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7fa"},"firstName":"Dennis","lastName":"Praet","displayName":"Praet","team":"Leicester","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7fb"},"firstName":"Filip","lastName":"Benkovic","displayName":"Benkovic","team":"Leicester","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7fc"},"firstName":"Andrew","lastName":"Robertson","displayName":"Robertson","team":"Liverpool","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7fd"},"firstName":"Trent","lastName":"Alexander-Arnold","displayName":"Alexander-Arnold","team":"Liverpool","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7fe"},"firstName":"Virgil","lastName":"van Dijk","displayName":"van Dijk","team":"Liverpool","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec7ff"},"firstName":"Joseph","lastName":"Gomez","displayName":"Gomez","team":"Liverpool","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec800"},"firstName":"Joel","lastName":"Matip","displayName":"Matip","team":"Liverpool","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec801"},"firstName":"Dejan","lastName":"Lovren","displayName":"Lovren","team":"Liverpool","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec802"},"firstName":"Roberto","lastName":"Firmino","displayName":"Firmino","team":"Liverpool","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec803"},"firstName":"Divock","lastName":"Origi","displayName":"Origi","team":"Liverpool","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec804"},"firstName":"Alisson","lastName":"Ramses Becker","displayName":"Alisson","team":"Liverpool","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec805"},"firstName":"Simon","lastName":"Mignolet","displayName":"Mignolet","team":"Liverpool","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec806"},"firstName":"Mohamed","lastName":"Salah","displayName":"Salah","team":"Liverpool","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec807"},"firstName":"Sadio","lastName":"Mané","displayName":"Mané","team":"Liverpool","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec808"},"firstName":"Alex","lastName":"Oxlade-Chamberlain","displayName":"Chamberlain","team":"Liverpool","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec809"},"firstName":"Xherdan","lastName":"Shaqiri","displayName":"Shaqiri","team":"Liverpool","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec80a"},"firstName":"Adam","lastName":"Lallana","displayName":"Lallana","team":"Liverpool","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec80b"},"firstName":"Naby","lastName":"Keita","displayName":"Keita","team":"Liverpool","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec80c"},"firstName":"Fabio Henrique","lastName":"Tavares","displayName":"Fabinho","team":"Liverpool","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec80d"},"firstName":"Jordan","lastName":"Henderson","displayName":"Henderson","team":"Liverpool","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec80e"},"firstName":"Georginio","lastName":"Wijnaldum","displayName":"Wijnaldum","team":"Liverpool","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec80f"},"firstName":"James","lastName":"Milner","displayName":"Milner","team":"Liverpool","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec810"},"firstName":"Rafael","lastName":"Camacho","displayName":"Camacho","team":"Liverpool","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec811"},"firstName":"Rhian","lastName":"Brewster","displayName":"Brewster","team":"Liverpool","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec812"},"firstName":"Adrián","lastName":"San Miguel del Castillo","displayName":"Adrián","team":"Liverpool","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec813"},"firstName":"Andy","lastName":"Lonergan","displayName":"Lonergan","team":"Liverpool","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec814"},"firstName":"Caoimhin","lastName":"Kelleher","displayName":"Kelleher","team":"Liverpool","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec815"},"firstName":"Harvey","lastName":"Elliott","displayName":"Elliott","team":"Liverpool","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec816"},"firstName":"Curtis","lastName":"Jones","displayName":"Jones","team":"Liverpool","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec817"},"firstName":"Neco","lastName":"Williams","displayName":"Williams","team":"Liverpool","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec818"},"firstName":"Nathaniel","lastName":"Phillips","displayName":"Phillips","team":"Liverpool","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec819"},"firstName":"Takumi","lastName":"Minamino","displayName":"Minamino","team":"Liverpool","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec81a"},"firstName":"Aymeric","lastName":"Laporte","displayName":"Laporte","team":"Man City","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec81b"},"firstName":"Kyle","lastName":"Walker","displayName":"Walker","team":"Man City","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec81c"},"firstName":"Benjamin","lastName":"Mendy","displayName":"Mendy","team":"Man City","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec81d"},"firstName":"Oleksandr","lastName":"Zinchenko","displayName":"Zinchenko","team":"Man City","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec81e"},"firstName":"John","lastName":"Stones","displayName":"Stones","team":"Man City","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec81f"},"firstName":"Nicolás","lastName":"Otamendi","displayName":"Otamendi","team":"Man City","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec820"},"firstName":"Danilo Luiz","lastName":"da Silva","displayName":"Danilo","team":"Man City","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec821"},"firstName":"Sergio","lastName":"Agüero","displayName":"Agüero","team":"Man City","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec822"},"firstName":"Gabriel Fernando","lastName":"de Jesus","displayName":"Jesus","team":"Man City","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec823"},"firstName":"Ederson","lastName":"Santana de Moraes","displayName":"Ederson","team":"Man City","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec824"},"firstName":"Claudio","lastName":"Bravo","displayName":"Bravo","team":"Man City","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec825"},"firstName":"Raheem","lastName":"Sterling","displayName":"Sterling","team":"Man City","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec826"},"firstName":"Kevin","lastName":"De Bruyne","displayName":"De Bruyne","team":"Man City","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec827"},"firstName":"Leroy","lastName":"Sané","displayName":"Sané","team":"Man City","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec828"},"firstName":"Riyad","lastName":"Mahrez","displayName":"Mahrez","team":"Man City","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec829"},"firstName":"Bernardo Mota","lastName":"Veiga de Carvalho e Silva","displayName":"Bernardo Silva","team":"Man City","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec82a"},"firstName":"David","lastName":"Silva","displayName":"David Silva","team":"Man City","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec82b"},"firstName":"Phil","lastName":"Foden","displayName":"Foden","team":"Man City","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec82c"},"firstName":"Fernando","lastName":"Luiz Rosa","displayName":"Fernandinho","team":"Man City","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec82d"},"firstName":"Ilkay","lastName":"Gündogan","displayName":"Gündogan","team":"Man City","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec82e"},"firstName":"José Ángel","lastName":"Esmorís Tasende","displayName":"Angeliño","team":"Man City","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec82f"},"firstName":"Rodrigo","lastName":"Hernandez","displayName":"Rodrigo","team":"Man City","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec830"},"firstName":"João Pedro Cavaco","lastName":"Cancelo","displayName":"Cancelo","team":"Man City","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec831"},"firstName":"Eric","lastName":"Garcia","displayName":"Garcia","team":"Man City","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec832"},"firstName":"Scott","lastName":"Carson","displayName":"Carson","team":"Man City","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec833"},"firstName":"Aaron","lastName":"Wan-Bissaka","displayName":"Wan-Bissaka","team":"Man Utd","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec834"},"firstName":"Harry","lastName":"Maguire","displayName":"Maguire","team":"Man Utd","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec835"},"firstName":"Chris","lastName":"Smalling","displayName":"Smalling","team":"Man Utd","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec836"},"firstName":"Ashley","lastName":"Young","displayName":"Young","team":"Man Utd","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec837"},"firstName":"Victor","lastName":"Lindelöf","displayName":"Lindelöf","team":"Man Utd","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec838"},"firstName":"Luke","lastName":"Shaw","displayName":"Shaw","team":"Man Utd","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec839"},"firstName":"Marcos","lastName":"Rojo","displayName":"Rojo","team":"Man Utd","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec83a"},"firstName":"Eric","lastName":"Bailly","displayName":"Bailly","team":"Man Utd","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec83b"},"firstName":"José Diogo","lastName":"Dalot Teixeira","displayName":"Dalot","team":"Man Utd","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec83c"},"firstName":"Matteo","lastName":"Darmian","displayName":"Darmian","team":"Man Utd","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec83d"},"firstName":"Phil","lastName":"Jones","displayName":"Jones","team":"Man Utd","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec83e"},"firstName":"Romelu","lastName":"Lukaku","displayName":"Lukaku","team":"Man Utd","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec83f"},"firstName":"Marcus","lastName":"Rashford","displayName":"Rashford","team":"Man Utd","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec840"},"firstName":"Mason","lastName":"Greenwood","displayName":"Greenwood","team":"Man Utd","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec841"},"firstName":"David","lastName":"de Gea","displayName":"de Gea","team":"Man Utd","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec842"},"firstName":"Sergio","lastName":"Romero","displayName":"Romero","team":"Man Utd","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec843"},"firstName":"Lee","lastName":"Grant","displayName":"Grant","team":"Man Utd","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec844"},"firstName":"Paul","lastName":"Pogba","displayName":"Pogba","team":"Man Utd","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec845"},"firstName":"Anthony","lastName":"Martial","displayName":"Martial","team":"Man Utd","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec846"},"firstName":"Alexis","lastName":"Sánchez","displayName":"Sánchez","team":"Man Utd","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec847"},"firstName":"Jesse","lastName":"Lingard","displayName":"Lingard","team":"Man Utd","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec848"},"firstName":"Juan","lastName":"Mata","displayName":"Mata","team":"Man Utd","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec849"},"firstName":"Daniel","lastName":"James","displayName":"James","team":"Man Utd","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec84a"},"firstName":"Frederico","lastName":"Rodrigues de Paula Santos","displayName":"Fred","team":"Man Utd","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec84b"},"firstName":"Angel","lastName":"Gomes","displayName":"Gomes","team":"Man Utd","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec84c"},"firstName":"Andreas","lastName":"Pereira","displayName":"Pereira","team":"Man Utd","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec84d"},"firstName":"Nemanja","lastName":"Matic","displayName":"Matic","team":"Man Utd","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec84e"},"firstName":"Scott","lastName":"McTominay","displayName":"McTominay","team":"Man Utd","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec84f"},"firstName":"Tahith","lastName":"Chong","displayName":"Chong","team":"Man Utd","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec850"},"firstName":"James","lastName":"Garner","displayName":"Garner","team":"Man Utd","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec851"},"firstName":"Axel","lastName":"Tuanzebe","displayName":"Tuanzebe","team":"Man Utd","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec852"},"firstName":"Brandon","lastName":"Williams","displayName":"Williams","team":"Man Utd","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec853"},"firstName":"Bruno Miguel","lastName":"Borges Fernandes","displayName":"Fernandes","team":"Man Utd","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec854"},"firstName":"Matt","lastName":"Ritchie","displayName":"Ritchie","team":"Newcastle","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec855"},"firstName":"Fabian","lastName":"Schär","displayName":"Schär","team":"Newcastle","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec856"},"firstName":"DeAndre","lastName":"Yedlin","displayName":"Yedlin","team":"Newcastle","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec857"},"firstName":"Federico","lastName":"Fernández","displayName":"Fernández","team":"Newcastle","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec858"},"firstName":"Paul","lastName":"Dummett","displayName":"Dummett","team":"Newcastle","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec859"},"firstName":"Javier","lastName":"Manquillo","displayName":"Manquillo","team":"Newcastle","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec85a"},"firstName":"Florian","lastName":"Lejeune","displayName":"Lejeune","team":"Newcastle","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec85b"},"firstName":"Jamaal","lastName":"Lascelles","displayName":"Lascelles","team":"Newcastle","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec85c"},"firstName":"Ciaran","lastName":"Clark","displayName":"Clark","team":"Newcastle","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec85d"},"firstName":"Yoshinori","lastName":"Muto","displayName":"Muto","team":"Newcastle","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec85e"},"firstName":"Jose Luis","lastName":"Mato Sanmartín","displayName":"Joselu","team":"Newcastle","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec85f"},"firstName":"Martin","lastName":"Dubravka","displayName":"Dubravka","team":"Newcastle","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec860"},"firstName":"Karl","lastName":"Darlow","displayName":"Darlow","team":"Newcastle","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec861"},"firstName":"Frederick","lastName":"Woodman","displayName":"Woodman","team":"Newcastle","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec862"},"firstName":"Miguel","lastName":"Almirón","displayName":"Almirón","team":"Newcastle","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec863"},"firstName":"Christian","lastName":"Atsu","displayName":"Atsu","team":"Newcastle","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec864"},"firstName":"Sung-yueng","lastName":"Ki","displayName":"Ki Sung-yueng","team":"Newcastle","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec865"},"firstName":"Jonjo","lastName":"Shelvey","displayName":"Shelvey","team":"Newcastle","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec866"},"firstName":"Sean","lastName":"Longstaff","displayName":"Longstaff","team":"Newcastle","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec867"},"firstName":"Isaac","lastName":"Hayden","displayName":"Hayden","team":"Newcastle","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec868"},"firstName":"Danny","lastName":"Rose","displayName":"Rose","team":"Newcastle","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec869"},"firstName":"Joelinton Cássio","lastName":"Apolinário de Lira","displayName":"Joelinton","team":"Newcastle","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec86a"},"firstName":"Jack","lastName":"Colback","displayName":"Colback","team":"Newcastle","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec86b"},"firstName":"Jacob","lastName":"Murphy","displayName":"Murphy","team":"Newcastle","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec86c"},"firstName":"Jetro","lastName":"Willems","displayName":"Willems","team":"Newcastle","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec86d"},"firstName":"Rolando","lastName":"Aarons","displayName":"Aarons","team":"Newcastle","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec86e"},"firstName":"Allan","lastName":"Saint-Maximin","displayName":"Saint-Maximin","team":"Newcastle","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec86f"},"firstName":"Emil","lastName":"Krafth","displayName":"Krafth","team":"Newcastle","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec870"},"firstName":"Andy","lastName":"Carroll","displayName":"Carroll","team":"Newcastle","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec871"},"firstName":"Matthew","lastName":"Longstaff","displayName":"Matthew Longstaff","team":"Newcastle","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec872"},"firstName":"Dwight","lastName":"Gayle","displayName":"Gayle","team":"Newcastle","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec873"},"firstName":"Robert","lastName":"Elliot","displayName":"Elliot","team":"Newcastle","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec874"},"firstName":"Thomas","lastName":"Allan","displayName":"Allan","team":"Newcastle","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec875"},"firstName":"Kelland","lastName":"Watts","displayName":"Watts","team":"Newcastle","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec876"},"firstName":"Liam","lastName":"Gibson","displayName":"Gibson","team":"Newcastle","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec877"},"firstName":"Nabil","lastName":"Bentaleb","displayName":"Bentaleb","team":"Newcastle","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec878"},"firstName":"Valentino","lastName":"Lazaro","displayName":"Lazaro","team":"Newcastle","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec879"},"firstName":"Timm","lastName":"Klose","displayName":"Klose","team":"Norwich","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec87a"},"firstName":"Ben","lastName":"Godfrey","displayName":"Godfrey","team":"Norwich","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec87b"},"firstName":"Maximillian","lastName":"Aarons","displayName":"Aarons","team":"Norwich","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec87c"},"firstName":"Christoph","lastName":"Zimmermann","displayName":"Zimmermann","team":"Norwich","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec87d"},"firstName":"Jamal","lastName":"Lewis","displayName":"Lewis","team":"Norwich","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec87e"},"firstName":"Grant","lastName":"Hanley","displayName":"Hanley","team":"Norwich","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec87f"},"firstName":"Teemu","lastName":"Pukki","displayName":"Pukki","team":"Norwich","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec880"},"firstName":"Dennis","lastName":"Srbeny","displayName":"Srbeny","team":"Norwich","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec881"},"firstName":"Tim","lastName":"Krul","displayName":"Krul","team":"Norwich","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec882"},"firstName":"Michael","lastName":"McGovern","displayName":"McGovern","team":"Norwich","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec883"},"firstName":"Mario","lastName":"Vrancic","displayName":"Vrancic","team":"Norwich","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec884"},"firstName":"Emiliano","lastName":"Buendía","displayName":"Buendía","team":"Norwich","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec885"},"firstName":"Onel","lastName":"Hernández","displayName":"Hernández","team":"Norwich","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec886"},"firstName":"Marco","lastName":"Stiepermann","displayName":"Stiepermann","team":"Norwich","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec887"},"firstName":"Kenny","lastName":"McLean","displayName":"McLean","team":"Norwich","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec888"},"firstName":"Todd","lastName":"Cantwell","displayName":"Cantwell","team":"Norwich","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec889"},"firstName":"Moritz","lastName":"Leitner","displayName":"Leitner","team":"Norwich","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec88a"},"firstName":"Alexander","lastName":"Tettey","displayName":"Tettey","team":"Norwich","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec88b"},"firstName":"Tom","lastName":"Trybull","displayName":"Trybull","team":"Norwich","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec88c"},"firstName":"Josip","lastName":"Drmic","displayName":"Drmic","team":"Norwich","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec88d"},"firstName":"Patrick","lastName":"Roberts","displayName":"Roberts","team":"Norwich","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec88e"},"firstName":"Ralf","lastName":"Fahrmann","displayName":"Fahrmann","team":"Norwich","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec88f"},"firstName":"Sam","lastName":"Byram","displayName":"Byram","team":"Norwich","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec890"},"firstName":"Philip","lastName":"Heise","displayName":"Heise","team":"Norwich","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec891"},"firstName":"Ibrahim","lastName":"Amadou","displayName":"Amadou","team":"Norwich","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec892"},"firstName":"Adam","lastName":"Idah","displayName":"Idah","team":"Norwich","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec893"},"firstName":"Archie","lastName":"Mair","displayName":"Mair","team":"Norwich","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec894"},"firstName":"Akin","lastName":"Famewo","displayName":"Famewo","team":"Norwich","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec895"},"firstName":"Ondrej","lastName":"Duda","displayName":"Duda","team":"Norwich","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec896"},"firstName":"Lukas","lastName":"Rupp","displayName":"Rupp","team":"Norwich","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec897"},"firstName":"Lys","lastName":"Mousset","displayName":"Mousset","team":"Sheffield Utd","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec898"},"firstName":"Enda","lastName":"Stevens","displayName":"Stevens","team":"Sheffield Utd","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec899"},"firstName":"Kieron","lastName":"Freeman","displayName":"Freeman","team":"Sheffield Utd","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec89a"},"firstName":"Jack","lastName":"O'Connell","displayName":"O'Connell","team":"Sheffield Utd","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec89b"},"firstName":"George","lastName":"Baldock","displayName":"Baldock","team":"Sheffield Utd","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec89c"},"firstName":"John","lastName":"Egan","displayName":"Egan","team":"Sheffield Utd","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec89d"},"firstName":"Richard","lastName":"Stearman","displayName":"Stearman","team":"Sheffield Utd","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec89e"},"firstName":"John","lastName":"Lundstram","displayName":"Lundstram","team":"Sheffield Utd","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec89f"},"firstName":"Billy","lastName":"Sharp","displayName":"Sharp","team":"Sheffield Utd","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8a0"},"firstName":"Jake","lastName":"Eastwood","displayName":"Eastwood","team":"Sheffield Utd","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8a1"},"firstName":"Mark","lastName":"Duffy","displayName":"Duffy","team":"Sheffield Utd","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8a2"},"firstName":"John","lastName":"Fleck","displayName":"Fleck","team":"Sheffield Utd","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8a3"},"firstName":"Oliver","lastName":"Norwood","displayName":"Norwood","team":"Sheffield Utd","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8a4"},"firstName":"David","lastName":"McGoldrick","displayName":"McGoldrick","team":"Sheffield Utd","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8a5"},"firstName":"Chris","lastName":"Basham","displayName":"Basham","team":"Sheffield Utd","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8a6"},"firstName":"Simon","lastName":"Moore","displayName":"Moore","team":"Sheffield Utd","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8a7"},"firstName":"Luke","lastName":"Freeman","displayName":"Freeman","team":"Sheffield Utd","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8a8"},"firstName":"Phil","lastName":"Jagielka","displayName":"Jagielka","team":"Sheffield Utd","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8a9"},"firstName":"Callum","lastName":"Robinson","displayName":"Callum Robinson","team":"Sheffield Utd","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8aa"},"firstName":"Ravel","lastName":"Morrison","displayName":"Morrison","team":"Sheffield Utd","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8ab"},"firstName":"Dean","lastName":"Henderson","displayName":"Henderson","team":"Sheffield Utd","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8ac"},"firstName":"Ben","lastName":"Osborn","displayName":"Osborn","team":"Sheffield Utd","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8ad"},"firstName":"Oliver","lastName":"McBurnie","displayName":"McBurnie","team":"Sheffield Utd","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8ae"},"firstName":"Michael","lastName":"Verrips","displayName":"Verrips","team":"Sheffield Utd","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8af"},"firstName":"Muhamed","lastName":"Bešić","displayName":"Bešić","team":"Sheffield Utd","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8b0"},"firstName":"Leon","lastName":"Clarke","displayName":"Clarke","team":"Sheffield Utd","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8b1"},"firstName":"Jack","lastName":"Rodwell","displayName":"Rodwell","team":"Sheffield Utd","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8b2"},"firstName":"Jack","lastName":"Robinson","displayName":"Jack Robinson","team":"Sheffield Utd","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8b3"},"firstName":"Sander","lastName":"Berge","displayName":"Berge","team":"Sheffield Utd","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8b4"},"firstName":"Richairo","lastName":"Zivkovic","displayName":"Zivkovic","team":"Sheffield Utd","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8b5"},"firstName":"Jannik","lastName":"Vestergaard","displayName":"Vestergaard","team":"Southampton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8b6"},"firstName":"Ryan","lastName":"Bertrand","displayName":"Bertrand","team":"Southampton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8b7"},"firstName":"Yan","lastName":"Valery","displayName":"Valery","team":"Southampton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8b8"},"firstName":"Jan","lastName":"Bednarek","displayName":"Bednarek","team":"Southampton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8b9"},"firstName":"Jack","lastName":"Stephens","displayName":"Stephens","team":"Southampton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8ba"},"firstName":"Maya","lastName":"Yoshida","displayName":"Yoshida","team":"Southampton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8bb"},"firstName":"Kayne","lastName":"Ramsay","displayName":"Ramsay","team":"Southampton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8bc"},"firstName":"Charlie","lastName":"Austin","displayName":"Austin","team":"Southampton","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8bd"},"firstName":"Danny","lastName":"Ings","displayName":"Ings","team":"Southampton","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8be"},"firstName":"Michael","lastName":"Obafemi","displayName":"Obafemi","team":"Southampton","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8bf"},"firstName":"Shane","lastName":"Long","displayName":"Long","team":"Southampton","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8c0"},"firstName":"Sam","lastName":"Gallagher","displayName":"Gallagher","team":"Southampton","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8c1"},"firstName":"Fraser","lastName":"Forster","displayName":"Forster","team":"Southampton","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8c2"},"firstName":"Alex","lastName":"McCarthy","displayName":"McCarthy","team":"Southampton","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8c3"},"firstName":"Angus","lastName":"Gunn","displayName":"Gunn","team":"Southampton","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8c4"},"firstName":"Nathan","lastName":"Redmond","displayName":"Redmond","team":"Southampton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8c5"},"firstName":"James","lastName":"Ward-Prowse","displayName":"Ward-Prowse","team":"Southampton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8c6"},"firstName":"Mohamed","lastName":"Elyounoussi","displayName":"Elyounoussi","team":"Southampton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8c7"},"firstName":"Stuart","lastName":"Armstrong","displayName":"Armstrong","team":"Southampton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8c8"},"firstName":"Mario","lastName":"Lemina","displayName":"Lemina","team":"Southampton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8c9"},"firstName":"Pierre-Emile","lastName":"Højbjerg","displayName":"Højbjerg","team":"Southampton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8ca"},"firstName":"Tyreke","lastName":"Johnson","displayName":"Johnson","team":"Southampton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8cb"},"firstName":"Callum","lastName":"Slattery","displayName":"Slattery","team":"Southampton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8cc"},"firstName":"Oriol","lastName":"Romeu Vidal","displayName":"Oriol Romeu","team":"Southampton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8cd"},"firstName":"Kyle","lastName":"Walker-Peters","displayName":"Walker-Peters","team":"Southampton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8ce"},"firstName":"Che","lastName":"Adams","displayName":"Adams","team":"Southampton","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8cf"},"firstName":"Moussa","lastName":"Djenepo","displayName":"Djenepo","team":"Southampton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8d0"},"firstName":"Wesley","lastName":"Hoedt","displayName":"Hoedt","team":"Southampton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8d1"},"firstName":"Sofiane","lastName":"Boufal","displayName":"Boufal","team":"Southampton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8d2"},"firstName":"Kevin","lastName":"Danso","displayName":"Danso","team":"Southampton","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8d3"},"firstName":"Daniel","lastName":"N'Lundulu","displayName":"N'Lundulu","team":"Southampton","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8d4"},"firstName":"Harry","lastName":"Lewis","displayName":"Lewis","team":"Southampton","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8d5"},"firstName":"William","lastName":"Smallbone","displayName":"Smallbone","team":"Southampton","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8d6"},"firstName":"Ben","lastName":"Davies","displayName":"Davies","team":"Spurs","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8d7"},"firstName":"Jan","lastName":"Vertonghen","displayName":"Vertonghen","team":"Spurs","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8d8"},"firstName":"Toby","lastName":"Alderweireld","displayName":"Alderweireld","team":"Spurs","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8d9"},"firstName":"Davinson","lastName":"Sánchez","displayName":"Sánchez","team":"Spurs","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8da"},"firstName":"Kieran","lastName":"Trippier","displayName":"Trippier","team":"Spurs","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8db"},"firstName":"Juan","lastName":"Foyth","displayName":"Foyth","team":"Spurs","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8dc"},"firstName":"Serge","lastName":"Aurier","displayName":"Aurier","team":"Spurs","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8dd"},"firstName":"Harry","lastName":"Kane","displayName":"Kane","team":"Spurs","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8de"},"firstName":"Vincent","lastName":"Janssen","displayName":"Janssen","team":"Spurs","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8df"},"firstName":"Hugo","lastName":"Lloris","displayName":"Lloris","team":"Spurs","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8e0"},"firstName":"Paulo","lastName":"Gazzaniga","displayName":"Gazzaniga","team":"Spurs","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8e1"},"firstName":"Heung-Min","lastName":"Son","displayName":"Son","team":"Spurs","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8e2"},"firstName":"Christian","lastName":"Eriksen","displayName":"Eriksen","team":"Spurs","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8e3"},"firstName":"Bamidele","lastName":"Alli","displayName":"Alli","team":"Spurs","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8e4"},"firstName":"Lucas","lastName":"Rodrigues Moura da Silva","displayName":"Lucas Moura","team":"Spurs","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8e5"},"firstName":"Erik","lastName":"Lamela","displayName":"Lamela","team":"Spurs","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8e6"},"firstName":"Harry","lastName":"Winks","displayName":"Winks","team":"Spurs","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8e7"},"firstName":"Victor","lastName":"Wanyama","displayName":"Wanyama","team":"Spurs","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8e8"},"firstName":"Moussa","lastName":"Sissoko","displayName":"Sissoko","team":"Spurs","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8e9"},"firstName":"Eric","lastName":"Dier","displayName":"Dier","team":"Spurs","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8ea"},"firstName":"Luke","lastName":"Amos","displayName":"Amos","team":"Spurs","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8eb"},"firstName":"Oliver","lastName":"Skipp","displayName":"Skipp","team":"Spurs","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8ec"},"firstName":"Tanguy","lastName":"Ndombele","displayName":"Ndombele","team":"Spurs","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8ed"},"firstName":"Troy","lastName":"Parrott","displayName":"Parrott","team":"Spurs","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8ee"},"firstName":"Giovani","lastName":"Lo Celso","displayName":"Lo Celso","team":"Spurs","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8ef"},"firstName":"Ryan","lastName":"Sessegnon","displayName":"Sessegnon","team":"Spurs","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8f0"},"firstName":"Georges-Kévin","lastName":"Nkoudou","displayName":"Nkoudou","team":"Spurs","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8f1"},"firstName":"Alfie","lastName":"Whiteman","displayName":"Whiteman","team":"Spurs","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8f2"},"firstName":"Michel","lastName":"Vorm","displayName":"Vorm","team":"Spurs","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8f3"},"firstName":"Brandon","lastName":"Austin","displayName":"Austin","team":"Spurs","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8f4"},"firstName":"Japhet","lastName":"Tanganga","displayName":"Tanganga","team":"Spurs","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8f5"},"firstName":"Gedson","lastName":"Carvalho Fernandes","displayName":"Fernandes","team":"Spurs","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8f6"},"firstName":"Steven","lastName":"Bergwijn","displayName":"Bergwijn","team":"Spurs","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8f7"},"firstName":"José","lastName":"Holebas","displayName":"Holebas","team":"Watford","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8f8"},"firstName":"Christian","lastName":"Kabasele","displayName":"Kabasele","team":"Watford","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8f9"},"firstName":"Adam","lastName":"Masina","displayName":"Masina","team":"Watford","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8fa"},"firstName":"Adrian","lastName":"Mariappa","displayName":"Mariappa","team":"Watford","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8fb"},"firstName":"Francisco","lastName":"Femenía Far","displayName":"Kiko Femenía","team":"Watford","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8fc"},"firstName":"Craig","lastName":"Cathcart","displayName":"Cathcart","team":"Watford","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8fd"},"firstName":"Daryl","lastName":"Janmaat","displayName":"Janmaat","team":"Watford","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8fe"},"firstName":"Marc","lastName":"Navarro","displayName":"Navarro","team":"Watford","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec8ff"},"firstName":"Sebastian","lastName":"Prödl","displayName":"Prödl","team":"Watford","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec900"},"firstName":"Troy","lastName":"Deeney","displayName":"Deeney","team":"Watford","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec901"},"firstName":"Gerard","lastName":"Deulofeu","displayName":"Deulofeu","team":"Watford","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec902"},"firstName":"Andre","lastName":"Gray","displayName":"Gray","team":"Watford","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec903"},"firstName":"Isaac","lastName":"Success Ajayi","displayName":"Success","team":"Watford","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec904"},"firstName":"Ben","lastName":"Foster","displayName":"Foster","team":"Watford","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec905"},"firstName":"Pontus","lastName":"Dahlberg","displayName":"Dahlberg","team":"Watford","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec906"},"firstName":"Abdoulaye","lastName":"Doucouré","displayName":"Doucouré","team":"Watford","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec907"},"firstName":"Roberto","lastName":"Pereyra","displayName":"Pereyra","team":"Watford","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec908"},"firstName":"Will","lastName":"Hughes","displayName":"Hughes","team":"Watford","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec909"},"firstName":"Tom","lastName":"Cleverley","displayName":"Cleverley","team":"Watford","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec90a"},"firstName":"Ken","lastName":"Sema","displayName":"Sema","team":"Watford","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec90b"},"firstName":"Etienne","lastName":"Capoue","displayName":"Capoue","team":"Watford","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec90c"},"firstName":"Nathaniel","lastName":"Chalobah","displayName":"Chalobah","team":"Watford","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec90d"},"firstName":"Domingos","lastName":"Quina","displayName":"Quina","team":"Watford","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec90e"},"firstName":"Craig","lastName":"Dawson","displayName":"Dawson","team":"Watford","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec90f"},"firstName":"Danny","lastName":"Welbeck","displayName":"Welbeck","team":"Watford","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec910"},"firstName":"Heurelho da Silva","lastName":"Gomes","displayName":"Gomes","team":"Watford","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec911"},"firstName":"Ismaïla","lastName":"Sarr","displayName":"Sarr","team":"Watford","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec912"},"firstName":"Dimitri","lastName":"Foulquier","displayName":"Foulquier","team":"Watford","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec913"},"firstName":"Ayotomiwa","lastName":"Dele-Bashiru","displayName":"Dele-Bashiru","team":"Watford","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec914"},"firstName":"João Pedro","lastName":"Junqueira de Jesus","displayName":"João Pedro","team":"Watford","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec915"},"firstName":"Ignacio","lastName":"Pussetto","displayName":"Pussetto","team":"Watford","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec916"},"firstName":"Aaron","lastName":"Cresswell","displayName":"Cresswell","team":"West Ham","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec917"},"firstName":"Angelo","lastName":"Ogbonna","displayName":"Ogbonna","team":"West Ham","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec918"},"firstName":"Arthur","lastName":"Masuaku","displayName":"Masuaku","team":"West Ham","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec919"},"firstName":"Pablo","lastName":"Zabaleta","displayName":"Zabaleta","team":"West Ham","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec91a"},"firstName":"Ryan","lastName":"Fredericks","displayName":"Fredericks","team":"West Ham","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec91b"},"firstName":"Issa","lastName":"Diop","displayName":"Diop","team":"West Ham","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec91c"},"firstName":"Fabián","lastName":"Balbuena","displayName":"Balbuena","team":"West Ham","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec91d"},"firstName":"Winston","lastName":"Reid","displayName":"Reid","team":"West Ham","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec91e"},"firstName":"Ben","lastName":"Johnson","displayName":"Johnson","team":"West Ham","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec91f"},"firstName":"Marko","lastName":"Arnautovic","displayName":"Arnautovic","team":"West Ham","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec920"},"firstName":"Javier","lastName":"Hernández Balcázar","displayName":"Chicharito","team":"West Ham","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec921"},"firstName":"Alexandre Nascimento","lastName":"Costa Silva","displayName":"Xande Silva","team":"West Ham","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec922"},"firstName":"Lukasz","lastName":"Fabianski","displayName":"Fabianski","team":"West Ham","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec923"},"firstName":"Michail","lastName":"Antonio","displayName":"Antonio","team":"West Ham","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec924"},"firstName":"Felipe Anderson","lastName":"Pereira Gomes","displayName":"Felipe Anderson","team":"West Ham","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec925"},"firstName":"Manuel","lastName":"Lanzini","displayName":"Lanzini","team":"West Ham","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec926"},"firstName":"Andriy","lastName":"Yarmolenko","displayName":"Yarmolenko","team":"West Ham","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec927"},"firstName":"Robert","lastName":"Snodgrass","displayName":"Snodgrass","team":"West Ham","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec928"},"firstName":"Jack","lastName":"Wilshere","displayName":"Wilshere","team":"West Ham","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec929"},"firstName":"Declan","lastName":"Rice","displayName":"Rice","team":"West Ham","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec92a"},"firstName":"Mark","lastName":"Noble","displayName":"Noble","team":"West Ham","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec92b"},"firstName":"Carlos","lastName":"Sánchez","displayName":"Carlos Sánchez","team":"West Ham","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec92c"},"firstName":"Grady","lastName":"Diangana","displayName":"Diangana","team":"West Ham","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec92d"},"firstName":"Pablo","lastName":"Fornals","displayName":"Fornals","team":"West Ham","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec92e"},"firstName":"Pedro","lastName":"Obiang","displayName":"Obiang","team":"West Ham","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec92f"},"firstName":"Roberto","lastName":"Jimenez Gago","displayName":"Roberto","team":"West Ham","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec930"},"firstName":"Sébastien","lastName":"Haller","displayName":"Haller","team":"West Ham","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec931"},"firstName":"Albian","lastName":"Ajeti","displayName":"Ajeti","team":"West Ham","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec932"},"firstName":"David","lastName":"Martin","displayName":"Martin","team":"West Ham","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec933"},"firstName":"Nathan","lastName":"Holland","displayName":"Holland","team":"West Ham","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec934"},"firstName":"Joseph","lastName":"Anang","displayName":"Anang","team":"West Ham","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec935"},"firstName":"Jeremy","lastName":"Ngakia","displayName":"Ngakia","team":"West Ham","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec936"},"firstName":"Gonçalo Bento","lastName":"Soares Cardoso","displayName":"Cardoso","team":"West Ham","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec937"},"firstName":"Bernardo","lastName":"Costa Da Rosa","displayName":"Rosa","team":"West Ham","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec938"},"firstName":"Darren","lastName":"Randolph","displayName":"Randolph","team":"West Ham","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec939"},"firstName":"Tomas","lastName":"Soucek","displayName":"Soucek","team":"West Ham","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec93a"},"firstName":"Matt","lastName":"Doherty","displayName":"Doherty","team":"Wolves","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec93b"},"firstName":"Jonathan","lastName":"Castro Otto","displayName":"Jonny","team":"Wolves","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec93c"},"firstName":"Conor","lastName":"Coady","displayName":"Coady","team":"Wolves","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec93d"},"firstName":"Willy","lastName":"Boly","displayName":"Boly","team":"Wolves","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec93e"},"firstName":"Rúben Gonçalo","lastName":"Silva Nascimento Vinagre","displayName":"Vinagre","team":"Wolves","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec93f"},"firstName":"Romain","lastName":"Saïss","displayName":"Saïss","team":"Wolves","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec940"},"firstName":"Max","lastName":"Kilman","displayName":"Kilman","team":"Wolves","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec941"},"firstName":"Raúl","lastName":"Jiménez","displayName":"Jiménez","team":"Wolves","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec942"},"firstName":"Diogo","lastName":"Jota","displayName":"Jota","team":"Wolves","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec943"},"firstName":"Rui Pedro","lastName":"dos Santos Patrício","displayName":"Patrício","team":"Wolves","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec944"},"firstName":"John","lastName":"Ruddy","displayName":"Ruddy","team":"Wolves","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec945"},"firstName":"Will","lastName":"Norris","displayName":"Norris","team":"Wolves","position":"Goalkeeper"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec946"},"firstName":"Rúben Diogo","lastName":"da Silva Neves","displayName":"Neves","team":"Wolves","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec947"},"firstName":"João Filipe Iria","lastName":"Santos Moutinho","displayName":"Moutinho","team":"Wolves","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec948"},"firstName":"Morgan","lastName":"Gibbs-White","displayName":"Gibbs-White","team":"Wolves","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec949"},"firstName":"Adama","lastName":"Traoré","displayName":"Traoré","team":"Wolves","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec94a"},"firstName":"Hélder","lastName":"Costa","displayName":"Costa","team":"Wolves","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec94b"},"firstName":"Ivan","lastName":"Cavaleiro","displayName":"Cavaleiro","team":"Wolves","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec94c"},"firstName":"Leander","lastName":"Dendoncker","displayName":"Dendoncker","team":"Wolves","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec94d"},"firstName":"Jesús","lastName":"Vallejo Lázaro","displayName":"Vallejo","team":"Wolves","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec94e"},"firstName":"Patrick","lastName":"Cutrone","displayName":"Cutrone","team":"Wolves","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec94f"},"firstName":"Pedro","lastName":"Lomba Neto","displayName":"Neto","team":"Wolves","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec950"},"firstName":"Bernard","lastName":"Ashley-Seal","displayName":"Ashley-Seal","team":"Wolves","position":"Forward"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec951"},"firstName":"Taylor","lastName":"Perry","displayName":"Perry","team":"Wolves","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec952"},"firstName":"Owen","lastName":"Otasowie","displayName":"Otasowie","team":"Wolves","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec953"},"firstName":"Luke","lastName":"Cundle","displayName":"Cundle","team":"Wolves","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec954"},"firstName":"Oskar","lastName":"Buur","displayName":"Buur","team":"Wolves","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec955"},"firstName":"Ryan","lastName":"Giles","displayName":"Giles","team":"Wolves","position":"Defender"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec956"},"firstName":"Bruno André","lastName":"Cavaco Jordao","displayName":"Jordao","team":"Wolves","position":"Midfielder"}
+{"_id":{"$oid":"5e446596cc1bf108ecfec957"},"firstName":"Daniel","lastName":"Castelo Podence","displayName":"Podence","team":"Wolves","position":"Midfielder"}

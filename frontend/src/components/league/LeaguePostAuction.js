@@ -34,7 +34,6 @@ const LeaguePostAuction = () => {
     }
   } = useAuthState()
   const [squadUser, setSquadUser] = useState(_id)
-  console.log(squadUser)
 
   return (
     <div className={classes.root}>

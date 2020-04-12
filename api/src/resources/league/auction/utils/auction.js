@@ -23,7 +23,6 @@ export const startCountdown = (leagueId, auctionItemId, amount) => {
     if (!league) {
       return clearInterval(countdown)
     }
-    // TODO: Maybe need to checkBidIsHighestAndLock in one atomic transaction
     count -= 1
     if (count <= 0) {
       const lockedLeague = await lockAuction(leagueId)
@@ -144,7 +143,6 @@ const updateLeague = (league, auctionUsers, nextUser, status, soldItem) => {
   league.auction.soldAuctionItems.push(soldItem)
   if (league.status === 'postauction') {
     updateLeagueAuctionComplete(league, auctionUsers)
-    // TODO: maybe delete auction history data at this point if not going to have any use for it
     console.log('Auction completed, copying final squad data.')
   }
 }
@@ -166,7 +164,8 @@ const updateLeagueAuctionComplete = (league, auctionUsers) => {
       user: u.user,
       squad: squad,
       points: 0,
-      rank: 1
+      rank: 1,
+      trend: 0
     }
   })
   league.postAuctionUsers = postAuctionUsers

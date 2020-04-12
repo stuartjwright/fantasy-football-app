@@ -29,5 +29,10 @@ export const finalSquadItemSchema = new mongoose.Schema({
     type: mongoose.SchemaTypes.ObjectId,
     ref: 'player',
     required: true
+  },
+  trend: {
+    type: Number,
+    required: true,
+    default: 0
   }
 })

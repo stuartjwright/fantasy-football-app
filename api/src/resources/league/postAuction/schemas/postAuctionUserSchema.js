@@ -20,6 +20,10 @@ export const postAuctionUserSchema = new mongoose.Schema(
     rank: {
       type: Number,
       required: true
+    },
+    trend: {
+      type: Number,
+      required: true
     }
   },
   { timestamps: true }

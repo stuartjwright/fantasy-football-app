@@ -110,7 +110,7 @@ const CreateLeague = () => {
         event
       }
       const data = await createLeague(params)
-      if (data.league) {
+      if (data) {
         setLeagueId(data.league._id)
         setIsCreated(true)
       } else {

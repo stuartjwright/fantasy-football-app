@@ -7,6 +7,10 @@ import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Typography from '@material-ui/core/Typography'
+import NoChangeIcon from '@material-ui/icons/Remove'
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward'
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward'
+import WinnerIcon from '@material-ui/icons/EmojiEventsRounded'
 
 const useStyles = makeStyles(theme => ({
   table: {
@@ -23,6 +27,42 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: theme.palette.grey[200],
       cursor: 'pointer'
     }
+  },
+  downIcon: {
+    width: 20,
+    height: 20,
+    backgroundColor: '#C6EFCE',
+    color: '#006100',
+    borderRadius: 50
+  },
+  upIcon: {
+    width: 20,
+    height: 20,
+    backgroundColor: '#FFC7CE',
+    color: '#9C0006',
+    borderRadius: 50
+  },
+  neutralIcon: {
+    width: 20,
+    height: 20,
+    color: theme.palette.grey[400],
+    backgroundColor: theme.palette.grey[200],
+    borderRadius: 50
+  },
+  winnerIcon: {
+    width: 30,
+    height: 30,
+    color: 'gold'
+  },
+  silver: {
+    width: 30,
+    height: 30,
+    color: 'silver'
+  },
+  bronze: {
+    width: 30,
+    height: 30,
+    color: 'tan'
   }
 }))
 
@@ -35,7 +75,11 @@ const getUsersLookup = users => {
 const LeagueStandings = ({ setSquadUser }) => {
   const classes = useStyles()
   const {
-    league: { users, postAuctionUsers }
+    league: {
+      users,
+      postAuctionUsers,
+      event: { status }
+    }
   } = useContext(LeagueStateContext)
   const usersLookup = getUsersLookup(users)
 
@@ -47,7 +91,8 @@ const LeagueStandings = ({ setSquadUser }) => {
         rank: u.rank,
         username: usersLookup[u.user],
         points: u.points,
-        user: u.user
+        user: u.user,
+        trend: u.trend
       }
     })
     .sort((a, b) => (a.rank > b.rank ? 1 : -1))
@@ -60,6 +105,7 @@ const LeagueStandings = ({ setSquadUser }) => {
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
+            <TableCell></TableCell>
             <TableCell align="right">Rank</TableCell>
             <TableCell>Manager</TableCell>
             <TableCell align="right">Points</TableCell>
@@ -72,6 +118,23 @@ const LeagueStandings = ({ setSquadUser }) => {
               className={classes.tableRow}
               onClick={handleUserSelect(row.user)}
             >
+              <TableCell align="center">
+                {status === 'live' ? (
+                  row.trend > 0 ? (
+                    <ArrowDownwardIcon className={classes.upIcon} />
+                  ) : row.trend < 0 ? (
+                    <ArrowUpwardIcon className={classes.downIcon} />
+                  ) : (
+                    <NoChangeIcon className={classes.neutralIcon} />
+                  )
+                ) : row.rank === 1 ? (
+                  <WinnerIcon className={classes.winnerIcon} />
+                ) : row.rank === 2 ? (
+                  <WinnerIcon className={classes.silver} />
+                ) : row.rank === 3 ? (
+                  <WinnerIcon className={classes.bronze} />
+                ) : null}
+              </TableCell>
               <TableCell component="th" scope="row" align="right">
                 {row.rank}
               </TableCell>

@@ -20,6 +20,19 @@ const useStyles = makeStyles(theme => ({
   subtitle: {
     fontWeight: 'bold',
     marginBottom: 15
+  },
+  trendUp: {
+    backgroundColor: '#C6EFCE',
+    color: '#006100'
+  },
+  trendDown: {
+    backgroundColor: '#FFC7CE',
+    color: '#9C0006'
+  },
+  complete: {
+    backgroundColor: '#FFEB9C',
+    color: '#9C6500',
+    fontWeight: 'bold'
   }
 }))
 
@@ -32,7 +45,11 @@ const getUsersLookup = users => {
 const LeaguePlayerPoints = ({ squadUser }) => {
   const classes = useStyles()
   const {
-    league: { users, postAuctionUsers }
+    league: {
+      users,
+      postAuctionUsers,
+      event: { status }
+    }
   } = useContext(LeagueStateContext)
 
   const usersLookup = getUsersLookup(users)
@@ -48,7 +65,6 @@ const LeaguePlayerPoints = ({ squadUser }) => {
     .squad.sort((a, b) =>
       positionLookup[a.position] > positionLookup[b.position] ? 1 : -1
     )
-  console.log(rows)
 
   return (
     <>
@@ -75,7 +91,20 @@ const LeaguePlayerPoints = ({ squadUser }) => {
               </TableCell>
               <TableCell>{row.position}</TableCell>
               <TableCell>{row.team}</TableCell>
-              <TableCell align="right">{row.points}</TableCell>
+              <TableCell
+                align="right"
+                className={
+                  status === 'live'
+                    ? row.trend > 0
+                      ? classes.trendUp
+                      : row.trend < 0
+                      ? classes.trendDown
+                      : null
+                    : classes.complete
+                }
+              >
+                {row.points}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

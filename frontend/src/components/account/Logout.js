@@ -1,8 +1,8 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
-
 import { useAuthState } from '../../contexts/AuthContext'
+import { useHistory } from 'react-router-dom'
 
 const Logout = () => {
   const {
@@ -12,7 +12,9 @@ const Logout = () => {
   const logout = () => {
     localStorage.removeItem('token')
     setState({ status: 'success', error: null, user: null })
+    history.push('')
   }
+  const history = useHistory()
 
   return (
     <>

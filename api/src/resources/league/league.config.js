@@ -7,5 +7,5 @@ export const defaultValues = {
   numDefenders: 1,
   numMidfielders: 1,
   numForwards: 1,
-  countdownTimer: 3
+  countdownTimer: 10
 }

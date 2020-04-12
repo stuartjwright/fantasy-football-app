@@ -30,7 +30,6 @@ const LeagueEventStatus = () => {
       event: { status, eventName }
     }
   } = useContext(LeagueStateContext)
-  console.log(status)
   const statuses = {
     'not started': 'Not Yet Started',
     live: 'Live Now',

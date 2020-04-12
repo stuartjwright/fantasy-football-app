@@ -51,8 +51,6 @@ export const makeOpeningBid = async (req, res) => {
       )
     }
 
-    // TODO: some logic here to check position and club constraints
-
     const bid = await createOpeningBid(auctionUser.user)
     const bidId = bid._id
     await registerBidOnAuctionItem(auctionItemId, bidId, 0)
