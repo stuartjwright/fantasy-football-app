@@ -71,3 +71,18 @@ export const setFinalLeaguePoints = async leagueId => {
     console.error(e)
   }
 }
+
+export const cancelLeagues = async eventId => {
+  const leaguesToCancel = await League.find({
+    event: eventId,
+    status: { $in: ['registering', 'ready', 'auction', 'locked'] }
+  })
+    .populate('event')
+    .exec()
+  leaguesToCancel.forEach(async league => {
+    console.log(`Cancelling league ${league._id}`)
+    league.status = 'cancelled'
+    await league.save()
+    socketIO.to(league._id).emit('cancel league', league)
+  })
+}

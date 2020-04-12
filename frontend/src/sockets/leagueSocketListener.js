@@ -38,8 +38,13 @@ const leagueSocketListener = (leagueId, dispatch) => {
     dispatch({ type: 'SOCKETIO_UPDATE_POINTS', data })
   })
   socket.on('final points', data => {
-    console.log(data)
     dispatch({ type: 'SOCKETIO_FINAL_POINTS', data })
+  })
+  socket.on('cancel league', data => {
+    dispatch({ type: 'SOCKETIO_CANCEL_LEAGUE', data })
+  })
+  socket.on('registration', data => {
+    dispatch({ type: 'SOCKETIO_REGISTRATION', data })
   })
   return socket
 }

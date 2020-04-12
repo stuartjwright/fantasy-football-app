@@ -3,7 +3,8 @@ import { Event } from '../event.model'
 import { League } from '../../league/league.model'
 import {
   updateLeaguePoints,
-  setFinalLeaguePoints
+  setFinalLeaguePoints,
+  cancelLeagues
 } from '../../league/postAuction/utils/updatePoints'
 
 export const getInitialPlayers = async () => {
@@ -62,15 +63,7 @@ export const startSimulation = async eventId => {
       throw new Error('Could not find event to simulate')
     }
 
-    const leaguesToCancel = await League.find({
-      event: eventId,
-      status: { $in: ['registering', 'ready', 'auction', 'locked'] }
-    })
-    leaguesToCancel.forEach(async league => {
-      console.log(`Cancelling league ${league._id}`)
-      league.status = 'cancelled'
-      await league.save()
-    })
+    await cancelLeagues(eventId)
 
     const leagues = await League.find(
       { event: eventId, status: 'postauction' },
@@ -96,8 +89,8 @@ export const startSimulation = async eventId => {
         console.log('Event Complete')
         leagueIds.forEach(leagueId => setFinalLeaguePoints(leagueId))
 
-        // TODO: Delete this, just saves testing work for now
-        // event = await resetEvent(eventId)
+        //TODO: Delete this, just saves testing work for now
+        event = await resetEvent(eventId)
       }
     }, interval)
   } catch (e) {

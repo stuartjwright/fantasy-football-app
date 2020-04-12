@@ -124,6 +124,18 @@ export const leagueReducer = (state, action) => {
         league: action.data
       }
     }
+    case 'SOCKETIO_CANCEL_LEAGUE': {
+      return {
+        ...state,
+        league: action.data
+      }
+    }
+    case 'SOCKETIO_REGISTRATION': {
+      return {
+        ...state,
+        league: action.data
+      }
+    }
     default: {
       return state
     }

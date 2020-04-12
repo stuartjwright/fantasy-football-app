@@ -102,6 +102,8 @@ export const joinLeague = async (req, res) => {
       { $push: { users: user } },
       { new: true, useFindAndModify: false }
     )
+      .populate('users', 'username')
+      .populate('event')
 
     if (!league) {
       throw new Error('could not join league')
@@ -112,6 +114,7 @@ export const joinLeague = async (req, res) => {
       league.status = 'ready'
       await league.save()
     }
+    socketIO.to(leagueId).emit('registration', league)
 
     res.status(202).json({ league })
   } catch (e) {
