@@ -10,7 +10,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "buildAll": "cd api && rimraf dist && yarn build && cd dist && mkdir public && cd ../../frontend && rimraf build && yarn build && mv build/* ../api/dist/public && pm2 restart index",
-    "start": "cd api && yarn start"
+    "start": "cd api && yarn start",
+    "resetDb": "mongoimport --db fantasy-football --collection events --file data/events.json --mode=upsert && mongoimport --db fantasy-football --collection leagues --file data/leagues.json --mode=upsert"
   },
   "repository": {
     "type": "git",
