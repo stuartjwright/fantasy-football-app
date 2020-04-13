@@ -11,8 +11,7 @@ import userRouter from './resources/user/user.router'
 import playerRouter from './resources/player/player.router'
 import leagueRouter from './resources/league/league.router'
 import eventRouter from './resources/event/event.router'
-
-// import path from 'path'
+import path from 'path'
 
 const app = express()
 const server = http.createServer(app)
@@ -24,12 +23,10 @@ nsp.on('connection', socket => {
   socket.join(leagueId)
 })
 
-app.use(cors()) // don't need for production
+// app.use(cors()) // don't need for production
 app.use(json())
 app.use(urlencoded({ extended: true }))
 app.use(morgan('dev'))
-
-// app.use(express.static('public')) // put contents of react dist in here for production
 
 app.post('/signup', signup)
 app.post('/signin', signin)
@@ -41,14 +38,15 @@ app.use('/api/league', leagueRouter)
 app.use('/api/event', eventRouter)
 
 // production only
-// app.get('/*', function(req, res) {
-//   console.log('catch all')
-//   res.sendFile(path.join(__dirname, '../public/index.html'), function(err) {
-//     if (err) {
-//       res.status(500).send(err)
-//     }
-//   })
-// })
+const root = path.join(__dirname, 'public')
+app.use(express.static(root)) // put contents of react dist in here for production
+app.get('/*', function(req, res) {
+  res.sendFile('index.html', { root }, function(err) {
+    if (err) {
+      res.status(500).send(err)
+    }
+  })
+})
 
 export const start = async () => {
   try {

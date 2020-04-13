@@ -1,0 +1,25 @@
+{
+  "name": "fantasy-football",
+  "version": "1.0.0",
+  "description": "Fantasy Football Game",
+  "main": "index.js",
+  "dependencies": {
+    "rimraf": "^3.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "buildAll": "cd api && rimraf dist && yarn build && cd dist && mkdir public && cd ../../frontend && rimraf build && yarn build && mv build/* ../api/dist/public",
+    "start": "cd api && yarn start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stuartbbk/fantasy-football.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stuartbbk/fantasy-football/issues"
+  },
+  "homepage": "https://github.com/stuartbbk/fantasy-football#readme"
+}
