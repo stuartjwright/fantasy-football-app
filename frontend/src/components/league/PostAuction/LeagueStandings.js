@@ -119,7 +119,7 @@ const LeagueStandings = ({ setSquadUser }) => {
               onClick={handleUserSelect(row.user)}
             >
               <TableCell align="center">
-                {status === 'live' ? (
+                {status != 'complete' ? (
                   row.trend > 0 ? (
                     <ArrowDownwardIcon className={classes.upIcon} />
                   ) : row.trend < 0 ? (

@@ -94,7 +94,7 @@ const LeaguePlayerPoints = ({ squadUser }) => {
               <TableCell
                 align="right"
                 className={
-                  status === 'live'
+                  status != 'complete'
                     ? row.trend > 0
                       ? classes.trendUp
                       : row.trend < 0
