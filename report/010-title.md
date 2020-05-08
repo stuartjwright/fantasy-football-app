@@ -13,5 +13,3 @@ abstract: |
     It consists of two paragraphs.
 
 ...
-
-<!-- pandoc *.md --toc -s  --bibliography=biblio.bib --filter=pandoc-citeproc --csl=cell-numeric.csl -o report.pdf && open report.pdf -->
