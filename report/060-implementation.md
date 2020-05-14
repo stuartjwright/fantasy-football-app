@@ -22,7 +22,7 @@ That said, some further research was conducted to ensure that this was the right
 
 ### React
 
-The author was already comfortable with React prior to beginning this project, and was satisfied that it would fulfil the requirements. Therefore, no alternatives were researched. React user interfaces are composed of components which are updated when the data changes, which is exactly what was needed here. For example, when a new bid is made during the auction, the entire page should not update, but only those elements which are relevant.
+The developer was already comfortable with React prior to beginning this project, and was satisfied that it would fulfil the requirements. Therefore, no alternatives were researched. React user interfaces are composed of components which are updated when the data changes, which is exactly what was needed for this application. For example, when a new bid is made during the auction, the entire page should not update, but only those elements which are relevant.
 
 React is a library, as opposed to a fully-fledged framework (such as Angular). It does not make assumptions about the rest of the technology stack[@react_home]. This was particularly attractive in this case, as there were unlikely to be any problems integrating whichever libraries were required for real-time bi-directional communication.
 
@@ -79,6 +79,20 @@ Github offered a centralised storage solution for the Git repository, which made
 
 ### Visual Studio Code
 
+Visual Studio Code is a feature rich text editor as opposed to a fully-fledged integrated development environment. Some of its useful features can be seen in figure \ref{vscode}.
+
+![Visual Studio Code\label{vscode}](./img/vscode.png)
+
+
+In the bottom left, a status bar shows that the current working directory is actually a remote server accessed via SSH (Secure Shell). This made working on the development server as simple for the developer as working on the local machine.
+
+The integrated terminal is another useful feature, both for local and remote development environments. In the screenshot a git command is shown, which is only one of many uses for the terminal during development.
+
+Two source code files are shown in the editor, side-by-side. In the left panel, there is client-side code for requesting a list of all available players, and on the right panel there is server-side code showing relating to the player model - the ability to view files side-by-side in this manner is extremely useful during development. In this example, the developer working on the client-side code is able to view the server-side code to learn what data structure to expect in the response.
+
+The code in the screenshot (and all code in the application) is consistently formatted according to rules chosen by the developer. This is handled by an extension for Visual Studio Code called **Prettier**. This frees the developer from having to worry about spacing and indentation - it is handled automatically on each save.
+
+
 
 
 ### Postman
@@ -95,7 +109,8 @@ Babel is a JavaScript transpiler, which allows the developer to write code using
 
 ## Backend
 
-The server side program consists of a REST API
+The server side program is first and foremost a REST API. It receives requests from clients, performs the necessary database operations, and returns a response. The real-time bi-directional communication added using Socket.IO is important for the user experience, but it is worth noting that even if this functionality was removed, the application would still work. The user experience would be terrible - they would have to constantly refresh their page during the auction to see if there had been any new bids, but with enough persistence, the auction would be completed correctly.
+
 
 
 ## Frontend
