@@ -101,7 +101,7 @@ Postman is a tool which can be used to test REST API endpoints. For example, onc
 
 ### Yarn
 
-Yarn is a package manager for Node.js projects. Most Node.js projects, including this one, involve the use of several libraries. Yarn helps the developer to keep track of which depencies are required, so that when the code is deployed on a new machine, the process of installing these depencies is automated. NPM (Node Package Manager) is very similar and would have been a suitable alternative here.
+Yarn is a package manager for Node.js projects. Most Node.js projects, including this one, involve the use of several libraries. Yarn helps the developer to keep track of which dependencies are required, so that when the code is deployed on a new machine, the process of installing these dependencies is automated. NPM (Node Package Manager) is very similar and would have been a suitable alternative.
 
 ### Babel
 
@@ -109,9 +109,48 @@ Babel is a JavaScript transpiler, which allows the developer to write code using
 
 ## Backend
 
-The server side program is first and foremost a REST API. It receives requests from clients, performs the necessary database operations, and returns a response. The real-time bi-directional communication added using Socket.IO is important for the user experience, but it is worth noting that even if this functionality was removed, the application would still work. The user experience would be terrible - they would have to constantly refresh their page during the auction to see if there had been any new bids, but with enough persistence, the auction would be completed correctly.
+The server side program is first and foremost a REST API. It receives requests from clients, performs the necessary database operations, and returns a response. The real-time bi-directional communication added using Socket.IO is important for the user experience, but it is worth noting that even if this functionality was removed, the application would still work. The user experience would be terrible - they would have to constantly refresh their page during the auction to see if there had been any new bids, but with enough persistence from the users, the auction could be completed correctly. There are many good reasons for this approach, described in the following section.
+
+### REST API
+
+A REST API codebase is typically well-organised and simple for the developer to navigate. There are other ways to structure a project, but in this case, the approach which was taken can be seen in figure \ref{resource}. Each entity (or resource) has its own directory, and within that directory is a file each for **model**, **controller** and **router**:
+
+* The **model** file contains the schema information determining the structure of the objects to be stored in the database.
+* The **controller** file contains functions for reading from and writing to the database.
+* The **router** file defines how the various types of requests (e.g. GET and POST) are handled.
+
+![Resource Directory Structure\label{resource}](./img/resource.png)
+
+Another benefit of building the backend as a REST API is the ability to test each endpoint. Figure \ref{postman} shows an example of a simple request to return data for a specific league, which has successfully returned the desired JSON data.
+
+![GET Request Testing\label{postman}](./img/postman.png)
+
+This design also made sense when considering the necessary business logic. In the context of this application, the only time the server should be pushing data to clients which have not submitted a request, is after some change has been made to the database. This might be after a new bid, or bidding on an auction item has ended. However, data should never be emitted to all auction participants in the event of a failed bid, or before the bid has been successfully registered in the database. There is no client-to-client communication required or desired, as might be the case for a simpler use case like a chat room. With this in mind, implementing all of the business logic in the form of a REST API, and emitting updated data to clients as a side-effect using Socket.IO, seemed like a good solution.
+
+### Data Model
+
+Although a design for the data model had already been sketched out during the design phase, there were still some decisions to make relating specifically to the MongoDB implementation. In MongoDB parlance, there are **collections** and **documents**. A collection can be considered analogous to a table in a relational database, and a document is a record within that collection. MongoDB does not require that all collections enforce a schema, although in this application a schema was enforced. An example of a collection from this application is **players**, and each document within that collection represents a single player, as seen in figure \ref{collection}.
+
+![Two Documents in Players Collection\label{collection}](./img/collection.png)
+
+<!-- maybe reword this next bit to use better terminology: collections and documents -->
+ 
+ 
+MongoDB offers two different methods for modelling relationship between types of objects.
+
+* **Document References**[@mongo_ref] - this method uses references to object IDs to describe the relationship. This is similar to the way that a foreign key references a primary key in a traditional relational database. The main benefit to this approach is that it avoids duplication of data, but the downside is that data from multiple collections may be needed to satisfy a query.
+* **Embedded Documents**[@mongo_embedded] - this method instead sees documents stored within other documents. With this approach, duplication of data may occur, but the number of read operations required to retrieve a document is minimised. 
+
+It is not always immediately obvious which method is best. Only with a strong understanding of how the application is going to use the data can an informed decision be made. Indeed, during development of this application, it was necessary in one case to undo a lot of work and start over, after it was decided that the wrong approach had been chosen initially. Developers with more experience of working with traditional relational database may be attracted to the **Document References** approach, but this can make life difficult when working with MongoDB.
+
+<!-- talk about updates/transactions/atomicity etc-->
 
 
+
+
+### Auction
+
+Implementing the server-side logic for the auction was the most challenging and interesting part of the development process.
 
 ## Frontend
 
