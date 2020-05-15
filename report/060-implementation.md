@@ -127,6 +127,22 @@ Another benefit of building the backend as a REST API is the ability to test eac
 
 This design also made sense when considering the necessary business logic. In the context of this application, the only time the server should be pushing data to clients which have not submitted a request, is after some change has been made to the database. This might be after a new bid, or bidding on an auction item has ended. However, data should never be emitted to all auction participants in the event of a failed bid, or before the bid has been successfully registered in the database. There is no client-to-client communication required or desired, as might be the case for a simpler use case like a chat room. With this in mind, implementing all of the business logic in the form of a REST API, and emitting updated data to clients as a side-effect using Socket.IO, seemed like a good solution.
 
+### Login System
+
+The REST API routes needed to be protected so that only authenticated users could gain access. This is true of almost every REST API, so rather than design a login system from scratch, an implementation was copied from the repository[@api_design_repo] for a REST API design course[@api_design_course] available on the FrontendMasters website. Minor edits aside to tailor the solution to this application, the credit for the code in the auth.js and user.model.js files belongs to the teacher of said course, Scott Moss.
+
+The login system solution generates a **JSON Web Token** on each login or account creation, and returns that token to the client. The client must then use this token to authenticate themselves when accessing any other resources.
+
+### Socket.IO Integration
+
+The Socket.IO library offers features for organising and managing sockets in an application using **namespaces** and **rooms**[@socketio_rooms].
+
+Namespaces allow for separation of concerns between communication channels in an application. In this application, only one namespace ('leagues') was required, but if it was later decided to, for example, add a chatroom to the home page, this could exist in a separate namespace, keeping the application logic for different parts of the application separate.
+
+Each namespace can contain several rooms. In this application, a separate room exists for each league, so that once a client has subscribed to the room, the server can push messages to the client. The business logic of this application was implemented in such a way that the server pushes messages to all clients in the room after some database action has been performed, to ensure that all clients have the most up-to-date representation of the league state, without them having to request it manually.
+
+Although Socket.IO also allows the client to emit messages to all other clients in the room, this functionality was not used in this application.
+
 ### Data Model
 
 Although a design for the data model had already been sketched out during the design phase, there were still some decisions to make relating specifically to the MongoDB implementation. In MongoDB parlance, there are **collections** and **documents**. A collection can be considered analogous to a table in a relational database, and a document is a record within that collection. Each document is assigned a unique object ID, which acts like a primary key in a relational database table. MongoDB does not require that all collections enforce a schema, although in this application a schema was enforced. An example of a collection from this application is **players**, and each document within that collection represents a single player, as seen in figure \ref{collection}.
@@ -146,7 +162,7 @@ During the early stages of development, most relationships were modelled using t
 
 With this advice in mind, the schema was redesigned to use more embedded documents. All of the smaller subcomponents of the auction were added as embedded documents rather than references, and this made updates significantly more straightforwarded.
 
-The main use case which remained for the document references approach was modelling the relationships between the players collection and individual auctions. The full player list used for this application contains 619 players, and cannot be altered by the application. Therefore, there were no concerns regarding atomic update operations, so document references could be used to avoid duplicating all 619 player documents for each auction. Instead, each auction item simply refers to an object ID for the player it refers to.
+Uses cases for the documents references approach still remained however - for example, modelling the relationships between the players collection and individual auctions. The full player list used for this application contains 619 players, and cannot be altered by the application. Therefore, there were no concerns regarding atomic update operations, so document references could be used to avoid duplicating all 619 player documents for each auction. Instead, each auction item simply refers to an object ID for the player it refers to.
 
 The code for creating the schemas and performing database operations was done using a Node.js library called **Mongoose**. Mongoose is an object data modelling library, which allows the developer to focus on modelling their data without concerning themselves with the complexities of the MongoBD query language. The resulting code is more readable, and allows the developer to easily see the structure of the data they will be working with. The code snippet below shows the schema for the current live auction item: 
 
@@ -182,10 +198,164 @@ export const liveAuctionItemSchema = new mongoose.Schema(
 
 It makes use of both document references (for the player and the user representing the current high bidder), and embedded documents (an array of bid documents representing the bidding history).
 
+### Auction Overview
 
-### Auction
+Implementing the server-side logic for the auction was the most challenging and interesting part of the development process. Lots of validation and checking of constraints was required, as well as managing the countdown timer and sale of each item correctly. There are several different stages to the auction:
 
-Implementing the server-side logic for the auction was the most challenging and interesting part of the development process.
+1. League creator starts the auction.
+2. A user selects a player to be the next auction item.
+3. Real-time bidding begins.
+4. A countdown timer begins after the first succesful bid, and is reset after every subsequent successful bid.
+5. When the countdown timer reaches 0, the player sale is finalised.
+6. Steps 2-5 are repeated until all squads are complete, at which point the auction is finalised.
+
+Each of the above steps is discussed in greater detail in the following six sections.
+
+### Starting the Auction
+
+Once enough users have joined a league, the league's status field will be set to 'ready'. Only once the league is in 'ready' state, will the league creator be permitted to start the auction. When the creator sends a successful request to the server to start the auction, several database updates are required:
+
+* League status is moved from 'ready' to 'auction'.
+* The embedded auction document is prepared with the appropriate users and saved to the league document, as seen in the snippet below.
+
+```javascript
+const auctionUsers = league.users.map(u => {
+  return { user: u, squad: [], budget: defaultValues.startBudget }
+})
+league.status = 'auction'
+league.auction = {
+  auctionUsers,
+  soldAuctionItems: [],
+  liveAuctionItem: null,
+  nextUser: user
+}
+await league.save()
+```
+
+The above snippet demonstrates another of the advantages of using the Mongoose library introduced in the previous section. It is possible to manipulate a document using plain JavaScript, before calling the `save()` method on the document to persist the changes to the database. This is significantly easier to read than a complex update operation, although these are sometimes necessary as will be seen in a later section.
+
+After a successful database update, a message is emitted to all league users via Socket.IO (using the **rooms** functionality explained earlier). This message ensures that all clients receive a real-time update informing them that the auction has begun.
+
+Next, a player must be selected for participants to bid on. The league creator is always responsible for nominating the first player. It might seem that random selection would be preferable to avoid giving an unfair advantage to the league creator, but there is no inherent benefit to being first to nominate a player. All auction participants start with the same budget and ultimately the nominated player will be sold to whichever participant is willing to bid the highest.
+
+### Nominating a Player
+
+The participant whose turn it is to nominate a player begins this process by submitting a request to select a certain player. Upon receiving this request, the server must perform some checks, to ensure that:
+
+* The request was received from the expected authenticated user (the user referred to by the next user field in the auction document).
+* The user is permitted to bid on this player (they may not be permitted if they already have too many players in their squad in the same position, or from the same club).
+
+Assuming the request is successful, the auction document is updated with a newly generated live auction item embedded document, with the current user set as the highest bidder (with a bid of £0).
+
+At this point, a countdown timer is triggered on the server, beginning a countdown to the player being sold. The countdown timer is explained in more detail in a later section.
+
+In addition, a message is emitted to all league users in real-time, and bidding begins.
+
+### Bidding
+
+This is where things get more complicated. Given the real-time nature of the auction with bidding open to multiple users, the server has to be able to handle two or more users attempting to bid on the player at approximately the same time, without compromising the integrity of the data.
+
+On receiving a bid, the server must only accept it if:
+
+* The user is permitted to bid on this player (the same club and position constraints as before).
+* The user has sufficient budget to make the requested bid.
+* The user is not already the highest bidder (it should not be possible for a user to outbid themselves).
+* The bid amount is strictly greater than the existing highest bid.
+
+That last check is the one which can be expected to fail in instances of two users attempting to bid at approximately the same time. In such cases of a bid being unsuccessful, an error response is returned to the unsuccessful bidder, and no updates relating to the failed bid are emitted to other users via Socket.IO.
+
+For successful bids, database changes are required to reflect the new bid. The live auction item document is updated with the new highest bidder, highest bid amount, and a new bid is appended to the array of bids representing the bidding history.
+
+At this point, the countdown timer is reset, a message is emitted to all league users to inform them of the succesful bid, and bidding continues.
+
+The difficult part of the above process is ensuring that the checking of constraints and updating of the database occurs in one atomic transaction. In the 'Starting the Auction' section above, a benefit of using Mongoose was discussed: the ability to manipulate documents as if they were plain JavaScript objects, with updated documents persisted to the database using the `save()` method on the document. Unfortunately, such an approach does not guarantee atomicity. In the milliseconds between the original document being retrieved from the database, and the edits being performed in plain JavaScript before being saved, it is possible that a new bid could arrive. This new bid could have constraints checked against the out-of-date document in the database, and this may lead to a bid being incorrectly accepted.
+
+Therefore, it was necessary to use the `findOneAndUpdate()` method available on all Mongoose models, to perform validations and updates in a single atomic transaction. The resulting code snippet, appended below, is far less readable than the previous snippet, but this was a necessary evil to ensure that the integrity of the data does not become compromised when faced with multiple competing bids.
+
+```javascript
+const league = await League.findOneAndUpdate(
+  {
+    _id: leagueId,
+    status: 'auction',
+    users: { $eq: user },
+    'auction.liveAuctionItem._id': auctionItemId,
+    'auction.liveAuctionItem.currentHighBidder': { $ne: user },
+    'auction.liveAuctionItem.currentHighBid': { $lt: amount }
+  },
+  {
+    'auction.liveAuctionItem.currentHighBid': amount,
+    'auction.liveAuctionItem.currentHighBidder': user,
+    $push: { 'auction.liveAuctionItem.bidHistory': { user, amount } }
+  },
+  { new: true, useFindAndModify: false }
+)
+```
+
+The first argument to the `findOneAndUpdate()` method above is an object containing query filters, and the second argument is an object containing update instructions (the third argument containing options is not of importance to this discussion). It can be seen that one of the items in the query filters compares the current high bid amount to the new bid, with a `$lt` (less than) operator. This means that if a higher (or equal) bid has already been registered, the query will find no results, and no erroneous attempt to update the document will be made. An unsuccessful bid error message will be returned to the bidder.
+
+It is worth noting that not all constraints are checked by this single operation. Some of the validations can be performed in advance (club, position and budget), so they are not shown in the snippet above. Only those validations which are extremely time sensitive are included in the atomic `findOneAndUpdate()` operation. A player's club, position and budget constraints cannot be affected by a new bid.
+
+### Countdown Timer
+
+As noted in the preceding two sections, a bid on a player triggers a countdown timer, starting at 10 seconds. Any subsequent successful bid resets this timer back to 10 seconds. After 10 seconds of inactivity (no new bids), the sale is finalised.
+
+Node.js features a convenient built-in function called `setInterval()`, which accepts two non-optional arguments: a function to be executed repeatedly, and a number representing the delay between executions of said function in milliseconds. A related function, `clearInterval()` is also provided, to allow the application to terminate the repeated execution initiated by `setInterval()`. Both of these functions were necessary to implement the countdown timer in this application. `setInterval()` is called each time a new bid is successfully registered, to start a new countdown timer at 10 seconds. `clearInterval()` is used to ensure that old countdown timers for bids which are no longer the highest bid are terminated.
+
+A code snippet detailing the use of these functions in the application can be seen below. Some details are redacted for the sake of clarity; the complete version can be seen in the `startCountdown()` function in the file auction.js.
+
+```javascript
+let count = defaultValues.countdownTimer
+const countdown = setInterval(async () => {
+  const league = await checkBidIsHighest(leagueId, auctionItemId, amount)
+
+  if (!league) {
+    return clearInterval(countdown)
+  }
+
+  count -= 1
+  if (count <= 0) {
+    clearInterval(countdown)
+    // Redacted: some code to finalise sale of player
+  }
+
+  socketIO.to(leagueId).emit('countdown', count)
+
+}, 1000)
+```
+
+The snippet above handles the following sequence of events, which occurs for each successful bid:
+
+* The `count` variable is initialised to the default starting value (10 seconds in this case).
+* A call to `setInterval()` initiates the repeated execution of a function to be called once every 1000 milliseconds.
+* Inside the function, the database is queried to check that the bid amount is still the highest bid.
+* If the check above fails, this means that a higher bid has subsequently been registered, and `clearInterval()` is called to terminate the countdown timer for this bid which is no longer the highest.
+* If the check instead confirms that the bid is still the highest, execution of the function continues. The countdown timer is decremented by 1 second.
+* If the countdown timer has not yet reached 0, an update is pushed to all league users via Socket.IO.
+* If the countdown timer has reached 0, `clearInterval()` is called to ensure no further executions of this function, and some code to finalise the sale of the player is executed, the details of which are reserved for discussion in the following section.
+
+### Auction Item Sold
+
+As mentioned in the previous section, once the countdown timer reaches 0, some code to finalise the sale of the player is executed. This process involves a significant amount of data manipulation:
+
+* The winning bidder's squad and budget are updated to reflect the sale.
+* The player sold is added to the array of sold items.
+* The currently live auction item is set to `null`.
+* The next user to nominate a player is selected (this is fairly complex as it involves checking to see which users still have incomplete squads).
+
+A check is also completed to work out whether or not this player sale signifies the end of the auction entirely, but for the purposes of this section, it is assumed that the result of this check is negative. The completion of the auction is discussed in the next section instead.
+
+In the 'Bidding' section above, it was established that care must be taken to ensure that no new bids can be registered while database updates are in progress. This remains true when finalising the player sale, but the data manipulation required for this step was prohibitively complex to consider implementing as a single atomic update operation, so an alternative approach was taken.
+
+Before beginning the complex updates, a single atomic update operation to set the league status from 'auction' to 'locked' is executed. All bid handling code is implemented to only accept bids if the league status is set to 'auction', so this has the desired effect. For the length of time that the league status is set to 'locked', complex updates can be performed using plain JavaScript, as shown in the 'Starting an Auction' section. These updates are not atomic, but it doesn't matter as long as no other database operations are permitted when the status is set to 'locked'. Once the updates are complete, the league status is set back to 'auction', so that the auction can continue.
+
+Two separate messages are emitted to all league users via Socket.IO during the above process. The first message is sent as soon as the league is locked to confirm the sale. A second message is sent 3 seconds later to indicate that the next player should be selected for auction. This delay is deliberate to enforce a short pause between one auction item ending and a new one beginning. There is no technical reason which necessitates this delay (the database updates take only milliseconds), but rather it is implemented for reasons relating to the user experience, which will be discussed in more detail in the frontend section.
+
+
+### Auction Complete
+
+
+
+
 
 ## Frontend
 
