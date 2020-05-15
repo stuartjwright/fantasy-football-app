@@ -129,23 +129,58 @@ This design also made sense when considering the necessary business logic. In th
 
 ### Data Model
 
-Although a design for the data model had already been sketched out during the design phase, there were still some decisions to make relating specifically to the MongoDB implementation. In MongoDB parlance, there are **collections** and **documents**. A collection can be considered analogous to a table in a relational database, and a document is a record within that collection. MongoDB does not require that all collections enforce a schema, although in this application a schema was enforced. An example of a collection from this application is **players**, and each document within that collection represents a single player, as seen in figure \ref{collection}.
+Although a design for the data model had already been sketched out during the design phase, there were still some decisions to make relating specifically to the MongoDB implementation. In MongoDB parlance, there are **collections** and **documents**. A collection can be considered analogous to a table in a relational database, and a document is a record within that collection. Each document is assigned a unique object ID, which acts like a primary key in a relational database table. MongoDB does not require that all collections enforce a schema, although in this application a schema was enforced. An example of a collection from this application is **players**, and each document within that collection represents a single player, as seen in figure \ref{collection}.
 
-![Two Documents in Players Collection\label{collection}](./img/collection.png)
-
-<!-- maybe reword this next bit to use better terminology: collections and documents -->
+![Two Documents in Players Collection\label{collection}](./img/collection.png) 
  
- 
-MongoDB offers two different methods for modelling relationship between types of objects.
+MongoDB offers two different methods for modelling relationship between documents, both of which were utilised in this application:
 
 * **Document References**[@mongo_ref] - this method uses references to object IDs to describe the relationship. This is similar to the way that a foreign key references a primary key in a traditional relational database. The main benefit to this approach is that it avoids duplication of data, but the downside is that data from multiple collections may be needed to satisfy a query.
 * **Embedded Documents**[@mongo_embedded] - this method instead sees documents stored within other documents. With this approach, duplication of data may occur, but the number of read operations required to retrieve a document is minimised. 
 
-It is not always immediately obvious which method is best. Only with a strong understanding of how the application is going to use the data can an informed decision be made. Indeed, during development of this application, it was necessary in one case to undo a lot of work and start over, after it was decided that the wrong approach had been chosen initially. Developers with more experience of working with traditional relational database may be attracted to the **Document References** approach, but this can make life difficult when working with MongoDB.
+It is not always immediately obvious which method is best. Only with a strong understanding of how the application is going to use the data can an informed decision be made. Indeed, during the early stages of development of this application, it was necessary in one case to undo a lot of work and start over, after it was decided that the wrong approach had been chosen initially. Developers with more experience of working with traditional relational database may be attracted to the document references approach, but this can make life difficult when working with MongoDB.
 
-<!-- talk about updates/transactions/atomicity etc-->
+During the early stages of development, most relationships were modelled using the document References approach, but problems started when it was necessary to update multiple documents in a single transaction. For example, during an auction it might be necessary for an operation to be performed which updates the main auction document, the auction users documents, and the available auction item documents. In order to ensure that there is no unintended behaviour, these updates must be performed in a single transaction, meaning that either all updates are successful or none are, with no other operations interleaved. Although MongoDB does offer multi-document transactions, the documentation[@mongo_transactions] states:
 
+> In most cases, multi-document transaction incurs a greater performance cost over single document writes, and the availability of multi-document transactions should not be a replacement for effective schema design. For many scenarios, the denormalized data model (embedded documents and arrays) will continue to be optimal for your data and use cases.
 
+With this advice in mind, the schema was redesigned to use more embedded documents. All of the smaller subcomponents of the auction were added as embedded documents rather than references, and this made updates significantly more straightforwarded.
+
+The main use case which remained for the document references approach was modelling the relationships between the players collection and individual auctions. The full player list used for this application contains 619 players, and cannot be altered by the application. Therefore, there were no concerns regarding atomic update operations, so document references could be used to avoid duplicating all 619 player documents for each auction. Instead, each auction item simply refers to an object ID for the player it refers to.
+
+The code for creating the schemas and performing database operations was done using a Node.js library called **Mongoose**. Mongoose is an object data modelling library, which allows the developer to focus on modelling their data without concerning themselves with the complexities of the MongoBD query language. The resulting code is more readable, and allows the developer to easily see the structure of the data they will be working with. The code snippet below shows the schema for the current live auction item: 
+
+```javascript
+import mongoose from 'mongoose'
+import { bidSchema } from './bidSchema'
+
+export const liveAuctionItemSchema = new mongoose.Schema(
+  {
+    player: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'player',
+      required: true
+    },
+    bidHistory: [
+      {
+        type: bidSchema
+      }
+    ],
+    currentHighBid: {
+      type: Number,
+      required: true,
+      default: 0
+    },
+    currentHighBidder: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'user'
+    }
+  },
+  { timestamps: true }
+)
+```
+
+It makes use of both document references (for the player and the user representing the current high bidder), and embedded documents (an array of bid documents representing the bidding history).
 
 
 ### Auction
