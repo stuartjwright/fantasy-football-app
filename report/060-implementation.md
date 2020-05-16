@@ -83,7 +83,6 @@ Visual Studio Code is a feature rich text editor as opposed to a fully-fledged i
 
 ![Visual Studio Code\label{vscode}](./img/vscode.png)
 
-
 In the bottom left, a status bar shows that the current working directory is actually a remote server accessed via SSH (Secure Shell). This made working on the development server as simple for the developer as working on the local machine.
 
 The integrated terminal is another useful feature, both for local and remote development environments. In the screenshot a git command is shown, which is only one of many uses for the terminal during development.
@@ -91,9 +90,6 @@ The integrated terminal is another useful feature, both for local and remote dev
 Two source code files are shown in the editor, side-by-side. In the left panel, there is client-side code for requesting a list of all available players, and on the right panel there is server-side code showing relating to the player model - the ability to view files side-by-side in this manner is extremely useful during development. In this example, the developer working on the client-side code is able to view the server-side code to learn what data structure to expect in the response.
 
 The code in the screenshot (and all code in the application) is consistently formatted according to rules chosen by the developer. This is handled by an extension for Visual Studio Code called **Prettier**. This frees the developer from having to worry about spacing and indentation - it is handled automatically on each save.
-
-
-
 
 ### Postman
 
@@ -149,20 +145,20 @@ Although a design for the data model had already been sketched out during the de
 
 ![Two Documents in Players Collection\label{collection}](./img/collection.png) 
  
-MongoDB offers two different methods for modelling relationship between documents, both of which were utilised in this application:
+MongoDB offers two different methods for modelling relationships between documents, both of which were utilised in this application:
 
 * **Document References**[@mongo_ref] - this method uses references to object IDs to describe the relationship. This is similar to the way that a foreign key references a primary key in a traditional relational database. The main benefit to this approach is that it avoids duplication of data, but the downside is that data from multiple collections may be needed to satisfy a query.
 * **Embedded Documents**[@mongo_embedded] - this method instead sees documents stored within other documents. With this approach, duplication of data may occur, but the number of read operations required to retrieve a document is minimised. 
 
-It is not always immediately obvious which method is best. Only with a strong understanding of how the application is going to use the data can an informed decision be made. Indeed, during the early stages of development of this application, it was necessary in one case to undo a lot of work and start over, after it was decided that the wrong approach had been chosen initially. Developers with more experience of working with traditional relational database may be attracted to the document references approach, but this can make life difficult when working with MongoDB.
+It is not always immediately obvious which method is best. Only with a strong understanding of how the application is going to use the data can an informed decision be made. Indeed, during the early stages of development of this application, it was necessary in one case to undo a lot of work and start over, after it was decided that the wrong approach had been chosen initially. Developers with more experience working with traditional relational databases may be attracted to the document references approach, but this can make life difficult when working with MongoDB.
 
-During the early stages of development, most relationships were modelled using the document References approach, but problems started when it was necessary to update multiple documents in a single transaction. For example, during an auction it might be necessary for an operation to be performed which updates the main auction document, the auction users documents, and the available auction item documents. In order to ensure that there is no unintended behaviour, these updates must be performed in a single transaction, meaning that either all updates are successful or none are, with no other operations interleaved. Although MongoDB does offer multi-document transactions, the documentation[@mongo_transactions] states:
+During the early stages of development, most relationships were modelled using the document references approach, but problems started when it was necessary to update multiple documents in a single transaction. For example, during an auction it might be necessary for an operation to be performed which updates the main auction document, the auction users documents, and the available auction item documents. In order to ensure that there is no unintended behaviour, these updates must be performed in a single transaction, meaning that either all updates are successful or none are, with no other operations interleaved. Although MongoDB does offer multi-document transactions, the documentation[@mongo_transactions] states:
 
 > In most cases, multi-document transaction incurs a greater performance cost over single document writes, and the availability of multi-document transactions should not be a replacement for effective schema design. For many scenarios, the denormalized data model (embedded documents and arrays) will continue to be optimal for your data and use cases.
 
 With this advice in mind, the schema was redesigned to use more embedded documents. All of the smaller subcomponents of the auction were added as embedded documents rather than references, and this made updates significantly more straightforwarded.
 
-Uses cases for the documents references approach still remained however - for example, modelling the relationships between the players collection and individual auctions. The full player list used for this application contains 619 players, and cannot be altered by the application. Therefore, there were no concerns regarding atomic update operations, so document references could be used to avoid duplicating all 619 player documents for each auction. Instead, each auction item simply refers to an object ID for the player it refers to.
+Uses cases for the document references approach still remained however - for example, modelling the relationships between the players collection and individual auctions. The full player list used for this application contains 619 players, and cannot be altered by the application. Therefore, there were no concerns regarding atomic update operations, so document references could be used to avoid duplicating all 619 player documents for each auction. Instead, each auction item simply refers to an object ID for the player it refers to.
 
 The code for creating the schemas and performing database operations was done using a Node.js library called **Mongoose**. Mongoose is an object data modelling library, which allows the developer to focus on modelling their data without concerning themselves with the complexities of the MongoBD query language. The resulting code is more readable, and allows the developer to easily see the structure of the data they will be working with. The code snippet below shows the schema for the current live auction item: 
 
@@ -346,16 +342,36 @@ A check is also completed to work out whether or not this player sale signifies 
 
 In the 'Bidding' section above, it was established that care must be taken to ensure that no new bids can be registered while database updates are in progress. This remains true when finalising the player sale, but the data manipulation required for this step was prohibitively complex to consider implementing as a single atomic update operation, so an alternative approach was taken.
 
-Before beginning the complex updates, a single atomic update operation to set the league status from 'auction' to 'locked' is executed. All bid handling code is implemented to only accept bids if the league status is set to 'auction', so this has the desired effect. For the length of time that the league status is set to 'locked', complex updates can be performed using plain JavaScript, as shown in the 'Starting an Auction' section. These updates are not atomic, but it doesn't matter as long as no other database operations are permitted when the status is set to 'locked'. Once the updates are complete, the league status is set back to 'auction', so that the auction can continue.
+Before beginning the complex updates, a single atomic update operation to set the league status from 'auction' to 'locked' is executed. All bid handling code is implemented to only accept bids if the league status is set to 'auction', so this has the desired effect. For the length of time that the league status is set to 'locked', complex updates can be performed using plain JavaScript, in the manner demonstrated in the 'Starting an Auction' section. These updates are not atomic, but it doesn't matter as long as no other database operations are permitted when the status is set to 'locked'. Once the updates are complete, the league status is set back to 'auction', so that the auction can continue.
 
-Two separate messages are emitted to all league users via Socket.IO during the above process. The first message is sent as soon as the league is locked to confirm the sale. A second message is sent 3 seconds later to indicate that the next player should be selected for auction. This delay is deliberate to enforce a short pause between one auction item ending and a new one beginning. There is no technical reason which necessitates this delay (the database updates take only milliseconds), but rather it is implemented for reasons relating to the user experience, which will be discussed in more detail in the frontend section.
-
+Two separate messages are emitted to all league users via Socket.IO during the above process. The first message is sent as soon as the league is locked to confirm the sale. A second message is sent 3 seconds later to indicate that the next player should be selected for auction. This delay is deliberate to enforce a short pause between one auction item ending and a new one beginning. There is no technical reason which necessitates this delay (the database updates take only milliseconds), but rather it is implemented for reasons relating to the user experience, which will be discussed in more detail in the 'Frontend' section.
 
 ### Auction Complete
 
+After each player sale is finalised, a check is completed to determine whether or not all squads have been filled. When the result of this check is positive, some further data manipulation is completed to finalise the auction. Due to the use of the 'locked' status introduced in the previous section, this process is fairly straightforward from a technical standpoint, with no potential for conflicts. The following updates are made to the league document:
 
+* The status field is set to 'postauction', to indicate that the auction is complete.
+* Some new data structures are created to prepare for the next stage of the game, based on the results of the auction:
+  * A new embedded document to track data relating to each user's points scored and their rank in the league.
+  * Contained within this document for each user, an additional embedded document for each player in their squad, to track points scored by individual player.
 
+At this stage, all scores are initialised to 0, but once the event (round of real-life football fixtures) is underway, these will be updated.
 
+### Post-Auction Points Scoring
+
+In order for the game to display updated points based on real-life football data, this would require either that an administrator manually updates scores, or that the application has the ability to consume data from a third party football statistics API. At this time however, the application simply randomly generates points every few seconds, to simulate events. The result is that the points scoring portion of the game lasts for only about a minute rather than hours or days, as it would if played for real. This allows for the functionality of the game to be demonstrated in a short space of time without requiring significant manual data entry.
+
+The sequence of events for this randomly generated points-scoring process is as follows. Most steps would remain the same for a version which used real data instead.
+
+* An administrator triggers the simulation of an event by sending a POST request to the server.
+* The event's status is updated to 'live'.
+* Points for each player are randomly generated every 3 seconds, and the event document is updated accordingly.
+* After each event update, a message is sent to each league which is using this event to track its points-scoring.
+* For each league, individual player points are taken from the event data, and total score for each league user is calculated by summing points for each player in their squad. Live updates are pushed to each league user via Socket.IO messages.
+* After the 20th points update, the event status is set to 'complete', and all leagues tracking this event are also set to 'complete'. One final update is pushed to each league user, confirming the completion of the game.
+
+Any league which has not yet completed its auction at the time of the event starting is automatically cancelled.
 
 ## Frontend
+
 
