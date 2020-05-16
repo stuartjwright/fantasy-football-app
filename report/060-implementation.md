@@ -359,7 +359,7 @@ At this stage, all scores are initialised to 0, but once the event (round of rea
 
 ### Post-Auction Points Scoring
 
-In order for the game to display updated points based on real-life football data, this would require either that an administrator manually updates scores, or that the application has the ability to consume data from a third party football statistics API. At this time however, the application simply randomly generates points every few seconds, to simulate events. The result is that the points scoring portion of the game lasts for only about a minute rather than hours or days, as it would if played for real. This allows for the functionality of the game to be demonstrated in a short space of time without requiring significant manual data entry.
+In order for the game to display updated points based on real-life football data, this would require either that an administrator manually updates scores, or that the application has the ability to consume data from a third party football statistics API. At this time however, the application simply randomly generates points every few seconds, to simulate events. The result is that the points scoring portion of the game lasts for only about a minute rather than hours or days, as it would if played for real. This allows for the functionality of the game to be demonstrated in a short space of time without requiring significant manual data entry, or live data from a third party API.
 
 The sequence of events for this randomly generated points-scoring process is as follows. Most steps would remain the same for a version which used real data instead.
 
@@ -374,4 +374,7 @@ Any league which has not yet completed its auction at the time of the event star
 
 ## Frontend
 
+The client-side code is responsible for presenting a graphical user interface to the user, based on data received from the server. This involves a lot of complex state management to ensure that the user is receiving the correct information. This will be explored later in this section, but first it is important to understand the user interface from the user's perspective, so this wil be discussed first.
+
+### User Interface Overview
 

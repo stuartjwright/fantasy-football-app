@@ -22,3 +22,24 @@ In smaller leagues however, it is common that each player can appear in only one
 
 Another distinction to draw is between **daily** and **season-long** fantasy sports. In season-long games, the idea is to pick a squad that will score the most points over an entire season, typically over many months. Mid-season changes to squads are often permitted in these games. In daily games, the aim is to pick a squad which will score well in one specific event. Despite the name, this event may last for a few days (for example, a four-day golf tournament, or a round of football fixtures spread over a weekend). In such games, once the initial squad is selected, it typically cannot be changed. Point-scoring is typically also more granular in daily games. In football for example, a season-long game might only award points for goals scored or assisted, but a daily game will additionally award a small number of points for more common occurrences such as completing a pass, or a successful tackle. This application is intended for daily games, although most of the logic could apply to either and could be adapted.
 
+## More Background
+
+## Application Overview
+
+The game is a web application which has been developed using JavaScript on both the frontend and backend. It features real-time bi-directional communication which allows users to compete in a live auction, during which they can bid against rival managers to build their squad of players. All users are immediately notified of new bids, and can react accordingly. A screenshot showing part of the application while an auction is in progress is shown in figure \ref{overview} - it shows what information is available to the user while they are deciding whether or not to make a new bid. In this case, they have 4 seconds remaining to make a bid, or else the player will be sold to another manager.
+
+![Auction In Progress\label{overview}](./img/overview.png)
+
+Figure \ref{newbid} shows the notification that the user receives in real-time (in the bottom left quadrant) when a rival manager has made a new bid. The new bid resets the countdown timer, and a second after the notification is shown, bidding begins again with a 10 second countdown timer.
+
+![New Bid Notification\label{newbid}](./img/newbid.png)
+
+Once all squads have been filled in accordance with the parameters chosen for the fantasy league in question, the next stage of the game involves points being scored. Users receive real time updates on points scored, as demonstrated in figure \ref{livepoints}, where the colour coding indicates changes since the last update.
+
+![Live Points Updates\label{livepoints}](./img/livepoints.png)
+
+Finally, the winner is the manager whose squad has accumulated the most points upon completion of the points-scoring phase of the game. The final standings are shown in figure \ref{complete}.
+
+![Final Standings\label{complete}](./img/complete.png)
+
+The development of this application is explored in signficantly more detail in the remainining sections of this document.
