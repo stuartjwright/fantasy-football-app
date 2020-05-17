@@ -374,7 +374,83 @@ Any league which has not yet completed its auction at the time of the event star
 
 ## Frontend
 
-The client-side code is responsible for presenting a graphical user interface to the user, based on data received from the server. This involves a lot of complex state management to ensure that the user is receiving the correct information. This will be explored later in this section, but first it is important to understand the user interface from the user's perspective, so this wil be discussed first.
+The client-side code is responsible for presenting a graphical user interface to the user, based on data received from the server. This involves a lot of complex state management to ensure that the user is receiving the correct information. This will be explored later in this section, but first it is important to understand the user interface from the user's perspective, so this will be discussed first.
 
 ### User Interface Overview
+
+The user interface consists of:
+
+* The **title bar**, with the name of the application, the user's login status, and a logout button. On smaller screens, there is also a hamburger menu button in the top left.
+* A **sidebar menu**, to allow the user to navigate between different parts of the application.
+* The **main content** area, which is everything below the title bar and to the right of the sidebar menu.
+
+All screenshots in this section will be of the version for smaller screens. There is no difference other than how the sidebar menu is handled. In this context, 'smaller screen' means a tablet or small laptop. The application has not been designed to function on smaller devices such as phones.
+
+The design of the user interface can be seen in figures \ref{uinomenu} (menu not visible), and \ref{uimenu} (menu visible).
+
+![User Interface\label{uinomenu}](./img/uinomenu.png)
+
+![Sidebar Menu\label{uimenu}](./img/uimenu.png)
+
+The available options in the sidebar menu are:
+
+* **Home** - a welcome page with some instructions on how to navigate the application.
+* **My Leagues** - for the user to browse leagues they have created or joined, shown in figure \ref{myleagues}.
+* **Create League** - for the user to create a new league, shown in figure \ref{create}.
+* **Join a League** - for the user to browse leagues created by others which they may join, shown in figure \ref{joinleague}.
+
+![My Leagues Page\label{myleagues}](./img/myleagues.png)
+
+![Create League Page\label{create}](./img/create.png)
+
+![Join a League Page\label{joinleague}](./img/join2.png)
+
+Once created, each individual league has its own **League Home** page. This can be accessed either immediately after creating or joining a league, or later on from the My Leagues page. The information on the League Home page depends on the stage of the game:
+
+* Waiting on more users to register, shown in figure \ref{waiting}.
+* League registration complete, but auction not yet started, shown in figure \ref{ready}.
+
+![Waiting on More Users\label{waiting}](./img/waiting.png)
+
+![Ready to Start Auction\label{ready}](./img/ready.png)
+
+Once the auction is in progress, any registered user who visits the league home page will be automatically redirected to the **Auction** page.
+
+Each round of bidding in the auction begins with one user nominating a player. The user whose turn it is to nominate a player selects from the menu shown in figure \ref{nominate}. All other users are informed that this is the case, as seen in figure \ref{waiting2}.
+
+![Selecting a Player\label{nominate}](./img/nominate.png)
+
+![Other Users Waiting\label{waiting2}](./img/waiting2.png)
+
+Once a player has been nominated, bidding begins, and the main user interface for the auction is shown to all users (figure \ref{auction}). This is quite a busy user interface, with a lot of information for the user to digest. It is potentially quite daunting for new players, but ultimately it was considered necessary to make as much information as possible available to the user at-a-glance, to allow them to enjoy the game. There are six separate panels, each of which serves a specific purpose:
+
+* **Bid History** (top left in main auction UI). This shows a list of all bids on the current player, from most recent back to the first bid. The list is scrollable if there are a lot of bids.
+* **Current Auction Item** (top middle). This lists some pertinent details relating to the current player for sale: the player's name, club, and position. It also shows the current high bid and bidder.
+* **Countdown** (middle left). This displays a countdown from 10 seconds to 0 seconds, letting the user know how long they have if they wish to make a new bid. If a new bid is made, it displays a graphic which makes this clear to all users. This graphic is shown in blue to the user who made the bid, and red to all other users (seen side-by-side in figure \ref{newbids})
+* **Bidding Status** (middle). This lets the user know whether or not they are permitted to bid on the current player. If they are not permitted to bid, the reason why will be displayed. In the example shown in figure \ref{status}, the user cannot bid because they already have too many players from the same club.
+* **Bidding Controls** (bottom). The user is given a slider and a button to allow them to bid. The size of the increments on the slider increase dynamically with the size of the current highest bid, to avoid a very slow auction in which bids increase very slowly. These controls will be automatically disabled if the user is not permitted to bid for any reason.
+* **Auction Sidebar** (right). This is where the user can view more detailed information on certain aspects of the auction, which would be too cumbersome to have permanently on display. By clicking the **Change View** button, the user can view whichever information they consider pertinent at the time in the sidebar. They can select from:
+  * **Budget Summary** - contains a list showing each user's remaining budget.
+  * **Squads** - contains details on each user's current squad. From within this section, the user can then cycle through each user. This is shown in figure \ref{squads}.
+  * **Available Players** - contains the list of players not yet auctioned off.
+  * **Sold Players** - contains a list of previously sold players, which user bought them, and how much they paid.
+  * **League Rules** - a list of rules relating to squad composition.
+
+![Main Auction UI\label{auction}](./img/auction.png)
+
+![New Bid Notifications\label{newbids}](./img/newbids.png)
+
+![Bidding Not Permitted\label{status}](./img/status.png)
+
+![Current Squads\label{squads}](./img/squads.png)
+
+The main auction UI remains on display until the countdown timer reaches 0, at which point the player is sold to the highest bidder at that time. When a player is sold, a page confirming the player sale is shown to the user for a few seconds before the next player is selected for bidding.
+
+Once the auction is complete, users are taken back to the **League Home** page, which now allows users to view league standings and points scored by players in each team. The version of this page which is displayed after the auction is complete, but before the event has begun, is seen in figure \ref{postauction}. The version shown while the event is live is shown in figure \ref{live}, and the final standings are shown in figure \ref{final}. All versions of this page allow the user to click on any user in the league standings (in the left panel), and the right panel will display the player points breakdown for that user. The final standings and player points remain available for all users in the league to browse indefinitely, but no further interactions are possible at this point - this is the end of the game, at least until the user decides to join another league.
+
+![Post-Auction Screen\label{postauction}](./img/postauction.png)
+
+![Event in Progress\label{live}](./img/live.png)
+
+![Final Standings\label{final}](./img/final.png)
 

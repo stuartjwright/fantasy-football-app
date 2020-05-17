@@ -1,0 +1,1 @@
+pandoc *.md --toc -s  --bibliography=biblio.bib --filter=pandoc-citeproc --csl=cell-numeric.csl -o report.pdf -V geometry:margin=1.5in -H disable_float.tex  && open report.pdf
