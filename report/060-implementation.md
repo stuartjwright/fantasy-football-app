@@ -454,3 +454,188 @@ Once the auction is complete, users are taken back to the **League Home** page, 
 
 ![Final Standings\label{final}](./img/final.png)
 
+### React Application User Interface
+
+A React single page application consists of a single HTML page with an empty body, and JavaScript code which dynamically renders HTML based on the state of the application. React makes use of an XML-like syntax called JSX to allow developers to write JavaScript functions which appear to be returning HTML, although in reality this JSX is transpiled to plain JavaScript which the browser can interpret. These functions which appear to be returning HTML are called **components** and they are the building blocks of a React user interface. The most basic React application possible is shown below. It consists of one component called **App**, which returns a single HTML paragraph:
+
+```JavaScript
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+const App = () => <p>Hello World!</p>
+
+ReactDOM.render(<App />, document.getElementById('root'))
+```
+
+Components can also return other React components, and this is how complex user interfaces are composed. A very basic example of this can be seen below:
+
+```javascript
+const MyComponent = () => <p>Hello</p>
+const AnotherComponent = () => <p>World!</p>
+const App = () => (
+  <div>
+    <MyComponent />
+    <AnotherComponent />
+  </div>
+)
+```
+
+In this application, a UI components library called **Material UI** was used. This allowed the developer to import ready-styled components into the project, rather than spend time manually building custom components using HTML and CSS. The code for one of the most simple components in the application is shown below, featuring two imported Material UI components:
+
+```javascript
+import React from 'react'
+import Typography from '@material-ui/core/Typography'
+import CircularProgress from '@material-ui/core/CircularProgress'
+
+const Loading = () => (
+  <div>
+    <CircularProgress color="primary" />
+    <Typography>Loading...</Typography>
+  </div>
+)
+
+export default Loading
+```
+
+This component can be rendered elsewhere in the application by importing it and returning `<Loading />`.
+
+Of course, constructing a web application in such a convoluted way would be rather pointless for static content. The power of React comes from its state management tools, which will be explored in the following section.
+
+### State Management in React
+
+Broadly speaking, there are two types of state in React:
+
+* **Local state.**
+* **Global state.**
+
+Local state exists in individual components. A typical use case for local state might be to keep track of whether the user currently has a certain form element selected. This is information that it is important for this component to know about, but probably the entire application doesn't need to know about. Items of local state can be passed down to sub-components. For example, in this application it would have been possible for state to be passed down from the **AuctionHome** component, to the **AuctionLive** component, to the **AuctionSideBar** component, and so on. However, this pattern quickly becomes very messy, and when there is an item of state which many components need access to, it is better to store that as global state.
+
+Despite the name, global state does not have to exist at the application level. It can exist for a specific part of an application, and any components in that part of the component tree can access it, without it having to be explicitly passed down between each level.
+
+Both types of state were used in this application, but for data returned from the server such as auction data, this was stored in global state, to allow access to the many building blocks of the auction user interface.
+
+### Conditional Rendering in React
+
+The purpose of managing state is to allow the application to determine which UI components to render. An example of this in action can be seen in the below code snippet taken from AuctionHome.js:
+
+```javascript
+import React, { useContext } from 'react'
+import { LeagueStateContext } from '../../contexts/LeagueContext'
+import AuctionNotReady from './AuctionNotReady'
+// Remaining imports redacted
+
+const AuctionHome = () => {
+  const { league } = useContext(LeagueStateContext)
+  const { status, itemSold } = league
+
+  return (
+    <>
+      {status === 'registering' && <AuctionNotReady />}
+      {status === 'ready' && <AuctionReady />}
+      {status === 'auction' && !itemSold && <AuctionLive />}
+      {status === 'auction' && itemSold && <AuctionItemSold />}
+      {(status === 'postauction' || status === 'complete') && (
+        <AuctionFinished />
+      )}
+    </>
+  )
+}
+
+export default AuctionHome
+```
+
+When the user visits the auction page for a certain league, the application checks the status of the league at that time, and determines which page the user should be shown. For example, if the status is 'ready', the `AuctionReady` component, which has been imported from another file, will be rendered. 
+
+Looking at the code in a little more detail, the first line of the function shows a call to `useContext()` - this function is part of the React API, and allows components to access a certain part of global state (in this case, the specific league in question). The second line uses object destructuring to gather only the parts of the league object which are of relevance. Finally, there is a return statement which renders only the appropriate component. Variations of this pattern occur in several places in the frontend code.
+
+### React Project Structure
+
+As React is a library rather than a framework, it is up to the developer to structure their project in whichever way they prefer. The structure for this project can be seen in figure \ref{frontend_project}.
+
+![Frontend Project Structure\label{frontend_project}](./img/frontend_project.png)
+
+This structure has the effect of separating files by what purpose they serve, rather than which part of the application they belong to. Definitions are as follows:
+
+* **index.js** - the entrypoint for the application.
+* **components** - contains UI components (any function which returns JSX - the XML-like syntax used by React).
+* **constants** - only contains the root URL for API requests, but any other constants would also go here.
+* **contexts** - this is where any global state is managed, components can access these state providers using `useContext()`.
+* **reducers** - a reducer is a function which receives the previous state and an action, and returns the new state. These are useful for some of the more complex state management tasks in the application.
+* **requests** - contains all requests to the REST API made from the frontend.
+* **sockets** - code for managing the real-time updates via Socket.IO belongs here.
+
+The **components** directory is further split into sub-directories. For example, there is a sub-directory for **league**, and further sub-directories within league for components depending on whether they are needed before or after the auction. Such decisions are a matter of preference and do not affect the functionality of the application. The approach taken here seemed like a reasonable middle ground between a massively nested directory structure and having too many files in one folder.
+
+### Live Updates
+
+Ensuring that the user always has the most up-to-date data for their league was key to providing a good user experience.
+
+When the user visits the URL for their league (https://stuartbbk.com/myleagues/<:leagueId>), the following code (LeagueContainer.js) is called:
+
+```javascript
+const LeagueContainer = ({ match }) => {
+  return (
+    <LeagueProvider leagueId={match.params.leagueId}>
+      <LeagueHome />
+    </LeagueProvider>
+  )
+}
+```
+
+`LeagueProvider` is defined in LeagueContext.js. Within this function, code to perform an initial request for data is executed, after which the user establishes a Socket.IO connection on which they will receive any future updates pushed to them. The following snippet from within the `LeagueProvider` function demonstrates this:
+
+```javascript
+useEffect(() => {
+    // some code to request initial data redacted
+    const socket = leagueSocketListener(leagueId, dispatch)
+    return () => socket.disconnect()
+  }, [leagueId, user._id])
+```
+
+The `useEffect()` function is part of the React API, and is the preferred way to perform side effects in React. The first argument is a function with actions to be performed, and the second argument is a dependencies array. The idea is that values in the dependencies array are monitored by React, and the function is executed any time the values of the dependencies change. In this case, neither the league ID nor user ID will change while the user still has the league page open, so the function will only be executed once. The code to request the initial data is not especially interesting so has been redacted, but after this, the user joins the Socket.IO room for their league. They will receive live updates from the server for as long as they are connected to this socket. Finally, the function passed to `useEffect()` can optionally return a function, which is called when the user leaves the page. In this case, when the user closes the tab, or browses away from this league, they will close the socket and no longer receive updates.
+
+The `leagueSocketListener()` function called in the above snippet performs two functions:
+
+* Connects to the relevant league room.
+* Listens for events emitted by the server.
+
+The code with most of the event listeners redacted (because they are very similar) is shown below:
+
+```javascript
+import io from 'socket.io-client'
+import rootUrl from '../constants/rootUrl'
+
+const socketIoUrl = rootUrl + 'leagues'
+
+const leagueSocketListener = (leagueId, dispatch) => {
+  const socket = io.connect(socketIoUrl, {
+    query: `leagueId=${leagueId}`
+  })
+  
+  // an event listener, others are redacted
+  socket.on('opening bid', data => {
+    dispatch({ type: 'SOCKETIO_OPENING_BID', data })
+  })
+
+  return socket
+}
+
+export default leagueSocketListener
+
+```
+
+The event listener shown contains code which should be executed if an event called 'opening bid' is received from the server. The `dispatch()` function sends a message to the reducer with the action type and updated state. When the league's state is updated, any components which are accessing league data using `useContext()` are automaticall re-rendered, thus achieving the desired effect of live updates in the UI.
+
+## Deployment
+
+For a multiplayer game which relies on real-time bi-directional communication, it is important to test that data transmission over the Internet is fast enough to provide a good user experience. Therefore, deployment to a server was necessary.
+
+The server chosen in this case was a Digital Ocean Droplet. Digital Ocean is a cloud infrastructure provider, and the Droplet is one of their products - a virtual private server, running Ubuntu in this case. With access to the Droplet gained via SSH, Node.js and all of the required libraries were then installed.
+
+Some small tweaks to the code were required before it could be deployed. The React code was transpiled using Babel to create a production build, and the backend code was edited to return the index.html created by this build process. This index.html page links to the transpiled and minified React code for execution on the user's machine.
+
+With the production code ready for deployment, next it was necessary to install the **PM2** library. This allows the server to run Node.js applications in the background. In figure \ref{pm2}, it can be seen that the application has been online for 36 days at the time of the screenshot:
+
+![PM2 Status\label{pm2}](./img/pm2.png)
+
+Finally, the **Nginx** web server was set up to receive HTTPS requests, and forward them to the application. A domain (stuartbbk.com) was also purchased and pointed to the public IP address of the server. The application is therefore live at https://stuartbbk.com/, at the time of writing.

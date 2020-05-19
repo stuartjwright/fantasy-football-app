@@ -17,7 +17,7 @@ During development of this application, user stories were organised on a Trello 
 
 ![Trello Board\label{trello}](./img/trello.png)
 
-The **In Progress** and **Complete** sections are self-explanatory. The distinction between **Backlog** and **To Do** exists to prioritise certain stories ahead of others, although the intention is still that stories in the **Backlog** list will be completed. In the example shown, it made sense in the context of building this application that users must be able to join leagues before they can participate in the auction. This is why the latter was placed in the **Backlog** list until development of this feature could realistically begin, and only at this point was it moved to the **To Do** list.
+The **In Progress** and **Complete** sections are self-explanatory. The distinction between **Backlog** and **To Do** exists to prioritise certain stories ahead of others, although the intention is not to indicate that stories in the **Backlog** are less important. In the example shown, it made sense in the context of building this application that users must be able to join leagues before they can participate in the auction. This is why the latter was placed in the **Backlog** list until development of this feature could realistically begin, and only at this point was it moved to the **To Do** list.
 
 ## Minimum Viable Product
 
@@ -35,7 +35,7 @@ With the exception of the first item on the list above, about which there is lit
 
 The bare minimum requirement here was that the user must be able to create a fantasy league which others could later join, and give it a unique name of their choosing. This is the version which was implemented in early iterations, to allow development to progress as quickly as possible.
 
-In later versions, additional functionality was added to allow the league creation process, giving the user more control over the rules of the game. Some examples can be seen in figure \ref{create2}.
+In later versions, additional functionality was added to the league creation process, giving the user more control over the rules of the game. Some examples can be seen in figure \ref{create2}.
 
 ![League Creation Screen\label{create2}](./img/create2.png)
 
@@ -45,7 +45,7 @@ The complete list of options available to the league creator is:
 * **Number of Participants**
 * **Event** - this refers to the real-life football fixtures in which points will be scored. For example, 'Premier League Week 1'.
 * **Max Players Per Club** - setting a low value here helps to avoid a situation where only players from the best clubs are selected.
-* **Number of Goalkeepers/Defenders/Midfielders/Forwards** - these settings to refer to the four main positions for football players. The default setting is 1 goalkeeper, 4 defenders, 4 midfielders and 2 forwards - 11 players in total, which is how a real-life football team might line up. However, if a league creator wants each manager to build a bigger squad of players, they can change this setting. Alternatively, they might want a very fast auction, in which case they could limit the total squad size to only 5 players. There is no reason that a fantasy team's composition must match that of a real football team.
+* **Number of Goalkeepers/Defenders/Midfielders/Forwards** - these settings refer to the four main positions for football players. The default setting is 1 goalkeeper, 4 defenders, 4 midfielders and 2 forwards - 11 players in total, which is how a real-life football team might line up. However, if a league creator wants each manager to build a bigger squad of players, they can change this setting. Alternatively, they might want a very fast auction, in which case they could limit the total squad size to only 5 players. There is no reason that a fantasy team's composition must match that of a real football team.
 
 ### Join a League
 

@@ -24,6 +24,9 @@ Another distinction to draw is between **daily** and **season-long** fantasy spo
 
 ## More Background
 
+*A bit about existing fantasy football offerings, motivation for building this app, history of real-time bi-directional communication in web apps.*
+
+
 ## Application Overview
 
 The game is a web application which has been developed using JavaScript on both the frontend and backend. It features real-time bi-directional communication which allows users to compete in a live auction, during which they can bid against rival managers to build their squad of players. All users are immediately notified of new bids, and can react accordingly. A screenshot showing part of the application while an auction is in progress is shown in figure \ref{overview} - it shows what information is available to the user while they are deciding whether or not to make a new bid. In this case, they have 4 seconds remaining to make a bid, or else the player will be sold to another manager.
