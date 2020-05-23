@@ -14,6 +14,7 @@ To-do:
         - Reflection/Summary
         - Intro (little bit on websockets)
         - Add in the bit about virtualised table
+        - Abstract
     - Diagrams:
         - High level architecture
         - Data Model
