@@ -6,7 +6,7 @@ This report documents the development of a multiplayer fantasy football game, fe
 
 ## Terminology
 
-In this document, **football** means association football, or soccer as it is known in some countries.
+In this document, **football** refers to the sport known also as association football, or soccer in some countries.
 
 The word **player** will always refer to a real-life football player, as opposed to a person playing this fantasy football game. The person using the application will typically be referred to as the **user**, but depending on the context they may also be referred to as a **manager** (of their fantasy football team) or a **participant** (in an auction).
 
@@ -18,14 +18,27 @@ Fantasy sports are games in which participants build imaginery teams consisting 
 
 There are several variations in how the game is played, even before taking into account different sports. In some variations, the same player can appear in an unlimited number of fantasy teams. This is common in large leagues which allow thousands or even millions of participants, where it would be infeasible to place constraints on how many participants can have a certain player in their team.
 
-In smaller leagues however, it is common that each player can appear in only one fantasy team in the league. In such cases, it is necessary to begin the game with some method of working out which managers get which players for their fantasy teams. The simplest method is known as the **draft**: managers simply take it in turns to select a player from those available, until all squads are complete. However, for those looking for an extra layer of strategy, the **auction** is preferred. In an auction, each manager starts out with a fixed budget, and must assemble a squad of players by bidding against other managers. The auction is the method of squad selection which has been chosen for this application.
+In smaller leagues however, it is common that each player can appear in only one fantasy team in the league. In such cases, it is necessary to begin the game with some method of working out which managers get which players for their fantasy teams. The simplest method is known as the **draft**: managers simply take it in turns to select a player from those available, until all squads are complete. However, for those looking for an extra layer of strategy, the **auction** is preferred. In an auction, each manager starts out with a fixed budget, and must assemble a squad of players by bidding against other managers.
 
-Another distinction to draw is between **daily** and **season-long** fantasy sports. In season-long games, the idea is to pick a squad that will score the most points over an entire season, typically over many months. Mid-season changes to squads are often permitted in these games. In daily games, the aim is to pick a squad which will score well in one specific event. Despite the name, this event may last for a few days (for example, a four-day golf tournament, or a round of football fixtures spread over a weekend). In such games, once the initial squad is selected, it typically cannot be changed. Point-scoring is typically also more granular in daily games. In football for example, a season-long game might only award points for goals scored or assisted, but a daily game will additionally award a small number of points for more common occurrences such as completing a pass, or a successful tackle. This application is intended for daily games, although most of the logic could apply to either and could be adapted.
+The auction is the method of squad selection which has been chosen for this application.
 
-## More Background
+Another distinction to draw is between **daily** and **season-long** fantasy sports. In season-long games, the idea is to pick a squad that will score the most points over an entire season, typically over many months. Mid-season changes to squads are often permitted in these games. In daily games, the aim is to pick a squad which will score well in one specific event. Despite the name, this event may last for a few days (for example, a four-day golf tournament, or a round of football fixtures spread over a weekend). In such games, once the initial squad is selected, it typically cannot be changed. Point-scoring is typically also more granular in daily games. In football for example, a season-long game might only award points for goals scored or assisted, but a daily game will additionally award a small number of points for more common occurrences such as completing a pass, or a successful tackle.
 
-*A bit about existing fantasy football offerings, motivation for building this app, history of real-time bi-directional communication in web apps.*
+This application is intended for daily games, although most of the logic could apply to either and could be adapted.
 
+## Real-Time Communication in Web Applications
+
+The traditional model of communication in web applications sees the client send a request to a server, and the server sending back a response. This response might contain a static webpage, or some data which will change the content on the current page. At this point, the server will not send anything else to the client until another request is received. This model works well for many applications, but it is not suitable for applications which require real-time bi-directional communication such as chat rooms, or multiplayer games such as the one documented in this report. These applications require that the server is able to push data to clients.
+
+This behaviour can be naively imitated by having the client send multiple requests to the server at regular intervals to check for updates. However, this approach involves a lot of overhead due to the number of requests, so wasn't seriously considered for use in this application.
+
+A slightly better alternative is known as **long polling**. It still involves the client sending a request, but the server holds the connection open for as long as possible, only sending a response when it has new data. However, **WebSockets**, which were first supported in Google Chrome in 2010, offer true bi-directional communication channels. This means that for as long as the WebSocket connection is open, either the client or server can send data.
+
+Although it is helpful to have some understanding of the underlying technology, the application developer can make use of libraries which abstract away the complexities of implementing such communication channels. The library ultimately chosen for use in this project was **Socket.IO**. It uses WebSockets to manage its connections where possible, but in very old browsers it will fall back on long polling. This gives the best of both worlds, although realistically, browsers without WebSocket support are increasibly rare.
+
+## Motivation
+
+Although fantasy football has successfully made its transition to the online world, options for real-time online auctions are limited. The first fantasy football provider in the UK, Fantasy League, requires that their users conduct a traditional live auction in person, with the resulting squads manually uploaded afterwards. The only option offered for an online auction involves *sealed bids*[@fantasy_league] - a process in which managers submit their maximum bids secretly, and the highest bidder is then calculated. This offers less excitement than a traditional auction in which managers compete to outbid each other. The motivation behind building this application was to offer users the best of both worlds: the convenience of an online auction, and the real-time decision making and excitement of a traditional live auction.
 
 ## Application Overview
 

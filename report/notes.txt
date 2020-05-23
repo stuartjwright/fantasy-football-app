@@ -1,1 +1,28 @@
-pandoc *.md --toc -s  --bibliography=biblio.bib --filter=pandoc-citeproc --csl=cell-numeric.csl -o report.pdf -V geometry:margin=1.5in -H disable_float.tex  && open report.pdf
+Command to generate report:
+
+pandoc *.md --toc -s --bibliography=biblio.bib --filter=pandoc-citeproc --csl=cell-numeric.csl -o report.pdf -V geometry:margin=1.25in -H disable_float.tex && open report.pdf
+
+Command to check wordcount:
+
+pandoc --lua-filter wordcount.lua *.md
+
+To-do:
+
+- Report:
+    - New writing:
+        - Testing
+        - Reflection/Summary
+        - Intro (little bit on websockets)
+        - Add in the bit about virtualised table
+    - Diagrams:
+        - High level architecture
+        - Data Model
+    - Check word count without code snippets.
+    - Proof read and cut down word count.
+    - Tidy up, make sure references are right, etc.
+- Code:
+    - Write readmes
+    - Disclaimers about code snippets taken from elsewhere.
+- Submission:
+    - Submit report
+    - Email code (to reflect most recent commit)

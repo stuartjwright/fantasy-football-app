@@ -1,59 +1,6 @@
 \newpage
 # Implementation
 
-## Technology Stack
-
-The MERN Stack was chosen to develop this application:
-
-* **M**ongoDB - a NoSQL database management system.
-* **E**xpress - a Node.js web application framework.
-* **R**eact - a JavaScript library for building user interfaces.
-* **N**ode.js - a JavaScript runtime capable of executing JavaScript on a server.
-
-In addition, the Socket.IO library was selected in order to facilitate the required real-time bi-directional communication between client and server.
-
-Part of the motivation for choosing this stack was its popularity. There are several benefits to choosing a popular techonology stack:
-
-* If a stack has become popular, it is likely that the technologies work well together.
-* If any problems are encountered, it is likely that somebody else has encountered the same problem before.
-* Libraries and documentation are likely to be regularly maintained.
-
-That said, some further research was conducted to ensure that this was the right stack for this particular application, and the findings follow.
-
-### React
-
-The developer was already comfortable with React prior to beginning this project, and was satisfied that it would fulfil the requirements. Therefore, no alternatives were researched. React user interfaces are composed of components which are updated when the data changes, which is exactly what was needed for this application. For example, when a new bid is made during the auction, the entire page should not update, but only those elements which are relevant.
-
-React is a library, as opposed to a fully-fledged framework (such as Angular). It does not make assumptions about the rest of the technology stack[@react_home]. This was particularly attractive in this case, as there were unlikely to be any problems integrating whichever libraries were required for real-time bi-directional communication.
-
-### Node.js
-
-The most obvious benefit to choosing Node.js for the backend is the convenience factor of writing the same language for server-side code as used for client-side code. Switching between languages involves some cognitive overhead on the part of the developer, and avoiding this should lead to a more efficient development process.
-
-Using Node.js in web applications also opens up the possibiliy for code re-use across different parts of the application. For example, in this application it seemed likely that both client and server side code might have to perform a function such as filtering a list of players down to only those which haven't been auctioned off yet.
-
-In the previous section, JSON (JavaScript Object Notation) was identified as the format for data transfer. This makes Node.js a particularly convenient choice - as the name suggests, JSON can easily be converted to JavaScript objects (and vice versa). The developer can spend less time worrying about the appropriate data structure to represent the data, and more time thinking about how to implement the business logic.
-
-The above reasons made choosing Node.js attractive from a developer experience standpoint, but most importantly, research also showed that Node.js was a popular choice for applications which require constantly updated data such as chat rooms and games. Requests are processed asynchronously without blocking the thread, which means that it is capable of short response times, a necessity for this application.
-
-The main drawback to choosing Node.js seemed to be that it could experience performance bottlenecks for computationally heavy tasks, but this was not a concern for this application.[@nodejs_good_bad]
-
-### Socket.IO
-
-Upon learning about Socket.IO, it was clear that this was exactly the library for use in this application. It offers support for event-driven real-time bi-directional communication between the client and server, and abstracts away the underlying complexity of implementing WebSockets. This seemed like a good choice, as implementing the appropriate business logic would be complex enough without also worrying about the low-level details.
-
-### Express
-
-Express is the most popular web framework which runs on Node.js, and it is featured in an example in the Socket.IO documentation.[@socketio_express] With support for Socket.IO integretation and the ability to rapidly develop REST APIs, there was little need to explore alternatives to Express.
-
-### MongoDB
-
-While this application could have been successfully developed with a traditional relational database instead, MongoDB seemed like the more appropriate choice for two reasons. 
-
-Firstly, MongoDB is particularly convenient to work with in JavaScript applications. Objects stored in a MongoDB collection are very similar to plain JavaScript Objects in their structure, thus there is no impedence mismatch when representing data from the database in the application.
-
-Secondly, nested data structures seemed more appropriate than tables for the entities required for this application. For example, the idea of an auction containing an array of auction users, and each auction user containing an array of players they've won, made more sense conceptually than having these entities spread across different tables in a relational database.
-
 ## Development Process
 
 The development process involved taking one user story at a time, and implementing all that was required to make some minimal functional version of that user story a reality. This would typically involve working with the database, backend application logic and the user interface. At this point, some testing was carried out to ensure the feature was working as intended, and usually a few more similar cycles would follow before the feature could be considered to be working as intended.
@@ -624,17 +571,31 @@ export default leagueSocketListener
 
 ```
 
-The event listener shown contains code which should be executed if an event called 'opening bid' is received from the server. The `dispatch()` function sends a message to the reducer with the action type and updated state. When the league's state is updated, any components which are accessing league data using `useContext()` are automaticall re-rendered, thus achieving the desired effect of live updates in the UI.
+The event listener shown contains code which should be executed if an event called 'opening bid' is received from the server. The `dispatch()` function sends a message to the reducer with the action type and updated state. When the league's state is updated, any components which are accessing league data using `useContext()` are automatically re-rendered, thus achieving the desired effect of live updates in the UI.
+
+### Frontend Performance
+
+In modern web applications, the client-side code can be required to perform a lot of data processing tasks. Every effort was taken to optimise these tasks, and as a result, no slowdown was noted at any point.
+
+However, another consideration is that when the application state changes, React often has to create a lot of new DOM (Document Object Model) nodes for display in the browser. This caused a problem in one part of the application only, and required a technique specifically designed to deal with this problem. The problem was with the full list of players shown in the sidebar, which can be seen in figure \ref{playerlist}.
+
+![Player List\label{playerlist}](./img/playerlist.png)
+
+Although only 18 rows are visible in this table, it is scrollable, so the user can browse all 619 players. The naive way to implement this feature was to render the entire table at once, but with this approach, a delay of approximately 1 second was introduced. In an application which is otherwise very responsive to user clicks, this was quite jarring, so a solution was found using a library called **react-window**. This library uses a technique called **virtualisation**. The documentation[@react_window] states:
+
+> React window works by only rendering *part* of a large data set (just enough to fill the viewport). This helps address some common performance bottlenecks.
+
+This is exactly what was required for the player list. After integrating this library, only those player whose rows were visible had DOM nodes allocated, and the DOM is updated automatically as the user scrolls. The results were exactly as hoped: it now appears to the user that the entire scrollable table has been loaded instantly.
 
 ## Deployment
 
 For a multiplayer game which relies on real-time bi-directional communication, it is important to test that data transmission over the Internet is fast enough to provide a good user experience. Therefore, deployment to a server was necessary.
 
-The server chosen in this case was a Digital Ocean Droplet. Digital Ocean is a cloud infrastructure provider, and the Droplet is one of their products - a virtual private server, running Ubuntu in this case. With access to the Droplet gained via SSH, Node.js and all of the required libraries were then installed.
+The server chosen in this case was a Digital Ocean Droplet. Digital Ocean is a cloud infrastructure provider, and the Droplet is one of their products - a virtual private server, running Ubuntu in this case. With access to the Droplet gained via SSH, MongoDB, Node.js and all of the required libraries were then installed.
 
 Some small tweaks to the code were required before it could be deployed. The React code was transpiled using Babel to create a production build, and the backend code was edited to return the index.html created by this build process. This index.html page links to the transpiled and minified React code for execution on the user's machine.
 
-With the production code ready for deployment, next it was necessary to install the **PM2** library. This allows the server to run Node.js applications in the background. In figure \ref{pm2}, it can be seen that the application has been online for 36 days at the time of the screenshot:
+With the production code ready for deployment, next it was necessary to install the **PM2** library. This allows the server to run Node.js applications in the background. In figure \ref{pm2}, it can be seen that the application has been online for 36 days at the time of the screenshot.
 
 ![PM2 Status\label{pm2}](./img/pm2.png)
 

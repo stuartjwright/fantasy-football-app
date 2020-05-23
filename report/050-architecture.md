@@ -1,5 +1,5 @@
 \newpage
-# Design
+# Design and Planning
 
 Some elements of the design process were carried out prior to development beginning. These included:
 
@@ -51,3 +51,56 @@ Finally, two other entities were added quite late in the development process, as
 * **FinalSquadItem** - Similar to **SquadItem** above, but amended for the post-auction phase of the game (again, the abilty to score points was an important factor).
 
 An entity-relationship diagram modelling the relationships between these entities can be seen in figure ZZZ.
+
+## Technology Stack
+
+The MERN Stack was chosen to develop this application:
+
+* **M**ongoDB - a NoSQL database management system.
+* **E**xpress - a Node.js web application framework.
+* **R**eact - a JavaScript library for building user interfaces.
+* **N**ode.js - a JavaScript runtime capable of executing JavaScript on a server.
+
+In addition, the Socket.IO library was selected in order to facilitate the required real-time bi-directional communication between client and server.
+
+Part of the motivation for choosing this stack was its popularity. There are several benefits to choosing a popular techonology stack:
+
+* If a stack has become popular, it is likely that the technologies work well together.
+* If any problems are encountered, it is likely that somebody else has encountered the same problem before.
+* Libraries and documentation are likely to be regularly maintained.
+
+That said, some further research was conducted to ensure that this was the right stack for this particular application, and the findings follow.
+
+### React
+
+The developer was already comfortable with React prior to beginning this project, and was satisfied that it would fulfil the requirements. Therefore, no alternatives were researched. React user interfaces are composed of components which are updated when the data changes, which is exactly what was needed for this application. For example, when a new bid is made during the auction, the entire page should not update, but only those elements which are relevant.
+
+React is a library, as opposed to a fully-fledged framework (such as Angular). It does not make assumptions about the rest of the technology stack[@react_home]. This was particularly attractive in this case, as there were unlikely to be any problems integrating whichever libraries were required for real-time bi-directional communication.
+
+### Node.js
+
+The most obvious benefit to choosing Node.js for the backend is the convenience factor of writing the same language for server-side code as used for client-side code. Switching between languages involves some cognitive overhead on the part of the developer, and avoiding this should lead to a more efficient development process.
+
+Using Node.js in web applications also opens up the possibiliy for code re-use across different parts of the application. For example, in this application it seemed likely that both client and server side code might have to perform a function such as filtering a list of players down to only those which haven't been auctioned off yet.
+
+In the previous section, JSON (JavaScript Object Notation) was identified as the format for data transfer. This makes Node.js a particularly convenient choice - as the name suggests, JSON can easily be converted to JavaScript objects (and vice versa). The developer can spend less time worrying about the appropriate data structure to represent the data, and more time thinking about how to implement the business logic.
+
+The above reasons made choosing Node.js attractive from a developer experience standpoint, but most importantly, research also showed that Node.js was a popular choice for applications which require constantly updated data such as chat rooms and games. Requests are processed asynchronously without blocking the thread, which means that it is capable of short response times, a necessity for this application.
+
+The main drawback to choosing Node.js seemed to be that it could experience performance bottlenecks for computationally heavy tasks, but this was not a concern for this application.[@nodejs_good_bad]
+
+### Socket.IO
+
+Upon learning about Socket.IO, it was clear that this was exactly the library for use in this application. It offers support for event-driven real-time bi-directional communication between the client and server, and abstracts away the underlying complexity of implementing WebSockets. This seemed like a good choice, as implementing the appropriate business logic would be complex enough without also worrying about the low-level details.
+
+### Express
+
+Express is the most popular web framework which runs on Node.js, and it is featured in an example in the Socket.IO documentation.[@socketio_express] With support for Socket.IO integretation and the ability to rapidly develop REST APIs, there was little need to explore alternatives to Express.
+
+### MongoDB
+
+While this application could have been successfully developed with a traditional relational database instead, MongoDB seemed like the more appropriate choice for two reasons. 
+
+Firstly, MongoDB is particularly convenient to work with in JavaScript applications. Objects stored in a MongoDB collection are very similar to plain JavaScript Objects in their structure, thus there is no impedence mismatch when representing data from the database in the application.
+
+Secondly, nested data structures seemed more appropriate than tables for the entities required for this application. For example, the idea of an auction containing an array of auction users, and each auction user containing an array of players they've won, made more sense conceptually than having these entities spread across different tables in a relational database.
