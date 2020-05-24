@@ -85,7 +85,7 @@ Using Node.js in web applications also opens up the possibiliy for code re-use a
 
 In the previous section, JSON (JavaScript Object Notation) was identified as the format for data transfer. As the name suggests, JSON can easily be converted to JavaScript objects (and vice versa), which is another advantage to using Node.js. The developer can spend less time worrying about the appropriate data structure to represent the data, and more time thinking about how to implement the business logic.
 
-The above reasons made choosing Node.js attractive from a developer experience standpoint, but most importantly, research also showed that Node.js was a popular choice for applications which require constantly updated data such as chat rooms and games. Requests are processed asynchronously without blocking the thread, which means that it is capable of short response times, a necessity for this application.
+The above reasons made choosing Node.js attractive from a developer experience standpoint, but most importantly, research also showed that Node.js was a suitable choice for applications which require constantly updated data such as chat rooms and games. Requests are processed asynchronously without blocking the thread, which means that it is capable of short response times, a necessity for this application.
 
 The main drawback to choosing Node.js seemed to be that it could experience performance bottlenecks for computationally heavy tasks, but this was not a concern for this application[@nodejs_good_bad].
 

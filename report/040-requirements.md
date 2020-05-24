@@ -76,23 +76,9 @@ The requirements for the real-time auction component of the application had to b
 The list of optional additional features in the proposal stated that ideally, the user would be able to:
 
 * Participate in more than one fantasy league at a time.
+* Customise league with different options relating to the rules of the game.
 * Make changes to their team after the initial auction.
 * Set up automatic bidding by preselecting the maximum amount they would be willing to bid on each player.
 * Access the web application using a mobile-friendly user interface (responsive design).
-* Customise league with different options relating to the rules of the game.
 
-
-
-### Additional Features Implemented
-
-The requirement to allow the user participate in more than one fantasy league at a time was implemented as intended. Although it would be impractical for a user to attempt to participate in multiple auctions at once (given the real-time nature of the game), it is technically possible - all they would need to do is open multiple browser tabs and browse to the appropriate league in each. A more practical application of this feature might be to allow a user to register or create some leagues for next week's fixtures, while they are monitoring points being scored for their existing league.
-
-The ability to customise the league with different options was successfully implemented.
-
-### Additional Features Not Implemented
-
-The application does not currently allow the user to make changes to their squad after the initial auction, nor does it allow the user to set up automatic bids. Both are features which could potentially improve the game, but there is also a concern that they could detract in some way from the auction, for the following reasons:
-* If a user can edit their squad after the auction, the auction holds less importance.
-* The idea of automation is perhaps more suitable for a business application such as on online shopping site, rather than a fun game in which the auction is supposed to be one of the most enjoyable parts.
-
-Some attempt was made to make the user interface responsive, but ultimately the amount of information that is necessary for the user to see while playing a real-time game such as this made it difficult. In its current state, the game is not fit for consumption on a mobile device, but works well on a large tablet (e.g. 10.2" iPad) or bigger. Although difficult, this is a feature that would surely have to be implemented for the game to have appeal in 2020.
+It was stated in proposal that it was unlikely that all of these features would be implemented, and this proved to be true. The first two items in the above list were implemented, but the remaining three were not.

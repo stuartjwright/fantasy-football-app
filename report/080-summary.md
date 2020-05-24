@@ -8,8 +8,11 @@ The main aim of the project was to create a fantasy football game featuring a re
 The author enjoys playing fantasy football games, so it is likely that development will continue on this application as a hobby project. Some features which are not implemented at the time of writing are:
 
 * A link to a third party football statistics API for data relating to real-life football events.
-* Add the ability to customise the speed of the auction (the 10 second countdown timer may be too fast for new users, or too slow for experienced users).
+* The ability to customise the speed of the auction.
 * A mobile friendly user interface. The data-processing components of the frontend code would remain the same, but the presentational components would need to be reworked.
+* A mechanism to ensure that the game can continue if a user does not respond when it is their turn to nominate a player.
+* Automated bidding.
+* Post-auction squad management options.
 
 ## Reflection
 
