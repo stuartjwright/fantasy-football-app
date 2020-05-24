@@ -75,8 +75,8 @@ export const startSimulation = async eventId => {
       'id users'
     ).exec()
     const leagueIds = leagues.map(l => l.id)
-    const interval = 3000 // update every 3 seconds, can probs make this a little higher
-    let numUpdates = 20 // num times points updates come through, would be higher in reality but 4 fine for now
+    const interval = 3000
+    let numUpdates = 20
     event = await startEvent(eventId)
     console.log('Simulation started')
     const countdown = setInterval(async () => {

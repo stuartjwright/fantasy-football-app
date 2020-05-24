@@ -1,7 +1,6 @@
 import express from 'express'
 import { json, urlencoded } from 'body-parser'
 import morgan from 'morgan'
-import cors from 'cors'
 import http from 'http'
 import socketIo from 'socket.io'
 import { connect } from './utils/db'
@@ -23,7 +22,6 @@ nsp.on('connection', socket => {
   socket.join(leagueId)
 })
 
-// app.use(cors()) // don't need for production
 app.use(json())
 app.use(urlencoded({ extended: true }))
 app.use(morgan('dev'))
@@ -37,9 +35,8 @@ app.use('/api/player', playerRouter)
 app.use('/api/league', leagueRouter)
 app.use('/api/event', eventRouter)
 
-// production only
 const root = path.join(__dirname, 'public')
-app.use(express.static(root)) // put contents of react dist in here for production
+app.use(express.static(root))
 app.get('/*', function(req, res) {
   res.sendFile('index.html', { root }, function(err) {
     if (err) {

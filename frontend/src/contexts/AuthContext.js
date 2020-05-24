@@ -1,5 +1,7 @@
 import React, { useState, createContext, useEffect, useContext } from 'react'
 import { getUser } from '../requests/AuthRequests'
+import Loading from '../components/generic/Loading'
+import Error from '../components/generic/Error'
 
 const AuthContext = createContext()
 
@@ -20,14 +22,9 @@ export const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider value={{ state, setState }}>
       {state.status === 'pending' ? (
-        'Loading...'
+        <Loading />
       ) : state.status === 'error' ? (
-        <div>
-          Oh no
-          <div>
-            <pre>{state.error.message}</pre>
-          </div>
-        </div>
+        <Error />
       ) : (
         children
       )}

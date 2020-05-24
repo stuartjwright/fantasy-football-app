@@ -12,7 +12,7 @@ The remaining (significantly more complex) portions of the application were writ
 
 ## Source Code
 
-The source code can be found in the **src** directory, and the vast majority of it within the **resources** subdirectory. Within the **resources** directory, there are further entities for each top-level entity stored in the database:
+The source code can be found in the **src** directory, and the vast majority of it within the **resources** subdirectory. Within the **resources** directory, there are further directories for each top-level entity stored in the database:
 
  * **user**
  * **player**
@@ -44,7 +44,7 @@ The frontend code should first be built and placed in the `public` folder of the
 
 Install MongoDB and ensure that it is running on localhost (default port). The `events.json` and `playersDump.json` should also be imported to the database.
 
-Install the latest versions of (Node.js)[https://nodejs.org/en/] and (Yarn)[https://yarnpkg.com/cli/install] package manager. Then, from the same folder containing this README, run command:
+Install the latest versions of [Node.js](https://nodejs.org/en/) and [Yarn](https://yarnpkg.com/cli/install) package manager. Then, from the same folder containing this README, run command:
 
 `yarn install`
 

@@ -110,7 +110,6 @@ export const joinLeague = async (req, res) => {
     }
 
     if (league.numRegistered >= league.maxEntrants) {
-      // not strictly atomic, fix if possible but not that important here
       league.status = 'ready'
       await league.save()
     }
@@ -147,7 +146,7 @@ export const setLeagueToStartAuction = async (req, res) => {
       liveAuctionItem: null,
       nextUser: user
     }
-    // not strictly atomic, fix if possible but not that important here
+
     await league.save()
     league = await League.findById(leagueId)
       .populate('users', 'username')

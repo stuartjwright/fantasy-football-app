@@ -1,68 +1,40 @@
+# Backend Application
+
+## Disclaimer
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+The code in **src/contexts/AuthContext.js** is copied from [this](https://kentcdodds.com/blog/authentication-in-react-applications) blog post by Kent C Dodds. I came across it while researching patterns for handling authentication in the frontend, and I liked this approach. Since authentication was not the main focus of this project, I saw no need to reinvent the wheel.
 
-In the project directory, you can run:
+Many of the UI components are adapted (usually significantly so) from code snippets in the Material UI documentation, such as [this](https://material-ui.com/components/app-bar/) one. I consider this to be the intended use of such libraries so I'm not sure if I'm required to mention this in the interests of academic integrity, but I'm doing so to be safe.
 
-### `yarn start`
+The remaining code in this repository is my own work.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Source Code
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+The source code in the **src** directory contains **index.js** (the application's entry point), and the remainder of the code is split into other directories:
 
-### `yarn test`
+* **components** - UI building blocks.
+* **constants** - hardcoded values which should not change.
+* **contexts** - for global state management.
+* **reducers** - a reducer is a function which receives the previous state and an action, and returns the new state.
+* **requests** - contains all requests to the REST API made from the frontend.
+* **sockets** - code for managing the real-time updates via Socket.IO.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The **components** directory is further split into sub-directories. For example, there is a sub-directory for **league**, and further sub-directories within league for components depending on whether they are needed before or after the auction.
 
-### `yarn build`
+## How to Run
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Install the latest versions of [Node.js](https://nodejs.org/en/) and [Yarn](https://yarnpkg.com/cli/install) package manager. Then, from the same folder containing this README, run command:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+`yarn install`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Yarn should read the dependencies from `package.json` and install the required libraries. The application can then be started in development mode by running the command:
 
-### `yarn eject`
+`yarn start`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+To run in conjunction with the server-side code, instead run:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`yarn build`
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+And then move the resulting build from the **dist** folder into the **public** folder in the backend project.
