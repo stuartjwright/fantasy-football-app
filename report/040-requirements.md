@@ -11,13 +11,13 @@ All MVP requirements were successfully implemented, along with some of the addit
 
 ## User Stories
 
-Each item on the initial list of requirements could be considered a user story. A user story is typically a few sentences of simple, non-technical language, which explains the desired outcome from the user's perspective. [@user_stories]
+Each item on the initial list of requirements could be considered a user story. A user story is typically a few sentences of simple, non-technical language, which explains the desired outcome from the user's perspective.[@user_stories]
 
 During development of this application, user stories were organised on a Trello board. An example of how the board looked during the early stages of development can be seen in figure \ref{trello}.
 
 ![Trello Board\label{trello}](./img/trello.png)
 
-The **In Progress** and **Complete** sections are self-explanatory. The distinction between **Backlog** and **To Do** exists to prioritise certain stories ahead of others, although the intention is not to indicate that stories in the **Backlog** are less important. In the example shown, it made sense in the context of building this application that users must be able to join leagues before they can participate in the auction. This is why the latter was placed in the **Backlog** list until development of this feature could realistically begin, and only at this point was it moved to the **To Do** list.
+The **In Progress** and **Complete** sections are as the names suggest. The distinction between **Backlog** and **To Do** exists to prioritise certain stories ahead of others, although the intention is not to indicate that stories in the **Backlog** are less important. In the example shown, it made sense in the context of building this application that users must be able to join leagues before they can participate in the auction. This is why the latter was placed in the **Backlog** list until development of this feature could realistically begin, and only at this point was it moved to the **To Do** list.
 
 ## Minimum Viable Product
 
@@ -35,11 +35,7 @@ With the exception of the first item on the list above, about which there is lit
 
 The bare minimum requirement here was that the user must be able to create a fantasy league which others could later join, and give it a unique name of their choosing. This is the version which was implemented in early iterations, to allow development to progress as quickly as possible.
 
-In later versions, additional functionality was added to the league creation process, giving the user more control over the rules of the game. Some examples can be seen in figure \ref{create2}.
-
-![League Creation Screen\label{create2}](./img/create2.png)
-
-The complete list of options available to the league creator is:
+In later versions, additional functionality was added to the league creation process, giving the user more control over the rules of the game. The complete list of options available to the league creator is:
 
 * **League name**
 * **Number of Participants**
@@ -63,19 +59,17 @@ Before they can join a league however, the user must be able to view a list of a
 The requirements for the real-time auction component of the application had to be fleshed out significantly before development could begin. The following more detailed rules were drawn up to describe how the auction logic was expected to function:
 
 * The auction can only begin once the league is full.
-* Once the league is full, it is up to the league creator to trigger the start of the auction.
+* Once the league is full, the league creator can trigger the start of the auction.
 * All auction participants start with a budget of £100M, with which to purchase players.
-* Once the auction has started, participants must take it in turns to pick a player to be auctioned off to the highest bidder.
-    * The participant which selected a player is considered to have opened the bidding at £0.
+* Once the auction has started, participants must take it in turns to pick a player to be auctioned off to the highest bidder (the participant who selected a player is considered to have opened the bidding at £0).
 * All bidding must occur in real-time, with details of bids shared immediately with other participants.
 * A player is sold to the highest bidder after 10 seconds of no bidding.
 * A participant may be prevented from bidding on a certain player for any of the following reasons:
     * They do not have sufficient budget to make a bid which is higher than the current highest bid.
-    * They are already the highest bidder (you cannot try to outbid yourself).
-    * They have too many players from the club in question (e.g. Liverpool).
-    * They have too many players in the position in question (e.g. defender).
+    * They are already the highest bidder.
+    * They have too many players from one club (e.g. Liverpool).
+    * They have too many players in one position (e.g. defender).
 * The auction can only end once all participants have completed a full squad of players as defined by the rules.
-    * No participant can ever be left with an incomplete squad. Even if they spend their entire budget on the first player, in the worst case scenario they can still pick up players for free at the end once everyone else has completed their squad.
 
 ## Additional Features
 
@@ -87,11 +81,13 @@ The list of optional additional features in the proposal stated that ideally, th
 * Access the web application using a mobile-friendly user interface (responsive design).
 * Customise league with different options relating to the rules of the game.
 
+
+
 ### Additional Features Implemented
 
 The requirement to allow the user participate in more than one fantasy league at a time was implemented as intended. Although it would be impractical for a user to attempt to participate in multiple auctions at once (given the real-time nature of the game), it is technically possible - all they would need to do is open multiple browser tabs and browse to the appropriate league in each. A more practical application of this feature might be to allow a user to register or create some leagues for next week's fixtures, while they are monitoring points being scored for their existing league.
 
-The ability to customise the league with different options has already been covered as part of the **Join a League** section above.
+The ability to customise the league with different options was successfully implemented.
 
 ### Additional Features Not Implemented
 
