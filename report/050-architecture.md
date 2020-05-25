@@ -1,26 +1,26 @@
 \newpage
 # Design and Planning
 
-Before development could begin, additional work was required in three different areas:
+Before development could begin, additional work was required in three areas:
 
-* **High Level Architecture** - identifying the different components required to form a complete web application, and how they will communicate with each other.
-* **Data Modelling** - identifying which entity classes were required, and their relationships to each other.
+* **High Level Architecture** - identifying the different components required to form a complete web application, and understanding how they will communicate with each other.
+* **Data Modelling** - identifying which entity classes were required, and modelling their relationships to each other.
 * **Technology Stack** - researching appropriate technologies for implementation.
 
 ## High Level Architecture
 
-The first choice was to decide which of the following two approaches to take:
+The first choice was to select one of two possible approaches to web application design:
 
 * The traditional approach, which involves most of the application logic being performed on the server, with appropriate HTML returned to be displayed in the browser.
 * The **Single Page Application** (SPA) approach, which allows for most of the user interface logic to be handled by client-side code which simply consumes data from the server.
 
-An article on Microsoft's website[@spa_traditional] states that the traditional approach is better suited to websites with simple client-side requirements, and that SPAs are better suited to applications which require more complex user interface functionalities than what basic HTML forms can offer. Given the requirements of this application, the **SPA** approach was selected.
+An article on Microsoft's website[@spa_traditional] states that the traditional approach is better suited to websites with simple client-side requirements, and that SPAs are better suited to applications which require more complex user interface functionalities than what basic HTML forms can offer. Given the requirements of this application, the SPA approach was selected.
 
-This decision meant that the server would be responsible simply for providing the client with the appropriate data, rather than returning HTML pages to display. Although the specific needs of this application meant that real-time bi-directional communication was a requirement, it was also necessary to consider more traditional requests. For example, a user must be able to send a request to log in, or view a list of available leagues to join. For this reason, it was decided to implement a **REST API** on the backend in addition to the **Socket.IO** server to push real-time updates.
+This decision meant that the server would be responsible only for providing the client with the appropriate data, rather than returning HTML pages to display. Although the specific needs of this application meant that real-time bi-directional communication was a requirement, it was also necessary to consider more traditional requests. For example, a user must be able to send a request to log in, or view a list of available leagues to join. For this reason, it was decided to implement a **REST API** on the backend in addition to the **Socket.IO** server required to push real-time updates.
 
-**API** stands for Application Programming Interface - a means by which programs talk to each other. **REST** stands for Representational State Transfer. A REST (or RESTful) API is an API which follows a particular set of rules - it receives requests from client programs, and sends appropriate responses. There are different types of request for different purposes. A **GET** request typically involves the client program making a request for data from the server - for example, a user requesting to see a list of players. A **POST** request will typically involve the client sending some new data to be written to the server's database. In this application, a user creating a new league would be an example of a use case for which a POST request would be appropriate.
+**API** stands for Application Programming Interface - a means by which programs talk to each other. **REST** stands for Representational State Transfer. A REST (or RESTful) API is one which follows a particular set of rules - it receives requests from client programs, and sends appropriate responses. There are different types of request for different purposes. A **GET** request involves the client program making a request for data from the server - for example, a user requesting to see a list of players. A **POST** request will typically involve the client sending some new data to be written to the server's database. In this application, a user creating a new league would be an example of a use case for which a POST request would be appropriate.
 
-Regardless of the request type, a REST API typically sends a response containing some data. There are a number of different data formats which can be chosen, but **JSON** (JavaScript Object Notation) is the most popular data format for exchange of information in web applications, so this is what was selected.
+Regardless of the request type, a REST API typically sends a response containing some data. There are a number of different data formats which can be chosen, but **JSON** (JavaScript Object Notation), being the most popular data format for exchange of information in web applications, was selected.
 
 A diagram showing the high-level architecture can be seen in figure \ref{architecture}.
 
@@ -73,9 +73,9 @@ Part of the motivation for choosing this stack was its popularity, but some furt
 
 ### React
 
-The author was already comfortable with React prior to beginning this project, and was satisfied that it would fulfil the requirements. React user interfaces are composed of components which are updated when the data changes, which is exactly what was needed for this application. For example, when a new bid is made during the auction, the entire page should not update, but only those elements which are relevant.
+React user interfaces are composed of components which are updated when the data changes, as was necessary for this application. For example, when a new bid is made during the auction, the entire page should not update, but only those elements which are relevant.
 
-React is a library, as opposed to a fully-fledged framework (such as Angular). It does not make assumptions about the rest of the technology stack[@react_home]. This was particularly attractive in this case, as there were unlikely to be any problems integrating **Socket.IO**.
+React is a library, as opposed to a fully-fledged framework (such as Angular). It does not make assumptions about the rest of the technology stack[@react_home]. This was particularly attractive in this case, as there were unlikely to be any problems integrating **Socket.IO** with React's state management tools.
 
 ### Node.js
 
@@ -83,7 +83,7 @@ The most obvious benefit to choosing Node.js for the backend is the convenience 
 
 Using Node.js in web applications also opens up the possibiliy for code re-use across different parts of the application. For example, in this application it seemed likely that both client and server side code might have to perform a function such as filtering a list of players down to only those which haven't been auctioned off yet.
 
-In the previous section, JSON (JavaScript Object Notation) was identified as the format for data transfer. As the name suggests, JSON can easily be converted to JavaScript objects (and vice versa), which is another advantage to using Node.js. The developer can spend less time worrying about the appropriate data structure to represent the data, and more time thinking about how to implement the business logic.
+In the previous section, JSON (JavaScript Object Notation) was identified as the format for data transfer. As the name suggests, JSON can easily be converted to JavaScript objects (and vice versa). As a result, the developer can spend less time worrying about the appropriate data structure to represent the data, and more time focusing on the business logic.
 
 The above reasons made choosing Node.js attractive from a developer experience standpoint, but most importantly, research also showed that Node.js was a suitable choice for applications which require constantly updated data such as chat rooms and games. Requests are processed asynchronously without blocking the thread, which means that it is capable of short response times, a necessity for this application.
 
@@ -93,16 +93,16 @@ The main drawback to choosing Node.js seemed to be that it could experience perf
 
 Upon learning about Socket.IO, it was clear that this was a perfect fit for use in this application. It offers support for event-driven real-time bi-directional communication between the client and server, and abstracts away the underlying complexity of implementing WebSockets.
 
-The only alternative to Socket.IO which was seriously considered was the **WebSocket** library for JavaScript. The appeal of this approach was that it would give the developer greater control over the details relating to the communiction channels in the application, but ultimately the convenience of Socket.IO was preferred.
+The only alternative to Socket.IO which was seriously considered was the **WebSocket** library for Node.js. The appeal of this was that it would give the developer greater control over the details relating to the communiction channels in the application, but ultimately the convenience of Socket.IO was preferred.
 
 ### Express
 
-Express is the most popular web framework which runs on Node.js, and it is featured in an example in the Socket.IO documentation[@socketio_express]. With support for Socket.IO integration and the ability to rapidly develop REST APIs, there was little need to explore alternatives to Express. Like React, it is unopinionated with regard to the rest of the developer's technology stack. It is quite minimalist with regard to features included in the base library, allowing developers to import only those components which they require. For example, in this application there were to be no HTML pages returned to the client, so there was no need to install a useless templating library. An example of an additional component which was installed was the **body-parser** middleware, for handling data received from the client in POST requests.
+Express is the most popular web framework which runs on Node.js, and it is featured in an example in the Socket.IO documentation[@socketio_express]. With support for Socket.IO integration and the ability to rapidly develop REST APIs, there was little need to explore alternatives to Express. Like React, it is unopinionated with regard to the rest of the developer's technology stack. It takes a minimalist approach to features included in the base library, allowing developers to import additional components only as required. For example, in this application there were to be no HTML pages returned to the client, so the absence of an unnecessary templating engine bundled with the library was appreciated. An example of an additional component which was installed was the **body-parser** middleware, for handling data received from the client in POST requests.
 
 ### MongoDB
 
 While this application could have been successfully developed with a traditional relational database instead, MongoDB seemed like the more appropriate choice for two reasons. 
 
-Firstly, MongoDB is particularly convenient to work with in JavaScript applications. Objects stored in a MongoDB collection are very similar to plain JavaScript Objects in structure, thus there is no impedence mismatch when representing data from the database in the application.
+Firstly, MongoDB is particularly convenient to work with in JavaScript applications. Objects stored in a MongoDB collection are very similar to plain JavaScript Objects in structure, thus there is no impedence mismatch when representing database objects in the application.
 
 Secondly, nested data structures seemed more appropriate than tables for the entities required for this application. For example, the idea of an auction containing an array of auction users, and each auction user containing an array of players in their squad, made more sense conceptually than having these entities spread across different tables in a relational database.

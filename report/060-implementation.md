@@ -3,16 +3,16 @@
 
 ## Development Process
 
-The implementation phase involved taking one user story at a time, and implementing all that was required to make some minimal functional version of that user story a reality. This would typically involve work on the database, backend application logic and the user interface. At this point, some testing was carried out to ensure the feature was working as intended, and usually a few more similar cycles would follow before the feature could be considered to be working as intended.
+The implementation phase involved taking one user story at a time, and implementing all that was required to make some minimal functional version of that user story a reality. This would typically involve work on the database, backend application logic and the user interface. At this point, some testing was carried out to ensure the feature was functioning correctly, and usually a few more similar cycles would follow before the feature could be considered to be working as intended.
 
 Work was completed in approximately the following order:
 
 * Login system for users to create account, log in and log out.
-* Funtionality to allow users to create and join leagues.
+* Functionality to allow users to create and join leagues.
 * The auction.
 * The post-auction section.
 
-For each stage, work was typically done on the backend first so that each endpoint was returning the correct data for each type of request it might receive. This made development of the frontend significantly easier.
+For each stage, work was typically done on the backend first so that each endpoint was returning the correct data for requests it might receive. This made development of the frontend significantly easier.
 
 ## Development Tools
 
@@ -60,7 +60,7 @@ The login system solution generates a **JSON Web Token** on each login or accoun
 
 The Socket.IO library offers features for organising and managing sockets in an application using **namespaces** and **rooms**[@socketio_rooms].
 
-Namespaces allow for separation of concerns between communication channels in an application. In this application, only one namespace ('leagues') was required, but if it was later decided to, for example, add a chatroom to the home page, this could exist in a separate namespace, keeping the logic for different parts of the application separate.
+Namespaces allow for separation of concerns between communication channels in an application. In this application, only one namespace ('leagues') was required, but if it was later decided to, for example, add a chat room to the home page, this could exist in a separate namespace, keeping the logic for different parts of the application separate.
 
 Each namespace can contain several rooms. In this application, a separate room exists for each league, allowing the server to push messages to all clients in the room after some database action has been performed. This ensures that all clients have the most up-to-date representation of the league state, without them having to request it manually.
 
@@ -83,9 +83,9 @@ During the early stages of development, most relationships were modelled using t
 
 With this advice in mind, the schema was redesigned to use more embedded documents. All of the smaller subcomponents of the auction were added as embedded documents rather than references, and this made updates significantly more straightforward.
 
-Uses cases for the document references approach still remained however - for example, modelling the relationships between the players collection and individual auctions. The full player list used for this application contains 619 players, and cannot be altered by the application. Therefore, there were no concerns regarding atomic update operations, so document references could be used to avoid duplicating all 619 player documents for every auction.
+Use cases for the document references approach still remained however - for example, modelling the relationships between the players collection and individual auctions. The full player list used for this application contains 619 players, and cannot be altered by the application. Therefore, there were no concerns regarding atomic update operations, so document references could be used to avoid duplicating all 619 player documents for every auction.
 
-The code for creating the schemas and performing database operations was done using a Node.js library called **Mongoose**. Mongoose is an object data modelling library, which allows the developer to focus on modelling their data without concerning themselves with the complexities of the MongoBD query language. The resulting code is more readable, and allows the developer to easily see the structure of the data they will be working with. The code snippet below shows the schema for the current live auction item: 
+The code for creating the schemas and performing database operations was done using a Node.js library called **Mongoose**. Mongoose is an object data modelling library, which allows the developer to focus on modelling their data without concerning themselves with the complexities of the MongoDB query language. The resulting code is more readable, and allows the developer to easily see the structure of the data they will be working with. The code snippet below shows the schema for the current live auction item: 
 
 ```javascript
 import mongoose from 'mongoose'
@@ -368,7 +368,7 @@ Once a player has been nominated, bidding begins, and the main user interface fo
 
 ![Current Squads\label{squads}](./img/squads.png)
 
-The main auction UI remains on display until the countdown timer reaches 0, at which point the player is sold to the highest bidder. When a player is sold, a page confirming the player sale is shown to the user for a few seconds (figure ref\{sold}) before the next player is selected for bidding.
+The main auction UI remains on display until the countdown timer reaches 0, at which point the player is sold to the highest bidder. When a player is sold, a page confirming the player sale is shown to the user for a few seconds (figure \ref{sold}) before the next player is selected for bidding.
 
 ![Player Sale Confirmed\label{sold}](./img/sold.png)
 

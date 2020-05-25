@@ -13,7 +13,7 @@ All MVP requirements were successfully implemented, along with some of the addit
 
 Each item on the initial list of requirements could be considered a user story. A user story is typically a few sentences of simple, non-technical language, which explains the desired outcome from the user's perspective.[@user_stories]
 
-During development of this application, user stories were organised on a Trello board. An example of how the board looked during the early stages of development can be seen in figure \ref{trello}.
+During development, user stories were organised on a Trello board. An example of how the board looked during the early stages of development can be seen in figure \ref{trello}.
 
 ![Trello Board\label{trello}](./img/trello.png)
 
@@ -37,7 +37,7 @@ The bare minimum requirement here was that the user must be able to create a fan
 
 In later versions, additional functionality was added to the league creation process, giving the user more control over the rules of the game. The complete list of options available to the league creator is:
 
-* **League name**
+* **League Name**
 * **Number of Participants**
 * **Event** - this refers to the real-life football fixtures in which points will be scored. For example, 'Premier League Week 1'.
 * **Max Players Per Club** - setting a low value here helps to avoid a situation where only players from the best clubs are selected.
@@ -50,7 +50,7 @@ Users must be able to join leagues created by other users, subject to constraint
 * A user cannot join a league they have already joined.
 * A user can only join a league if the auction has not yet started, and the league is not full.
 
-Before they can join a league however, the user must be able to view a list of available leagues which they are permitted to join. An example of this can be seen in figure \ref{join}.
+Before they can join a league, the user must be able to view a list of available leagues which they are permitted to join. An example of this can be seen in figure \ref{join}.
 
 ![Available Leagues Screen\label{join}](./img/join.png)
 
@@ -69,7 +69,7 @@ The requirements for the real-time auction component of the application had to b
     * They are already the highest bidder.
     * They have too many players from one club (e.g. Liverpool).
     * They have too many players in one position (e.g. defender).
-* The auction can only end once all participants have completed a full squad of players as defined by the rules.
+* The auction can only end once all participants have completed a full squad of players as defined by the league rules.
 
 ## Additional Features
 
@@ -81,4 +81,4 @@ The list of optional additional features in the proposal stated that ideally, th
 * Set up automatic bidding by preselecting the maximum amount they would be willing to bid on each player.
 * Access the web application using a mobile-friendly user interface (responsive design).
 
-It was stated in proposal that it was unlikely that all of these features would be implemented, and this proved to be true. The first two items in the above list were implemented, but the remaining three were not.
+It was stated in the proposal that it was unlikely that all of these features would be implemented, and this proved to be true. The first two items in the above list were implemented, but the remaining three were not.
