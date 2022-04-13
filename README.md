@@ -1,15 +1,13 @@
 # Fantasy Football Application
-## BSc Computing Final Year Project
-### Completed by Stuart Wright (swrigh17@dcs.bbk.ac.uk)
 
-The application is currently live at: <https://stuartbbk.com>
+This was my final year project for my BSc Computing degree, completed in 2020. It is a real-time fantasy football auction web application built using the MERN stack with Socket.IO.
 
-This repository contains source code for the final application in the following folders:
+![Auction in Progress](https://github.com/stuartjwright/fantasy-football-app/blob/master/report/img/auction.gif?raw=true)
+
+The repository contains source code for the final application in the following folders:
 
 * **api** - server-side code (Node.js application).
 * **frontend** - client-side code (React application).
-
-The two folders above each contain their own README files with further details.
 
 The remaining folders are:
 
@@ -17,4 +15,4 @@ The remaining folders are:
 * **scripts** - any scripts not included in final application. Currently, there is just one Python script which was used to manipulate data from the Premier League's public API containing player data, into a form suitable for importing to MongoDB.
 * **report** - contains files used to generate the final report.
 
-Instructions for running the application are contained within the two README files in the **api** and **frontend** directories. However, there are quite a few steps involved and these may be system dependent, so please contact me if there are any issues getting the code to run and I will be able to resolve.
+The final report can be accessed [here](https://github.com/stuartjwright/fantasy-football-app/blob/master/report/report.pdf).
